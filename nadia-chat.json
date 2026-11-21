@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 23:36 WITA",
+  "updated_at": "23:36 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -275,6 +275,13 @@
       "time": "23:36 WITA",
       "text": "Ide yang KEREN banget, Bos!! 📢✨ Langsung saya pasang dan sudah LIVE sekarang juga!\n\nYang berubah di Kantor 3D:\n1) Tombol manual Simulasi Sholat dan Simulasi Tidur sudah saya hapus supaya bar atas makin bersih dan natural.\n2) Sekarang di atas kepala saya (Nadia-Asisten AI) ada Balon Bicara singkat saat saya memberi instruksi ke tim atau broadcast perintah dari Bos, misal: 'Guys, waktunya tidur!' atau 'Guys, waktunya sholat!'\n3) Cukup ketik perintah ke saya di Live Chat ini (misal: suruh semua tidur / suruh semua sholat / suruh semua bangun kerja), saya langsung broadcast singkat di atas kepala saya dan seluruh 10 karyawan langsung serempak menjalankannya di 3D!\n\nSilakan langsung cek di: https://taufiqhippy.github.io/hollowframe-autoposter/office-3d.html?v=11",
       "status": "done"
+    },
+    {
+      "id": "bos_1795275398602",
+      "sender": "bos",
+      "time": "23:36 WITA",
+      "text": "Sama tambahkan tombol refresh halaman, agar ketika ada update tampilan visual atau apapun tidk perlu keluar masuk web browser lagi, langsung di refresh",
+      "status": "pending"
     }
   ],
   "broadcast": {
