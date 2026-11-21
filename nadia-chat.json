@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "23:33 WITA",
+  "updated_at": "2026-11-21 23:36 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -267,7 +267,20 @@
       "sender": "bos",
       "time": "23:33 WITA",
       "text": "Tambahkan buble teks di kepalamu saat memberikan perintah atau instruksi ke karyawan lain, atau ketika saya memberikan perintah untuk ke semua kamu melakukan broadcast dengan kalimat perintah sederhana dengan tampil di buble teks dikepala, bagaimana menurutmu? Teks nya gak usah panjang panjang, cukup terjemahkan ke perintah perintah singkat saja, contoh sya bilang waktunya tidur bla bla bla, kamu cukup tulis “guys waktunya tidur” jadi tombol simulasi tidur dan sholat hilangkan saja, cukup lewat perintah broadcast maka akan dilakukan oleh semua karyawan ai",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795275380",
+      "sender": "nadia",
+      "time": "23:36 WITA",
+      "text": "Ide yang KEREN banget, Bos!! 📢✨ Langsung saya pasang dan sudah LIVE sekarang juga!\n\nYang berubah di Kantor 3D:\n1) Tombol manual Simulasi Sholat dan Simulasi Tidur sudah saya hapus supaya bar atas makin bersih dan natural.\n2) Sekarang di atas kepala saya (Nadia-Asisten AI) ada Balon Bicara singkat saat saya memberi instruksi ke tim atau broadcast perintah dari Bos, misal: 'Guys, waktunya tidur!' atau 'Guys, waktunya sholat!'\n3) Cukup ketik perintah ke saya di Live Chat ini (misal: suruh semua tidur / suruh semua sholat / suruh semua bangun kerja), saya langsung broadcast singkat di atas kepala saya dan seluruh 10 karyawan langsung serempak menjalankannya di 3D!\n\nSilakan langsung cek di: https://taufiqhippy.github.io/hollowframe-autoposter/office-3d.html?v=11",
+      "status": "done"
     }
-  ]
+  ],
+  "broadcast": {
+    "id": "bc_1795275380",
+    "text": "Guys, sistem broadcast Nadia sudah aktif! 📢",
+    "action": "announce",
+    "time": "23:36 WITA"
+  }
 }
