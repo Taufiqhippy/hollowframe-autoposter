@@ -137,6 +137,21 @@
       white-space: nowrap; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
     }
     #labels-layer.hide-tags .emp-tag-3d { display: none !important; }
+    .nadia-speech {
+      position: absolute; transform: translate(-50%, -100%);
+      background: #ffffff; color: #0f172a;
+      border: 2px solid #0ea5e9; border-radius: 14px;
+      padding: 6px 12px; font-size: 0.72rem; font-weight: 800;
+      white-space: nowrap; box-shadow: 0 8px 22px rgba(14, 165, 233, 0.28);
+      opacity: 0; pointer-events: none; transition: opacity 0.28s ease;
+      z-index: 16;
+    }
+    .nadia-speech::after {
+      content: ""; position: absolute; left: 50%; bottom: -8px; transform: translateX(-50%);
+      border-width: 8px 7px 0 7px; border-style: solid;
+      border-color: #0ea5e9 transparent transparent transparent;
+    }
+    .nadia-speech.show { opacity: 1; }
     @media (max-width: 720px) {
       .feed-box { display: none; }
     }
@@ -156,8 +171,6 @@
     </div>
     <div class="top-actions">
       <span class="prayer-pill" id="prayerClock">🕌 Gorontalo WITA: --:--</span>
-      <button class="btn btn-sholat" id="btnSholatSim">🕌 Simulasi Sholat</button>
-      <button class="btn btn-sleep" id="btnSleepSim">🌙 Simulasi Tidur</button>
       <button class="btn" id="btnToggleTags">🏷️ Sembunyikan Nama</button>
       <a class="btn btn-primary" href="office.html">📋 Dashboard 2D</a>
       <button class="btn" id="btnResetCam">🎥 Reset</button>
@@ -859,6 +872,10 @@
         if (employees[m.from]?.state === 'working') {
           const tr = ALL_ROOMS[m.to];
           sendEmployee(m.from, m.to, new THREE.Vector3(tr.x + 1.15, 0, tr.z + 0.9), 'deliver', m.msg, m.color, 2.2);
+          // Nadia briefly pops a short instruction bubble above her head!
+          if (m.from !== 'assistant' && m.to !== 'assistant') {
+            nadiaSay(m.msg.replace(/^[^\w]+/, '').slice(0, 42) + '!', 4200);
+          }
         }
       } else {
         const idleIds = Object.keys(employees).filter(id => employees[id].state === 'working');
@@ -958,64 +975,113 @@
       });
     }
 
+    // --- NADIA SPEECH BUBBLE & LIVE BROADCAST SYSTEM ---
+    const nadiaBubbleEl = document.createElement('div');
+    nadiaBubbleEl.className = 'nadia-speech';
+    labelsLayer.appendChild(nadiaBubbleEl);
+    let nadiaBubbleTimer = null;
+
+    function nadiaSay(shortText, ms = 5500) {
+      nadiaBubbleEl.textContent = '💬 ' + shortText;
+      nadiaBubbleEl.classList.add('show');
+      clearTimeout(nadiaBubbleTimer);
+      nadiaBubbleTimer = setTimeout(() => nadiaBubbleEl.classList.remove('show'), ms);
+    }
+
+    function executeBroadcast(bc) {
+      if (!bc || !bc.id) return;
+      const txt = bc.text || 'Guys, cek instruksi terbaru!';
+      nadiaSay(txt, 7500);
+      pushFeed(`📢 Nadia: "${txt}"`, 0x0ea5e9);
+
+      if (bc.action === 'sleep') {
+        forceSholatMode = false;
+        forceSleepMode = true;
+        triggerGroupSleep();
+        updatePrayerHUD();
+      } else if (bc.action === 'sholat') {
+        forceSleepMode = false;
+        forceSholatMode = true;
+        triggerGroupSholat('Jamaah Kantor');
+        updatePrayerHUD();
+      } else if (bc.action === 'work') {
+        forceSleepMode = false;
+        forceSholatMode = false;
+        Object.values(employees).forEach(emp => {
+          if (emp.state !== 'working') emp.timer = 0.2;
+        });
+        updatePrayerHUD();
+      } else if (bc.action === 'break') {
+        forceSleepMode = false;
+        forceSholatMode = false;
+        scheduleBehavior();
+        scheduleBehavior();
+        updatePrayerHUD();
+      }
+    }
+
+    let lastBroadcastId = null;
+    async function pollNadiaBroadcast() {
+      try {
+        const tok = (localStorage.getItem('kantor_ai_bos_token') || '').trim();
+        let data = null;
+        if (tok) {
+          const r = await fetch('https://api.github.com/repos/Taufiqhippy/hollowframe-autoposter/contents/nadia-chat.json?ref=main&t=' + Date.now(), {
+            headers: { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json' }
+          });
+          if (r.ok) {
+            const j = await r.json();
+            const bytes = Uint8Array.from(atob(j.content.replace(/\n/g, '')), c => c.charCodeAt(0));
+            data = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+          }
+        }
+        if (!data) {
+          const r2 = await fetch('nadia-chat.json?t=' + Date.now());
+          if (r2.ok) data = await r2.json();
+        }
+        if (data && data.broadcast && data.broadcast.id !== lastBroadcastId) {
+          const isInitial = lastBroadcastId === null;
+          lastBroadcastId = data.broadcast.id;
+          // Show announcement immediately (and apply action if fresh broadcast!)
+          if (!isInitial || data.broadcast.action === 'announce') {
+            executeBroadcast(data.broadcast);
+          }
+        }
+      } catch (e) {}
+    }
+    pollNadiaBroadcast();
+    setInterval(pollNadiaBroadcast, 8000);
+
     // Prayer & Sleep clock updater (Gorontalo WITA)
+    let lastAutoPhase = '';
     function updatePrayerHUD() {
       const { hhmm, isSleep, activePrayer, nextPrayer } = getGorontaloTime();
       const el = document.getElementById('prayerClock');
       if (activePrayer || forceSholatMode) {
-        const pName = activePrayer ? activePrayer.name : 'Simulasi Sholat';
-        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktunya ${pName}`;
+        const pName = activePrayer ? activePrayer.name : 'Jamaah';
+        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktunya Sholat ${pName}`;
         scene.background.setHex(0xdbeafe);
+        if (lastAutoPhase !== 'sholat_' + pName) {
+          lastAutoPhase = 'sholat_' + pName;
+          nadiaSay(`Guys, waktunya sholat ${pName}! 🕌`, 6500);
+        }
         triggerGroupSholat(pName);
       } else if (isSleep || forceSleepMode) {
         el.textContent = `🌙 Gorontalo ${hhmm} WITA • Jam Tidur (23:45–Subuh)`;
         scene.background.setHex(0x94a3b8);
+        if (lastAutoPhase !== 'sleep') {
+          lastAutoPhase = 'sleep';
+          nadiaSay('Guys, waktunya tidur! 🌙', 6500);
+        }
         triggerGroupSleep();
       } else {
         el.textContent = `🕌 Gorontalo ${hhmm} WITA • Berikutnya: ${nextPrayer.name} (${nextPrayer.str})`;
         scene.background.setHex(0xdbeafe);
+        lastAutoPhase = 'work';
       }
     }
     updatePrayerHUD();
     setInterval(updatePrayerHUD, 10000);
-
-    document.getElementById('btnSholatSim').onclick = (e) => {
-      forceSholatMode = !forceSholatMode;
-      if (forceSholatMode) {
-        forceSleepMode = false;
-        document.getElementById('btnSleepSim').classList.remove('active');
-        document.getElementById('btnSleepSim').textContent = '🌙 Simulasi Tidur';
-      }
-      e.target.classList.toggle('active', forceSholatMode);
-      e.target.textContent = forceSholatMode ? '🕌 Akhiri Simulasi Sholat' : '🕌 Simulasi Sholat';
-      if (forceSholatMode) {
-        triggerGroupSholat('Jamaah Kantor');
-      } else {
-        Object.values(employees).forEach(emp => {
-          if (emp.activityType === 'sholat') emp.timer = 0.2;
-        });
-      }
-      updatePrayerHUD();
-    };
-
-    document.getElementById('btnSleepSim').onclick = (e) => {
-      forceSleepMode = !forceSleepMode;
-      if (forceSleepMode) {
-        forceSholatMode = false;
-        document.getElementById('btnSholatSim').classList.remove('active');
-        document.getElementById('btnSholatSim').textContent = '🕌 Simulasi Sholat';
-      }
-      e.target.classList.toggle('active', forceSleepMode);
-      e.target.textContent = forceSleepMode ? '☀️ Bangunkan Semua' : '🌙 Simulasi Tidur';
-      if (forceSleepMode) {
-        triggerGroupSleep();
-      } else {
-        Object.values(employees).forEach(emp => {
-          if (emp.activityType === 'sleep') emp.timer = 0.2;
-        });
-      }
-      updatePrayerHUD();
-    };
 
     // Kick off lively office behaviors immediately
     setTimeout(scheduleBehavior, 1000);
@@ -1265,6 +1331,14 @@
         emp.tagEl.style.left = tp.x + 'px';
         emp.tagEl.style.top = tp.y + 'px';
         emp.tagEl.style.display = tp.vis ? 'block' : 'none';
+
+        // Position Nadia's broadcast speech bubble cleanly above her name tag
+        if (emp.id === 'assistant' && nadiaBubbleEl.classList.contains('show')) {
+          const np = project(new THREE.Vector3(emp.root.position.x, 2.75 + emp.bodyPivot.position.y, emp.root.position.z));
+          nadiaBubbleEl.style.left = np.x + 'px';
+          nadiaBubbleEl.style.top = np.y + 'px';
+          nadiaBubbleEl.style.display = np.vis ? 'block' : 'none';
+        }
       });
 
       roomLabels.forEach(rl => {
