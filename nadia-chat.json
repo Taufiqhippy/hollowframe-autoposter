@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 22:06 WITA",
+  "updated_at": "22:09 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -135,6 +135,13 @@
       "time": "22:06 WITA",
       "text": "Siap laksanakan, Bos! 🫡 Sudah saya kunci permanen di aturan studio untuk SEMUA 4 channel (dalam 1 video maupun seluruh part dari seri yang sama wajib 100% suara konsisten):\\n- 🎬 DeadFrame Comics: Fenrir\\n- 👻 Hollow Frame: Charon\\n- 🌿 WildLogic: Puck\\n- 🛍️ Racun Belanja: Puck\\n\\nTidak akan ada lagi pencampuran suara di tengah video atau antar-part!",
       "status": "done"
+    },
+    {
+      "id": "bos_1795270178223",
+      "sender": "bos",
+      "time": "22:09 WITA",
+      "text": "Oh iyah itu di ruang game konsol maksimal yang main 2 orang yah, dan duduk berseblahan jangan saling menumpuk.",
+      "status": "pending"
     }
   ]
 }
