@@ -816,27 +816,56 @@
         const idleIds = Object.keys(employees).filter(id => employees[id].state === 'working');
         if (!idleIds.length) return;
         const pick = idleIds[Math.floor(Math.random() * idleIds.length)];
+        const freeSeat = (actType) => {
+          const used = Object.values(employees)
+            .filter(e => e.state !== 'working' && e.activityType === actType)
+            .map(e => e.seatSlot);
+          if (!used.includes(0)) return 0;
+          if (!used.includes(1)) return 1;
+          return -1; // Full (max 2)
+        };
         const choice = Math.floor(Math.random() * 4);
         if (choice === 0) {
-          // Gym!
-          const r = ALL_ROOMS.gym;
-          sendEmployee(pick, 'gym', new THREE.Vector3(r.x - 1.3, 0, r.z + 0.5), 'gym', `${employees[pick].spec.tag} olahraga di Ruang Gym`, null, 8);
+          // Gym (max 2: treadmill kiri & matras kanan, anti-numpuk)
+          const slot = freeSeat('gym');
+          if (slot !== -1) {
+            const r = ALL_ROOMS.gym;
+            employees[pick].seatSlot = slot;
+            const dx = slot === 0 ? -1.3 : 1.2;
+            sendEmployee(pick, 'gym', new THREE.Vector3(r.x + dx, 0, r.z + 0.5), 'gym', `${employees[pick].spec.tag} olahraga di Ruang Gym`, null, 8);
+          }
         } else if (choice === 1) {
-          // Multiplayer Game Console (1 or 2 coworkers together!)
-          const r = ALL_ROOMS.gameroom;
-          sendEmployee(pick, 'gameroom', new THREE.Vector3(r.x - 0.65, 0, r.z - 0.35), 'game', `${employees[pick].spec.tag} main Game Console`, null, 9);
-          const friend = idleIds.find(id => id !== pick);
-          if (friend) {
-            sendEmployee(friend, 'gameroom', new THREE.Vector3(r.x + 0.65, 0, r.z - 0.35), 'game', `${employees[friend].spec.tag} mabar Game Console bareng!`, null, 9);
+          // Game Console: STRICT MAX 2 orang, duduk bersebelahan rapi di sofa (kiri -0.85 & kanan +0.85)
+          const s0 = freeSeat('game');
+          if (s0 !== -1) {
+            const r = ALL_ROOMS.gameroom;
+            employees[pick].seatSlot = s0;
+            sendEmployee(pick, 'gameroom', new THREE.Vector3(r.x + (s0 === 0 ? -0.85 : 0.85), 0, r.z - 0.35), 'game', `${employees[pick].spec.tag} main Game Console`, null, 9);
+            const s1 = freeSeat('game');
+            const friend = idleIds.find(id => id !== pick);
+            if (s1 !== -1 && friend) {
+              employees[friend].seatSlot = s1;
+              sendEmployee(friend, 'gameroom', new THREE.Vector3(r.x + (s1 === 0 ? -0.85 : 0.85), 0, r.z - 0.35), 'game', `${employees[friend].spec.tag} mabar Game Console bareng!`, null, 9);
+            }
           }
         } else if (choice === 2) {
-          // Makan / Ngopi
-          const r = ALL_ROOMS.pantry;
-          sendEmployee(pick, 'pantry', new THREE.Vector3(r.x - 0.55, 0, r.z - 0.9), 'eat', `${employees[pick].spec.tag} istirahat makan & ngopi`, null, 8);
+          // Makan / Ngopi (max 2 kursi bersebelahan)
+          const slot = freeSeat('eat');
+          if (slot !== -1) {
+            const r = ALL_ROOMS.pantry;
+            employees[pick].seatSlot = slot;
+            const dx = slot === 0 ? -0.65 : 0.65;
+            sendEmployee(pick, 'pantry', new THREE.Vector3(r.x + dx, 0, r.z - 0.9), 'eat', `${employees[pick].spec.tag} istirahat makan & ngopi`, null, 8);
+          }
         } else {
-          // Baca Buku di Perpustakaan
-          const r = ALL_ROOMS.library;
-          sendEmployee(pick, 'library', new THREE.Vector3(r.x - 0.6, 0, r.z - 0.35), 'read', `${employees[pick].spec.tag} baca buku di Perpustakaan`, 0x0ea5e9, 8.5);
+          // Perpustakaan (max 2 kursi bersebelahan)
+          const slot = freeSeat('read');
+          if (slot !== -1) {
+            const r = ALL_ROOMS.library;
+            employees[pick].seatSlot = slot;
+            const dx = slot === 0 ? -0.65 : 1.05;
+            sendEmployee(pick, 'library', new THREE.Vector3(r.x + dx, 0, r.z - 0.35), 'read', `${employees[pick].spec.tag} baca buku di Perpustakaan`, 0x0ea5e9, 8.5);
+          }
         }
       }
     }
