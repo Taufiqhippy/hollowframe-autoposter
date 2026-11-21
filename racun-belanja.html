@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Racun Belanja — Katalog Resmi Link Produk & Gadget</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --yellow: #facc15;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 24px 16px 60px;
+    }
+    .container {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: #0f172a;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .support-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 20px rgba(219, 39, 119, 0.3);
+    }
+    .support-banner span.btn {
+      background: #fff;
+      color: #0f172a;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .search-box {
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 16px;
+      border: 2px solid #334155;
+      background: var(--card);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+    }
+    .search-box input:focus {
+      border-color: var(--accent);
+    }
+    .cats {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .cat-btn {
+      background: var(--card);
+      color: var(--muted);
+      border: 1px solid #334155;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .cat-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .product-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--card);
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .num-badge {
+      background: #0f172a;
+      color: var(--yellow);
+      border: 2px solid var(--yellow);
+      font-weight: 900;
+      font-size: 16px;
+      min-width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .prod-info {
+      flex: 1;
+    }
+    .prod-cat {
+      font-size: 11px;
+      color: var(--yellow);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .prod-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .prod-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .buy-btn {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 32px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">OFFICIAL PRODUCT DIRECTORY</div>
+      <h1>🛒 RACUN BELANJA</h1>
+      <p>Ketik nomor produk di video (contoh: <b>#01</b>, <b>#02</b>) atau nama barang untuk langsung buka di Shopee!</p>
+    </div>
+
+    <a class="support-banner" href="https://sociabuzz.com/taufiqhippy/tribe" target="_blank" rel="noopener">
+      <span>☕ Dukung Kreator & Request Review Gadget</span>
+      <span class="btn">SociaBuzz →</span>
+    </a>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Cari Nomor (#01, #02) atau nama gadget..." />
+    </div>
+
+    <div class="cats" id="catContainer">
+      <button class="cat-btn active" data-cat="ALL">Semua</button>
+      <button class="cat-btn" data-cat="TWS & Audio">TWS & Audio</button>
+      <button class="cat-btn" data-cat="Powerbank & Charger">Powerbank & Charger</button>
+      <button class="cat-btn" data-cat="Gadget Unik">Gadget Unik</button>
+    </div>
+
+    <div class="product-list" id="productList"></div>
+  </div>
+
+  <script>
+    // Daftar produk otomatis diupdate oleh script autopilot Racun Belanja
+    const PRODUCTS = [
+      {
+        code: "#01",
+        category: "TWS & Audio",
+        title: "TWS Bluetooth 5.3 ENC Noise Cancelling Low Latency Gaming",
+        meta: "⭐ 4.9 • Gadget Of The Day",
+        url: "https://shopee.co.id/search?keyword=tws%20bluetooth%205.3%20enc"
+      },
+      {
+        code: "#02",
+        category: "Powerbank & Charger",
+        title: "Mini Powerbank Fast Charging 10000mAh 22.5W Built-in Cable",
+        meta: "⭐ 4.9 • Review Gadget Harian",
+        url: "https://shopee.co.id/search?keyword=mini%20powerbank%2010000mah%2022.5w"
+      },
+      {
+        code: "#03",
+        category: "Gadget Unik",
+        title: "Senter LED Taktis Mini Super Terang USB-C Waterproof COB",
+        meta: "⭐ 4.8 • Survival & Everyday Gear",
+        url: "https://shopee.co.id/search?keyword=senter%20led%20taktis%20mini%20cob"
+      },
+      {
+        code: "#04",
+        category: "Powerbank & Charger",
+        title: "Charger GaN 65W 3-Port Fast Charging Laptop & HP",
+        meta: "⭐ 4.9 • Battle Gadget Pilihan",
+        url: "https://shopee.co.id/search?keyword=charger%20gan%2065w"
+      },
+      {
+        code: "#05",
+        category: "Gadget Unik",
+        title: "Kipas Angin Genggam Turbo High Speed 100 Level Digital",
+        meta: "⭐ 4.9 • Top 5 Gadget Minggu Ini",
+        url: "https://shopee.co.id/search?keyword=kipas%20tangan%20turbo%20100%20speed"
+      }
+    ];
+
+    let activeCat = "ALL";
+    const searchInput = document.getElementById("searchInput");
+    const productList = document.getElementById("productList");
+    const catBtns = document.querySelectorAll(".cat-btn");
+
+    function render() {
+      const q = searchInput.value.trim().toLowerCase();
+      const filtered = PRODUCTS.filter(p => {
+        const matchCat = activeCat === "ALL" || p.category === activeCat;
+        const matchQ = !q || p.code.toLowerCase().includes(q) || p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      if (!filtered.length) {
+        productList.innerHTML = '<div class="empty">Produk belum ditemukan. Coba ketik nomor lain (misal: 01, 02, TWS).</div>';
+        return;
+      }
+
+      productList.innerHTML = filtered.map(p => `
+        <a class="product-card" href="${p.url}" target="_blank" rel="noopener">
+          <div class="num-badge">${p.code}</div>
+          <div class="prod-info">
+            <div class="prod-cat">${p.category}</div>
+            <div class="prod-title">${p.title}</div>
+            <div class="prod-meta">${p.meta}</div>
+          </div>
+          <div class="buy-btn">Cek Shopee →</div>
+        </a>
+      `).join("");
+    }
+
+    searchInput.addEventListener("input", render);
+    catBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        catBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCat = btn.dataset.cat;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>
