@@ -2,43 +2,44 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-21",
-  "updated_at": "21 Nov 2026, 19:47 WITA",
+  "updated_at": "21 Nov 2026, 20:04 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 7,
     "total_pending": 29,
     "completion_pct": 19,
-    "active_employees": 7,
+    "active_employees": 8,
     "open_slots": 1
   },
   "assistant": {
     "name": "Nara — Asisten Eksekutif AI",
-    "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan langsung kondisi Kantor Ai - Bebas Kreasi hari ini.",
+    "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
+      "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
       "Hari ini (2026-11-21) tercatat 7 dari 36 slot jadwal sudah selesai tayang, dan 29 slot masih antre / belum dikerjakan.",
-      "Seluruh produksi terbaru (Hollow Frame S02E03 & WildLogic WL_E06) sudah 100% memakai suara natural Gemini 3.8 Flash TTS tanpa error 504.",
-      "2 jadwal otomatis (Autopilot Harian 06:00 WITA & Laporan PDF Mingguan Minggu 08:00 WITA) dalam status AKTIF."
+      "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
+      "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
     ],
     "suggestions": [
       {
         "priority": "TINGGI",
         "title": "Kejar 11 Slot Threads @kaya.studio26",
-        "detail": "Threads baru terisi 1/12 hari ini. Gunakan stok foto produk lokal yang sudah ada di katalog agar tidak memicu CAPTCHA Shopee."
+        "detail": "Sora AI & Lina AI siap memposting variasi soft-selling menggunakan stok foto produk lokal agar tidak memicu CAPTCHA Shopee."
       },
       {
         "priority": "TINGGI",
         "title": "Produksi 9 Video Long-Form 16:9",
-        "detail": "Slot Long-Form (DeadFrame, Hollow Frame, WildLogic, Racun Belanja) belum terisi hari ini. Video 16:9 sangat penting untuk mempercepat jam tayang monetisasi YouTube."
+        "detail": "Video Long-Form 16:9 akan mempercepat pencapaian 4.000 jam tayang monetisasi YouTube (terutama DeadFrame yang sudah 1.390+ subs!)."
       },
       {
         "priority": "SEDANG",
         "title": "Upload 1-Tap Paket Shopee Video dari Telegram",
-        "detail": "Video RacunBelanja_ShopeeVideo_01_Real.mp4 + caption + link Keranjang Oranye sudah terkirim di Telegram. Tinggal 1-tap upload di aplikasi Shopee."
+        "detail": "Video RacunBelanja_ShopeeVideo_01_Real.mp4 + caption + link Keranjang Oranye sudah siap di Telegram (msg #53)."
       },
       {
         "priority": "OPSIONAL",
-        "title": "Aktifkan Auto-Sync GitHub Token (1 Menit)",
-        "detail": "Tambahkan 1 GitHub Fine-Grained Token khusus repo hollowframe-autoposter agar setiap kali video baru tayang, website Kantor Ai ini otomatis ter-update dalam 1 detik."
+        "title": "Aktifkan GitHub Token untuk Auto-Push Real-Time 1 Detik",
+        "detail": "Tambahkan 1 GitHub Fine-Grained Token khusus repo hollowframe-autoposter di social_config.json agar setiap upload otomatis memperbarui website 2D & 3D tanpa browser."
       }
     ]
   },
@@ -83,21 +84,34 @@
       "status_label": "Siap Melapor",
       "done_today": 1,
       "target_today": 1,
-      "current_task": "Memantau seluruh divisi, menyusun saran prioritas, & menyiapkan Laporan PDF Minggu 08:00 WITA",
+      "current_task": "Menerima laporan tayang dari semua ruangan & menyiapkan saran prioritas untuk Bos.",
       "accent": "#38bdf8"
     },
     {
       "id": "tts_studio",
       "room_name": "Ruang Studio Audio & TTS",
-      "employee_name": "VoxLab 3.8",
-      "role": "Spesialis Voice Over Natural (Gemini TTS)",
+      "employee_name": "Reno AI (VoxLab 3.8)",
+      "role": "Spesialis Voice Over Natural (Gemini 3.8 TTS)",
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 4,
-      "target_today": 4,
-      "current_task": "Engine gemini-3.8-flash-tts + cadangan gemini-3.8-flash-lite-tts (Rata-rata 7–12 detik/klip, 0 error 504)",
+      "done_today": 7,
+      "target_today": 7,
+      "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
+    },
+    {
+      "id": "copywriter",
+      "room_name": "Ruang Copywriter & Caption",
+      "employee_name": "Sora AI",
+      "role": "Spesialis Hook Viral, Caption, Hashtag & SEO",
+      "avatar": "✍️",
+      "status": "online",
+      "status_label": "Karyawan Baru Aktif",
+      "done_today": 7,
+      "target_today": 36,
+      "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
+      "accent": "#14b8a6"
     },
     {
       "id": "deadframe",
@@ -109,7 +123,7 @@
       "status_label": "2/6 Hari Ini",
       "done_today": 2,
       "target_today": 6,
-      "current_task": "Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Sisa slot: Shorts P4 & 2x Long-Form 16:9.",
+      "current_task": "Live 1,390 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
       "accent": "#ef4444"
     },
     {
@@ -161,7 +175,7 @@
       "status_label": "1/12 Hari Ini",
       "done_today": 1,
       "target_today": 12,
-      "current_task": "8x Soft-Selling (3–5 foto + link) & 4x Engagement tanpa link. Sisa 11 slot hari ini.",
+      "current_task": "Menerima caption dari Sora AI: 8x Soft-Selling (3–5 foto + link) & 4x Engagement tanpa link.",
       "accent": "#06b6d4"
     },
     {
@@ -181,13 +195,13 @@
       "id": "open_slot",
       "room_name": "Meja Kosong — Ekspansi Tim",
       "employee_name": "+ Rekrut Karyawan AI Baru",
-      "role": "Slot Modular (Riset Tren / SEO / CS / Channel Baru)",
+      "role": "Slot Modular (Riset Tren / Thumbnail / CS / Channel Baru)",
       "avatar": "➕",
       "status": "open",
       "status_label": "Siap Ditambahkan",
       "done_today": 0,
       "target_today": 0,
-      "current_task": "Kantor siap diperluas kapan saja! Cukup sebut peran karyawan AI baru yang ingin Anda tambahkan.",
+      "current_task": "Kantor siap diperluas kapan saja! Sebutkan peran karyawan AI baru yang ingin direkrut.",
       "accent": "#94a3b8"
     }
   ],
@@ -697,10 +711,10 @@
     {
       "key": "UCzpMORG4axDbjYuyJ27SO5A",
       "name": "YT: DeadFrame Comics",
-      "subs": 0,
+      "subs": 1390,
       "delta_subs": 0,
-      "views": 0,
-      "videos": 0
+      "views": 40220,
+      "videos": 136
     },
     {
       "key": "UCNq0apoZrRa7NAzImmNA7mw",
@@ -708,7 +722,7 @@
       "subs": 2,
       "delta_subs": 0,
       "views": 638,
-      "videos": 10
+      "videos": 11
     },
     {
       "key": "UC8uuxFNIGS3FOY8CNXJNvGQ",
@@ -716,7 +730,7 @@
       "subs": 1,
       "delta_subs": 0,
       "views": 838,
-      "videos": 4
+      "videos": 6
     },
     {
       "key": "UCNWJYI4-oRGUGf2WzEmV-gg",
@@ -724,7 +738,7 @@
       "subs": 2,
       "delta_subs": 0,
       "views": 7,
-      "videos": 2
+      "videos": 3
     },
     {
       "key": "ig_kayastudio",
@@ -732,7 +746,7 @@
       "subs": 1,
       "delta_subs": 0,
       "views": 3,
-      "videos": 3
+      "videos": 4
     },
     {
       "key": "fb_kayastudio",
@@ -741,98 +755,6 @@
       "delta_subs": 0,
       "views": 0,
       "videos": 0
-    }
-  ],
-  "recent_outputs": [
-    {
-      "id": "WL_E06",
-      "division": "wildlogic",
-      "uploaded_at": "2026-11-21 19:40:10",
-      "yt_url": "https://youtube.com/shorts/WEX5rJyKAKQ",
-      "ig_media_id": "",
-      "fb_post_id": "122098562547558852",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "S02E03",
-      "division": "hollowframe",
-      "uploaded_at": "2026-11-21 19:40:10",
-      "yt_url": "https://youtube.com/shorts/RqCLcMY97TE",
-      "ig_media_id": "",
-      "fb_post_id": "122098562355558852",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "RB_SHORTS_01_REAL",
-      "division": "racunbelanja",
-      "uploaded_at": "2026-11-21 17:15:00",
-      "yt_url": "https://youtube.com/shorts/6kuX6j1ZDxs",
-      "ig_media_id": "",
-      "fb_post_id": "",
-      "telegram_msg_id": 53
-    },
-    {
-      "id": "DF_ZOMBIE_P3",
-      "division": "deadframe",
-      "uploaded_at": "2026-11-21 15:40:00",
-      "yt_url": "https://youtube.com/shorts/w5d8yUBWV-Y",
-      "ig_media_id": "18215456404364191",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "DF_ZOMBIE_P2",
-      "division": "deadframe",
-      "uploaded_at": "2026-11-21 11:40:40",
-      "yt_url": "https://youtube.com/shorts/2DuM_sm-t7w",
-      "ig_media_id": "18111729427935582",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "RB_SHORTS_01",
-      "division": "racunbelanja",
-      "uploaded_at": "2026-11-21 11:41:18",
-      "yt_url": "https://youtube.com/shorts/99VEgUUJQO4",
-      "ig_media_id": "",
-      "fb_post_id": "",
-      "telegram_msg_id": 52
-    },
-    {
-      "id": "DF_ZOMBIE_P1",
-      "division": "deadframe",
-      "uploaded_at": "2026-11-20 22:26:19",
-      "yt_url": "https://youtube.com/shorts/uwgGobpVhXQ",
-      "ig_media_id": "18101151917114681",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "IG_E03",
-      "division": "deadframe",
-      "uploaded_at": "2026-11-19 13:09:53",
-      "yt_url": "",
-      "ig_media_id": "18657304846035565",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "IG_E02",
-      "division": "deadframe",
-      "uploaded_at": "2026-11-19 12:50:29",
-      "yt_url": "",
-      "ig_media_id": "",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
-    },
-    {
-      "id": "WL_E05",
-      "division": "wildlogic",
-      "uploaded_at": "2026-11-19 12:50:29",
-      "yt_url": "",
-      "ig_media_id": "",
-      "fb_post_id": "",
-      "telegram_msg_id": ""
     }
   ],
   "cron_jobs": [
@@ -844,6 +766,11 @@
     {
       "name": "Laporan PDF Mingguan (Telegram)",
       "schedule": "Setiap Minggu 08:00 WITA",
+      "status": "AKTIF"
+    },
+    {
+      "name": "Auto-Sync Kantor Ai (Setelah Upload)",
+      "schedule": "Otomatis Real-Time",
       "status": "AKTIF"
     }
   ]

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kantor Ai - Bebas Kreasi (3D Interaktif)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: #060a14; color: #f1f5f9;
+      user-select: none;
+    }
+    #canvas-wrap { position: fixed; inset: 0; }
+    canvas { display: block; width: 100%; height: 100%; }
+
+    /* Top HUD */
+    .hud-top {
+      position: fixed; top: 14px; left: 14px; right: 14px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 10px; pointer-events: none; z-index: 20;
+    }
+    .hud-card {
+      pointer-events: auto;
+      background: rgba(10, 16, 30, 0.82);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .brand-row { display: flex; align-items: center; gap: 10px; }
+    .brand-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      display: grid; place-items: center; font-size: 18px;
+    }
+    .brand-row h1 { font-size: 0.96rem; font-weight: 800; letter-spacing: -0.02em; }
+    .brand-row p { font-size: 0.72rem; color: #94a3b8; }
+
+    .top-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      pointer-events: auto;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(15, 23, 42, 0.88); color: #e2e8f0;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 10px; padding: 8px 12px;
+      font-size: 0.76rem; font-weight: 700; text-decoration: none;
+      cursor: pointer; font-family: inherit; transition: all 0.18s;
+    }
+    .btn:hover { border-color: #38bdf8; background: rgba(56, 189, 248, 0.16); color: #fff; }
+    .btn-primary { background: linear-gradient(135deg, #38bdf8, #6366f1); color: #06101f; border: none; }
+    .btn-primary:hover { opacity: 0.92; color: #06101f; }
+
+    .live-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.74rem; font-weight: 700; color: #86efac;
+      background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 6px 11px; border-radius: 999px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.8); }
+      70% { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    /* Camera Bar */
+    .cam-bar {
+      position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; max-width: calc(100vw - 24px);
+      padding: 8px 10px; z-index: 20;
+      background: rgba(10, 16, 30, 0.84); backdrop-filter: blur(12px);
+      border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 14px;
+    }
+    .cam-btn {
+      white-space: nowrap; background: rgba(30, 41, 59, 0.75); color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 9px;
+      padding: 6px 10px; font-size: 0.73rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: all 0.15s;
+    }
+    .cam-btn:hover, .cam-btn.active { background: #38bdf8; color: #06101f; border-color: #38bdf8; }
+
+    /* Live Activity Feed (Bottom Left) */
+    .feed-box {
+      position: fixed; bottom: 72px; left: 14px; width: 310px; max-width: calc(100vw - 28px);
+      z-index: 18; pointer-events: auto;
+    }
+    .feed-title { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; margin-bottom: 6px; display:flex; justify-content:space-between; }
+    .feed-list { display: grid; gap: 5px; max-height: 126px; overflow-y: auto; }
+    .feed-item {
+      font-size: 0.74rem; color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.7); border-left: 3px solid #38bdf8;
+      padding: 5px 8px; border-radius: 6px;
+    }
+    .feed-item span { color: #94a3b8; font-size: 0.68rem; margin-right: 5px; }
+
+    /* Inspector Drawer (Right) */
+    .inspector {
+      position: fixed; top: 82px; right: 14px; width: 320px; max-width: calc(100vw - 28px);
+      max-height: calc(100vh - 160px); overflow-y: auto;
+      z-index: 22; display: none;
+    }
+    .inspector.open { display: block; }
+    .insp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+    .insp-head h3 { font-size: 0.96rem; font-weight: 800; }
+    .insp-head p { font-size: 0.74rem; color: #94a3b8; }
+    .close-btn {
+      background: rgba(148,163,184,0.15); border: none; color: #e2e8f0;
+      width: 26px; height: 26px; border-radius: 8px; cursor: pointer; font-weight: 800;
+    }
+    .insp-body { font-size: 0.8rem; color: #cbd5e1; display: grid; gap: 8px; }
+    .insp-stat {
+      background: rgba(7, 11, 20, 0.65); border: 1px solid rgba(148,163,184,0.16);
+      border-radius: 10px; padding: 8px 10px;
+    }
+    .insp-stat small { display: block; font-size: 0.68rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
+    .insp-stat strong { font-size: 0.84rem; color: #f8fafc; }
+
+    /* Floating 3D HTML Labels */
+    #labels-layer { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 10; }
+    .room-label-3d {
+      position: absolute; transform: translate(-50%, -50%);
+      background: rgba(7, 11, 20, 0.78); backdrop-filter: blur(6px);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 3px 9px; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 800; color: #f8fafc;
+      white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+    }
+    .bubble-3d {
+      position: absolute; transform: translate(-50%, -100%);
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(56, 189, 248, 0.65);
+      padding: 4px 9px; border-radius: 10px;
+      font-size: 0.68rem; font-weight: 700; color: #e0f2fe;
+      white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      transition: opacity 0.25s;
+    }
+    .hint-tip {
+      position: fixed; top: 82px; left: 14px; font-size: 0.72rem; color: #94a3b8;
+      background: rgba(10,16,30,0.68); padding: 6px 10px; border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.16); z-index: 15; pointer-events: none;
+    }
+    @media (max-width: 720px) {
+      .feed-box { display: none; }
+      .hint-tip { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-wrap"></div>
+  <div id="labels-layer"></div>
+
+  <div class="hud-top">
+    <div class="hud-card brand-row">
+      <div class="brand-icon">🏢</div>
+      <div>
+        <h1>Kantor Ai - Bebas Kreasi (3D)</h1>
+        <p id="syncStatus">Memuat data live studio...</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="live-pill"><span class="dot"></span> <span id="kpiMini">Live 3D Sim</span></span>
+      <a class="btn btn-primary" href="office.html">📋 Dashboard 2D &amp; Daftar Tugas</a>
+      <button class="btn" id="btnResetCam">🎥 Reset Kamera</button>
+    </div>
+  </div>
+
+  <div class="hint-tip">🖱️ Geser untuk putar 360° • Scroll/Cubit untuk zoom • Klik ruangan/karyawan untuk detail</div>
+
+  <div class="hud-card feed-box">
+    <div class="feed-title"><span>⚡ Aktivitas Antar-Ruangan Live</span><span style="color:#38bdf8;">Real-Time</span></div>
+    <div class="feed-list" id="feedList"></div>
+  </div>
+
+  <div class="hud-card inspector" id="inspector">
+    <div class="insp-head">
+      <div>
+        <h3 id="inspTitle">Ruangan</h3>
+        <p id="inspSub">Karyawan AI</p>
+      </div>
+      <button class="close-btn" id="inspClose">✕</button>
+    </div>
+    <div class="insp-body" id="inspBody"></div>
+  </div>
+
+  <div class="cam-bar" id="camBar">
+    <button class="cam-btn active" data-cam="overview">🏢 Overview</button>
+    <button class="cam-btn" data-cam="assistant">🧠 Asisten Nara</button>
+    <button class="cam-btn" data-cam="tts_studio">🎙️ Ruang TTS</button>
+    <button class="cam-btn" data-cam="copywriter">✍️ Copywriter Sora</button>
+    <button class="cam-btn" data-cam="deadframe">🎬 DeadFrame</button>
+    <button class="cam-btn" data-cam="hollowframe">👻 Hollow Frame</button>
+    <button class="cam-btn" data-cam="wildlogic">🌿 WildLogic</button>
+    <button class="cam-btn" data-cam="racunbelanja">🛍️ Racun Belanja</button>
+    <button class="cam-btn" data-cam="threads">🧵 Threads</button>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // --- 1. ROOM DEFINITIONS (2 Rows flanking a central hallway at z = 0) ---
+    const ROOM_SPECS = [
+      // Top Row (z = -6.5)
+      { id: 'assistant',   label: '🧠 Ruang Asisten (Nara)',     emp: 'Nara AI',   role: 'Asisten Eksekutif & Laporan Bos', x: -12, z: -6.5, color: 0x38bdf8, shirt: 0x0284c7, hair: 0x1e293b, doorZ: -3.2 },
+      { id: 'tts_studio',  label: '🎙️ Studio Audio & TTS',      emp: 'Reno AI',   role: 'Spesialis Gemini 3.8 TTS',       x: -4,  z: -6.5, color: 0xa855f7, shirt: 0x7e22ce, hair: 0x111827, doorZ: -3.2, isTTS: true },
+      { id: 'copywriter',  label: '✍️ Ruang Caption & SEO',      emp: 'Sora AI',   role: 'Copywriter Hook, Caption & CTA', x: 4,   z: -6.5, color: 0x14b8a6, shirt: 0x0f766e, hair: 0x3f2e21, doorZ: -3.2 },
+      { id: 'threads',     label: '🧵 Ruang Threads',            emp: 'Lina AI',   role: 'Admin Threads @kaya.studio26',   x: 12,  z: -6.5, color: 0x06b6d4, shirt: 0x0891b2, hair: 0x271915, doorZ: -3.2 },
+      // Bottom Row (z = +6.5)
+      { id: 'deadframe',   label: '🎬 DeadFrame + IG',           emp: 'Kira AI',   role: 'Produser 2D Vector Comic',       x: -12, z: 6.5,  color: 0xef4444, shirt: 0xb91c1c, hair: 0x0f172a, doorZ: 3.2 },
+      { id: 'hollowframe', label: '👻 Hollow Frame + FB',        emp: 'Vex AI',    role: 'Produser Rules Horror & Misteri',x: -4,  z: 6.5,  color: 0xf97316, shirt: 0xc2410c, hair: 0x1c1917, doorZ: 3.2 },
+      { id: 'wildlogic',   label: '🌿 WildLogic + FB',           emp: 'Atlas AI',  role: 'Produser Sains & Survival',      x: 4,   z: 6.5,  color: 0x22c55e, shirt: 0x15803d, hair: 0x292524, doorZ: 3.2 },
+      { id: 'racunbelanja',label: '🛍️ Racun Belanja + Shopee',   emp: 'Raka AI',   role: 'Produser Gadget Affiliate ID',   x: 12,  z: 6.5,  color: 0xeab308, shirt: 0xa16207, hair: 0x18181b, doorZ: 3.2 },
+    ];
+
+    const ROOM_MAP = Object.fromEntries(ROOM_SPECS.map(r => [r.id, r]));
+
+    // --- 2. SCENE, CAMERA, RENDERER ---
+    const wrap = document.getElementById('canvas-wrap');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x070c18);
+    scene.fog = new THREE.FogExp2(0x070c18, 0.015);
+
+    const camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 140);
+    camera.position.set(0, 19, 22);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    wrap.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.maxPolarAngle = Math.PI / 2.15;
+    controls.minDistance = 6;
+    controls.maxDistance = 42;
+    controls.target.set(0, 0.5, 0);
+
+    // Smooth camera lerp state
+    let camLerp = null;
+    function flyTo(pos, target) {
+      camLerp = {
+        pos: new THREE.Vector3(...pos),
+        target: new THREE.Vector3(...target),
+        t: 0
+      };
+    }
+
+    // --- 3. LIGHTING ---
+    scene.add(new THREE.AmbientLight(0xdbeafe, 0.75));
+    const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.25);
+    dirLight.position.set(14, 24, 16);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.set(2048, 2048);
+    dirLight.shadow.camera.left = -24; dirLight.shadow.camera.right = 24;
+    dirLight.shadow.camera.top = 18; dirLight.shadow.camera.bottom = -18;
+    scene.add(dirLight);
+
+    const rimLight = new THREE.PointLight(0x38bdf8, 1.4, 36);
+    rimLight.position.set(-14, 10, 0);
+    scene.add(rimLight);
+    const rimLight2 = new THREE.PointLight(0xa855f7, 1.2, 36);
+    rimLight2.position.set(14, 10, 0);
+    scene.add(rimLight2);
+
+    // --- 4. ARCHITECTURAL FLOOR & CENTRAL CORRIDOR ---
+    const floorGeo = new THREE.BoxGeometry(36, 0.4, 21);
+    const floorMat = new THREE.MeshStandardMaterial({ color: 0x111a2e, roughness: 0.75, metalness: 0.1 });
+    const floor = new THREE.Mesh(floorGeo, floorMat);
+    floor.position.y = -0.2;
+    floor.receiveShadow = true;
+    scene.add(floor);
+
+    // Subtle floor grid
+    const grid = new THREE.GridHelper(36, 36, 0x1e293b, 0x162036);
+    grid.position.y = 0.01;
+    scene.add(grid);
+
+    // Central Corridor Carpet Strip
+    const hallMat = new THREE.MeshStandardMaterial({ color: 0x172540, roughness: 0.85 });
+    const hall = new THREE.Mesh(new THREE.BoxGeometry(34, 0.04, 4.4), hallMat);
+    hall.position.set(0, 0.02, 0);
+    hall.receiveShadow = true;
+    scene.add(hall);
+
+    // Glowing corridor guide lines
+    const lineMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.35 });
+    [-2.1, 2.1].forEach(z => {
+      const l = new THREE.Mesh(new THREE.BoxGeometry(33.5, 0.02, 0.06), lineMat);
+      l.position.set(0, 0.045, z);
+      scene.add(l);
+    });
+
+    // --- 5. BUILD ROOMS & FURNITURE ---
+    const clickableObjects = [];
+    const labelsLayer = document.getElementById('labels-layer');
+    const roomLabels = [];
+
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0x93c5fd, transparent: true, opacity: 0.16, roughness: 0.15, metalness: 0.1
+    });
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6, roughness: 0.35 });
+    const woodMat = new THREE.MeshStandardMaterial({ color: 0x3b2f2f, roughness: 0.65 });
+    const darkMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.5 });
+
+    function addPlant(x, z) {
+      const g = new THREE.Group();
+      const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.22, 0.45, 10), new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.7 }));
+      pot.position.y = 0.22; pot.castShadow = true;
+      const leaves = new THREE.Mesh(new THREE.DodecahedronGeometry(0.42, 0), new THREE.MeshStandardMaterial({ color: 0x16a34a, roughness: 0.8 }));
+      leaves.position.y = 0.72; leaves.castShadow = true;
+      g.add(pot, leaves);
+      g.position.set(x, 0, z);
+      scene.add(g);
+    }
+
+    ROOM_SPECS.forEach(spec => {
+      const roomGroup = new THREE.Group();
+      roomGroup.position.set(spec.x, 0, spec.z);
+
+      // Colored floor carpet
+      const rug = new THREE.Mesh(
+        new THREE.BoxGeometry(7.2, 0.05, 6.2),
+        new THREE.MeshStandardMaterial({ color: 0x162238, roughness: 0.85 })
+      );
+      rug.position.y = 0.025; rug.receiveShadow = true;
+      rug.userData = { roomId: spec.id };
+      roomGroup.add(rug);
+      clickableObjects.push(rug);
+
+      // Accent neon floor trim
+      const trim = new THREE.Mesh(
+        new THREE.BoxGeometry(7.25, 0.06, 0.12),
+        new THREE.MeshBasicMaterial({ color: spec.color })
+      );
+      trim.position.set(0, 0.03, spec.z < 0 ? 3.1 : -3.1);
+      roomGroup.add(trim);
+
+      // Glass side walls & back wall
+      const backZ = spec.z < 0 ? -3.1 : 3.1;
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(7.2, 2.5, 0.12), new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.7 }));
+      backWall.position.set(0, 1.25, backZ); backWall.castShadow = true; backWall.receiveShadow = true;
+      roomGroup.add(backWall);
+
+      [-3.6, 3.6].forEach(wx => {
+        const sideGlass = new THREE.Mesh(new THREE.BoxGeometry(0.08, 2.4, 6.2), glassMat);
+        sideGlass.position.set(wx, 1.2, 0);
+        roomGroup.add(sideGlass);
+        const post = new THREE.Mesh(new THREE.BoxGeometry(0.14, 2.5, 0.14), frameMat);
+        post.position.set(wx, 1.25, -backZ);
+        roomGroup.add(post);
+      });
+
+      // Desk (facing the corridor)
+      const faceDir = spec.z < 0 ? 1 : -1;
+      const desk = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.12, 1.2), woodMat);
+      desk.position.set(0, 0.82, -0.4 * faceDir); desk.castShadow = true; desk.receiveShadow = true;
+      desk.userData = { roomId: spec.id };
+      roomGroup.add(desk);
+      clickableObjects.push(desk);
+
+      // Desk legs
+      [[-1.25, -0.45], [1.25, -0.45], [-1.25, 0.45], [1.25, 0.45]].forEach(([lx, lz]) => {
+        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.82, 0.09), frameMat);
+        leg.position.set(lx, 0.41, -0.4 * faceDir + lz);
+        roomGroup.add(leg);
+      });
+
+      // Dual Glowing Monitors
+      [-0.55, 0.55].forEach(mx => {
+        const mon = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.56, 0.06), darkMat);
+        mon.position.set(mx, 1.22, -0.2 * faceDir);
+        const scr = new THREE.Mesh(
+          new THREE.PlaneGeometry(0.84, 0.48),
+          new THREE.MeshBasicMaterial({ color: spec.color, side: THREE.DoubleSide })
+        );
+        scr.position.set(mx, 1.22, -0.2 * faceDir - 0.035 * faceDir);
+        roomGroup.add(mon, scr);
+      });
+
+      // Office Chair
+      const chairSeat = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.1, 0.7), darkMat);
+      chairSeat.position.set(0, 0.5, -1.45 * faceDir);
+      const chairBack = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.8, 0.1), darkMat);
+      chairBack.position.set(0, 0.9, -1.78 * faceDir);
+      roomGroup.add(chairSeat, chairBack);
+
+      // Special TTS Studio Mic & Acoustic Panels
+      if (spec.isTTS) {
+        const micStand = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.35, 8), frameMat);
+        micStand.position.set(1.75, 0.68, -0.5 * faceDir);
+        const micHead = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 12), new THREE.MeshStandardMaterial({ color: 0xe879f9, emissive: 0x7e22ce, emissiveIntensity: 0.7 }));
+        micHead.position.set(1.75, 1.38, -0.5 * faceDir);
+        roomGroup.add(micStand, micHead);
+      }
+
+      // Corner Plant
+      addPlant(spec.x - 2.9, spec.z + (spec.z < 0 ? -2.3 : 2.3));
+
+      scene.add(roomGroup);
+
+      // Floating HTML room label
+      const el = document.createElement('div');
+      el.className = 'room-label-3d';
+      el.textContent = spec.label;
+      el.style.borderColor = '#' + spec.color.toString(16).padStart(6, '0') + '88';
+      labelsLayer.appendChild(el);
+      roomLabels.push({ el, pos: new THREE.Vector3(spec.x, 3.05, spec.z) });
+    });
+
+    // --- 6. ARTICULATED HUMAN-LIKE 3D CHARACTERS ---
+    const employees = {};
+
+    function createHumanCharacter(spec) {
+      const root = new THREE.Group();
+      const skinMat = new THREE.MeshStandardMaterial({ color: 0xf1c29b, roughness: 0.6 });
+      const shirtMat = new THREE.MeshStandardMaterial({ color: spec.shirt, roughness: 0.55 });
+      const pantsMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.7 });
+      const hairMat = new THREE.MeshStandardMaterial({ color: spec.hair, roughness: 0.8 });
+
+      // Legs (pivoted at hip y = 0.85)
+      const leftLeg = new THREE.Group(); leftLeg.position.set(-0.14, 0.85, 0);
+      const lLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.82, 0.2), pantsMat);
+      lLegMesh.position.y = -0.41; lLegMesh.castShadow = true;
+      leftLeg.add(lLegMesh);
+
+      const rightLeg = new THREE.Group(); rightLeg.position.set(0.14, 0.85, 0);
+      const rLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.82, 0.2), pantsMat);
+      rLegMesh.position.y = -0.41; rLegMesh.castShadow = true;
+      rightLeg.add(rLegMesh);
+
+      // Torso
+      const torso = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.68, 0.28), shirtMat);
+      torso.position.y = 1.2; torso.castShadow = true;
+      torso.userData = { roomId: spec.id };
+      clickableObjects.push(torso);
+
+      // Head & Hair
+      const headGroup = new THREE.Group();
+      headGroup.position.y = 1.72;
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), skinMat);
+      head.castShadow = true;
+      const hair = new THREE.Mesh(new THREE.SphereGeometry(0.23, 14, 14, 0, Math.PI * 2, 0, Math.PI * 0.58), hairMat);
+      hair.position.y = 0.03;
+      headGroup.add(head, hair);
+
+      // Arms (pivoted at shoulder y = 1.48)
+      const leftArm = new THREE.Group(); leftArm.position.set(-0.34, 1.46, 0);
+      const lArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.56, 0.15), shirtMat);
+      lArmMesh.position.y = -0.26; lArmMesh.castShadow = true;
+      leftArm.add(lArmMesh);
+
+      const rightArm = new THREE.Group(); rightArm.position.set(0.34, 1.46, 0);
+      const rArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.56, 0.15), shirtMat);
+      rArmMesh.position.y = -0.26; rArmMesh.castShadow = true;
+      rightArm.add(rArmMesh);
+
+      // Carried Task Prop (Glowing Folder / Audio Reel)
+      const propMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.34, 0.24, 0.08),
+        new THREE.MeshStandardMaterial({ color: spec.color, emissive: spec.color, emissiveIntensity: 0.85 })
+      );
+      propMesh.position.set(0, 1.18, 0.36);
+      propMesh.visible = false;
+
+      root.add(leftLeg, rightLeg, torso, headGroup, leftArm, rightArm, propMesh);
+
+      const faceDir = spec.z < 0 ? 1 : -1;
+      const seatPos = new THREE.Vector3(spec.x, 0, spec.z - 1.35 * faceDir);
+      root.position.copy(seatPos);
+      root.rotation.y = faceDir > 0 ? 0 : Math.PI;
+      scene.add(root);
+
+      // Floating status bubble
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble-3d';
+      bubble.style.opacity = '0';
+      labelsLayer.appendChild(bubble);
+
+      employees[spec.id] = {
+        id: spec.id,
+        spec,
+        root,
+        leftLeg, rightLeg, leftArm, rightArm, headGroup, propMesh, bubble,
+        seatPos,
+        seatRotY: faceDir > 0 ? 0 : Math.PI,
+        state: 'working', // 'working' | 'walking' | 'delivering'
+        waypoints: [],
+        wpIdx: 0,
+        deliverTimer: 0,
+        onArriveMsg: '',
+      };
+    }
+
+    ROOM_SPECS.forEach(createHumanCharacter);
+
+    // --- 7. AUTONOMOUS TASK DELIVERY CHOREOGRAPHY ---
+    const WORKFLOW_MISSIONS = [
+      { from: 'tts_studio', to: 'hollowframe', color: 0xa855f7, msg: '🎙️ Antar Audio Gemini 3.8 TTS → Hollow Frame' },
+      { from: 'tts_studio', to: 'wildlogic',   color: 0xa855f7, msg: '🎙️ Antar Audio Gemini 3.8 TTS → WildLogic' },
+      { from: 'tts_studio', to: 'racunbelanja',color: 0xa855f7, msg: '🎙️ Antar Audio Bahasa ID → Racun Belanja' },
+      { from: 'tts_studio', to: 'deadframe',   color: 0xa855f7, msg: '🎙️ Antar Audio Dramatis → DeadFrame Comics' },
+      { from: 'copywriter', to: 'threads',     color: 0x14b8a6, msg: '✍️ Antar Caption & Hashtag → Threads' },
+      { from: 'copywriter', to: 'racunbelanja',color: 0x14b8a6, msg: '✍️ Antar Skrip Hook & CTA → Racun Belanja' },
+      { from: 'copywriter', to: 'deadframe',   color: 0x14b8a6, msg: '✍️ Antar Subtitle EN/ID → DeadFrame Comics' },
+      { from: 'hollowframe',to: 'assistant',   color: 0xf97316, msg: '📊 Lapor S02E03 Tayang → Asisten Nara' },
+      { from: 'wildlogic',  to: 'assistant',   color: 0x22c55e, msg: '📊 Lapor WL_E06 Tayang → Asisten Nara' },
+      { from: 'racunbelanja',to:'assistant',   color: 0xeab308, msg: '📊 Lapor Paket Shopee → Asisten Nara' },
+    ];
+
+    const feedList = document.getElementById('feedList');
+    function pushFeed(text, colorHex) {
+      const now = new Date();
+      const hhmm = now.toTimeString().slice(0, 5);
+      const div = document.createElement('div');
+      div.className = 'feed-item';
+      div.style.borderLeftColor = '#' + colorHex.toString(16).padStart(6, '0');
+      div.innerHTML = `<span>${hhmm}</span>${text}`;
+      feedList.prepend(div);
+      while (feedList.children.length > 6) feedList.lastChild.remove();
+    }
+
+    let missionCursor = 0;
+    function dispatchNextMission() {
+      for (let tries = 0; tries < WORKFLOW_MISSIONS.length; tries++) {
+        const m = WORKFLOW_MISSIONS[(missionCursor++) % WORKFLOW_MISSIONS.length];
+        const emp = employees[m.from];
+        const targetRoom = ROOM_MAP[m.to];
+        if (!emp || emp.state !== 'working') continue;
+
+        const fromDoor = new THREE.Vector3(emp.spec.x, 0, emp.spec.doorZ);
+        const hallStart = new THREE.Vector3(emp.spec.x, 0, (Math.random() - 0.5) * 1.6);
+        const hallEnd = new THREE.Vector3(targetRoom.x, 0, hallStart.z);
+        const targetDoor = new THREE.Vector3(targetRoom.x, 0, targetRoom.doorZ);
+        const targetDesk = new THREE.Vector3(targetRoom.x + 1.1, 0, targetRoom.z + (targetRoom.z < 0 ? 1.1 : -1.1));
+
+        emp.state = 'walking';
+        emp.waypoints = [fromDoor, hallStart, hallEnd, targetDoor, targetDesk];
+        emp.returnWaypoints = [targetDoor, hallEnd, hallStart, fromDoor, emp.seatPos.clone()];
+        emp.wpIdx = 0;
+        emp.goingBack = false;
+        emp.propMesh.material.color.setHex(m.color);
+        emp.propMesh.material.emissive.setHex(m.color);
+        emp.propMesh.visible = true;
+        emp.bubble.textContent = m.msg;
+        emp.bubble.style.opacity = '1';
+        pushFeed(m.msg, m.color);
+        break;
+      }
+    }
+
+    // Launch initial missions right away & keep office bustling!
+    setTimeout(dispatchNextMission, 900);
+    setTimeout(dispatchNextMission, 2600);
+    setInterval(dispatchNextMission, 4200);
+
+    // --- 8. LIVE DATA & INSPECTOR ---
+    let LIVE_DATA = null;
+    async function loadOfficeData() {
+      try {
+        const res = await fetch('office-data.json?t=' + Date.now());
+        LIVE_DATA = await res.json();
+        document.getElementById('syncStatus').textContent = 'Sinkron Live: ' + (LIVE_DATA.updated_at || '-');
+        const s = LIVE_DATA.summary || {};
+        document.getElementById('kpiMini').textContent = `${s.total_done || 0}/${s.total_slots || 0} Selesai • ${s.total_pending || 0} Antre`;
+      } catch (e) {
+        document.getElementById('syncStatus').textContent = 'Mode Simulasi 3D';
+      }
+    }
+    loadOfficeData();
+    setInterval(loadOfficeData, 60000);
+
+    const inspector = document.getElementById('inspector');
+    document.getElementById('inspClose').onclick = () => inspector.classList.remove('open');
+
+    function openInspector(roomId) {
+      const spec = ROOM_MAP[roomId];
+      if (!spec) return;
+      document.getElementById('inspTitle').textContent = spec.label;
+      document.getElementById('inspSub').textContent = `${spec.emp} — ${spec.role}`;
+      const body = document.getElementById('inspBody');
+
+      let html = '';
+      if (LIVE_DATA) {
+        const roomData = (LIVE_DATA.rooms || []).find(r => r.id === roomId);
+        if (roomData) {
+          html += `
+            <div class="insp-stat"><small>Status Hari Ini</small><strong>${roomData.status_label} (${roomData.done_today}/${roomData.target_today})</strong></div>
+            <div class="insp-stat"><small>Tugas Saat Ini</small><strong>${roomData.current_task}</strong></div>
+          `;
+        }
+        if (roomId === 'assistant' && LIVE_DATA.assistant) {
+          const reps = (LIVE_DATA.assistant.report || []).map(r => `• ${r}`).join('<br/>');
+          const sugs = (LIVE_DATA.assistant.suggestions || []).slice(0, 3).map(s => `⚡ <b>${s.title}</b>: ${s.detail}`).join('<br/>');
+          html += `
+            <div class="insp-stat"><small>Laporan Asisten Nara</small><div style="margin-top:4px; line-height:1.45;">${reps}</div></div>
+            <div class="insp-stat"><small>Saran Prioritas</small><div style="margin-top:4px; line-height:1.45;">${sugs}</div></div>
+          `;
+        }
+        if (roomId === 'tts_studio' && LIVE_DATA.tts_room) {
+          const t = LIVE_DATA.tts_room;
+          html += `
+            <div class="insp-stat"><small>Engine TTS Aktif</small><strong>${t.primary_model} (${t.status})</strong></div>
+            <div class="insp-stat"><small>Cadangan &amp; Kecepatan</small><strong>${t.backup_model} • ${t.avg_latency}</strong></div>
+          `;
+        }
+        if (roomId === 'copywriter') {
+          html += `
+            <div class="insp-stat"><small>Tugas Utama Sora AI</small><strong>Menulis hook viral, deskripsi SEO YouTube/IG/FB, hashtag, &amp; CTA Affiliate Shopee secara otomatis sebelum upload.</strong></div>
+          `;
+        }
+      } else {
+        html = `<div class="insp-stat"><small>Status</small><strong>Aktif Bekerja di Kantor 3D</strong></div>`;
+      }
+      body.innerHTML = html;
+      inspector.classList.add('open');
+    }
+
+    // Raycaster click handler
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let downPos = { x: 0, y: 0 };
+    renderer.domElement.addEventListener('pointerdown', e => { downPos = { x: e.clientX, y: e.clientY }; });
+    renderer.domElement.addEventListener('pointerup', e => {
+      if (Math.hypot(e.clientX - downPos.x, e.clientY - downPos.y) > 6) return;
+      pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(clickableObjects);
+      if (hits.length) {
+        const rid = hits[0].object.userData.roomId;
+        if (rid) openInspector(rid);
+      }
+    });
+
+    // Camera teleport buttons
+    document.querySelectorAll('.cam-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cam-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const camId = btn.dataset.cam;
+        if (camId === 'overview') {
+          flyTo([0, 19, 22], [0, 0.5, 0]);
+          inspector.classList.remove('open');
+        } else {
+          const sp = ROOM_MAP[camId];
+          if (sp) {
+            const zOff = sp.z < 0 ? 8.5 : 8.5;
+            flyTo([sp.x, 7.5, sp.z + zOff], [sp.x, 1.1, sp.z]);
+            openInspector(camId);
+          }
+        }
+      });
+    });
+    document.getElementById('btnResetCam').onclick = () => {
+      flyTo([0, 19, 22], [0, 0.5, 0]);
+      inspector.classList.remove('open');
+    };
+
+    // --- 9. ANIMATION LOOP ---
+    const clock = new THREE.Clock();
+    const projVec = new THREE.Vector3();
+
+    function projectToScreen(vec3) {
+      projVec.copy(vec3).project(camera);
+      return {
+        x: (projVec.x * 0.5 + 0.5) * window.innerWidth,
+        y: (-projVec.y * 0.5 + 0.5) * window.innerHeight,
+        visible: projVec.z < 1
+      };
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      const t = clock.elapsedTime;
+
+      // Camera smooth fly-to
+      if (camLerp) {
+        camLerp.t += dt * 2.2;
+        camera.position.lerp(camLerp.pos, 0.08);
+        controls.target.lerp(camLerp.target, 0.08);
+        if (camLerp.t >= 1.2) camLerp = null;
+      }
+      controls.update();
+
+      // Update every employee animation
+      Object.values(employees).forEach((emp, idx) => {
+        if (emp.state === 'working') {
+          // Typing & subtle head nodding animation at desk
+          const phase = t * 7 + idx * 1.7;
+          emp.leftArm.rotation.x = -1.05 + Math.sin(phase) * 0.12;
+          emp.rightArm.rotation.x = -1.05 + Math.cos(phase * 1.1) * 0.12;
+          emp.leftLeg.rotation.x = -1.25;
+          emp.rightLeg.rotation.x = -1.25;
+          emp.root.position.y = -0.22;
+          emp.headGroup.rotation.y = Math.sin(t * 0.9 + idx) * 0.18;
+        } else if (emp.state === 'walking') {
+          emp.root.position.y = 0;
+          const target = emp.waypoints[emp.wpIdx];
+          const dir = new THREE.Vector3().subVectors(target, emp.root.position);
+          dir.y = 0;
+          const dist = dir.length();
+          const speed = 3.2;
+
+          if (dist < 0.18) {
+            emp.wpIdx++;
+            if (emp.wpIdx >= emp.waypoints.length) {
+              if (!emp.goingBack) {
+                emp.state = 'delivering';
+                emp.deliverTimer = 1.6;
+              } else {
+                emp.state = 'working';
+                emp.root.position.copy(emp.seatPos);
+                emp.root.rotation.y = emp.seatRotY;
+                emp.propMesh.visible = false;
+                emp.bubble.style.opacity = '0';
+              }
+            }
+          } else {
+            dir.normalize();
+            emp.root.position.addScaledVector(dir, speed * dt);
+            const targetAngle = Math.atan2(dir.x, dir.z);
+            emp.root.rotation.y = targetAngle;
+
+            // Realistic walking cycle
+            const walkPhase = t * 9.5 + idx;
+            emp.leftLeg.rotation.x = Math.sin(walkPhase) * 0.55;
+            emp.rightLeg.rotation.x = -Math.sin(walkPhase) * 0.55;
+            if (emp.propMesh.visible) {
+              emp.leftArm.rotation.x = -0.85;
+              emp.rightArm.rotation.x = -0.85;
+            } else {
+              emp.leftArm.rotation.x = -Math.sin(walkPhase) * 0.45;
+              emp.rightArm.rotation.x = Math.sin(walkPhase) * 0.45;
+            }
+            emp.headGroup.rotation.y = 0;
+          }
+        } else if (emp.state === 'delivering') {
+          emp.deliverTimer -= dt;
+          emp.leftLeg.rotation.x = 0;
+          emp.rightLeg.rotation.x = 0;
+          emp.leftArm.rotation.x = -0.95;
+          emp.rightArm.rotation.x = -0.95;
+          if (emp.deliverTimer <= 0) {
+            emp.goingBack = true;
+            emp.propMesh.visible = false;
+            emp.bubble.textContent = '✅ Tugas Diterima — Kembali ke Meja';
+            emp.waypoints = emp.returnWaypoints;
+            emp.wpIdx = 0;
+            emp.state = 'walking';
+          }
+        }
+
+        // Update floating status bubble screen position
+        if (emp.bubble.style.opacity !== '0') {
+          const bPos = projectToScreen(new THREE.Vector3(emp.root.position.x, 2.35, emp.root.position.z));
+          emp.bubble.style.left = bPos.x + 'px';
+          emp.bubble.style.top = bPos.y + 'px';
+          emp.bubble.style.display = bPos.visible ? 'block' : 'none';
+        }
+      });
+
+      // Update floating room labels
+      roomLabels.forEach(rl => {
+        const p = projectToScreen(rl.pos);
+        rl.el.style.left = p.x + 'px';
+        rl.el.style.top = p.y + 'px';
+        rl.el.style.display = p.visible ? 'block' : 'none';
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
