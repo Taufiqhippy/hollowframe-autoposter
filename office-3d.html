@@ -6,151 +6,144 @@
   <title>Kantor Ai - Bebas Kreasi (3D Interaktif)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 100%; height: 100%; overflow: hidden;
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background: #060a14; color: #f1f5f9;
+      background: #dce8f5; color: #0f172a;
       user-select: none;
     }
     #canvas-wrap { position: fixed; inset: 0; }
     canvas { display: block; width: 100%; height: 100%; }
 
-    /* Top HUD */
+    /* Top HUD - Light Glass Aesthetic */
     .hud-top {
-      position: fixed; top: 14px; left: 14px; right: 14px;
+      position: fixed; top: 12px; left: 12px; right: 12px;
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
       gap: 10px; pointer-events: none; z-index: 20;
     }
     .hud-card {
       pointer-events: auto;
-      background: rgba(10, 16, 30, 0.82);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(148, 163, 184, 0.22);
+      border: 1px solid rgba(15, 23, 42, 0.1);
       border-radius: 14px;
-      padding: 10px 14px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      padding: 9px 14px;
+      box-shadow: 0 8px 26px rgba(15, 23, 42, 0.12);
     }
     .brand-row { display: flex; align-items: center; gap: 10px; }
     .brand-icon {
       width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, #38bdf8, #a855f7);
-      display: grid; place-items: center; font-size: 18px;
+      background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+      display: grid; place-items: center; font-size: 18px; color: #fff;
     }
-    .brand-row h1 { font-size: 0.96rem; font-weight: 800; letter-spacing: -0.02em; }
-    .brand-row p { font-size: 0.72rem; color: #94a3b8; }
+    .brand-row h1 { font-size: 0.95rem; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; }
+    .brand-row p { font-size: 0.72rem; color: #475569; }
 
-    .top-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .top-actions { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
     .btn {
       pointer-events: auto;
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(15, 23, 42, 0.88); color: #e2e8f0;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 10px; padding: 8px 12px;
-      font-size: 0.76rem; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255, 255, 255, 0.92); color: #1e293b;
+      border: 1px solid rgba(15, 23, 42, 0.14);
+      border-radius: 10px; padding: 7px 11px;
+      font-size: 0.75rem; font-weight: 700; text-decoration: none;
       cursor: pointer; font-family: inherit; transition: all 0.18s;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
     }
-    .btn:hover { border-color: #38bdf8; background: rgba(56, 189, 248, 0.16); color: #fff; }
-    .btn-primary { background: linear-gradient(135deg, #38bdf8, #6366f1); color: #06101f; border: none; }
-    .btn-primary:hover { opacity: 0.92; color: #06101f; }
+    .btn:hover { border-color: #0ea5e9; background: #e0f2fe; color: #0369a1; }
+    .btn-primary { background: linear-gradient(135deg, #0ea5e9, #6366f1); color: #fff; border: none; }
+    .btn-primary:hover { opacity: 0.93; color: #fff; }
+    .btn-sholat { background: #ecfdf5; border-color: #10b981; color: #047857; }
+    .btn-sholat.active { background: #10b981; color: #fff; }
 
-    .live-pill {
+    .prayer-pill {
+      pointer-events: auto;
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: 0.74rem; font-weight: 700; color: #86efac;
-      background: rgba(34, 197, 94, 0.14); border: 1px solid rgba(34, 197, 94, 0.35);
+      font-size: 0.74rem; font-weight: 700; color: #065f46;
+      background: rgba(236, 253, 245, 0.94); border: 1px solid rgba(16, 185, 129, 0.35);
       padding: 6px 11px; border-radius: 999px;
-    }
-    .dot {
-      width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
-      animation: pulse 1.6s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.8); }
-      70% { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
     }
 
     /* Camera Bar */
     .cam-bar {
-      position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+      position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
       display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: auto; max-width: calc(100vw - 24px);
-      padding: 8px 10px; z-index: 20;
-      background: rgba(10, 16, 30, 0.84); backdrop-filter: blur(12px);
-      border: 1px solid rgba(148, 163, 184, 0.22); border-radius: 14px;
+      padding: 7px 10px; z-index: 20;
+      background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px);
+      border: 1px solid rgba(15, 23, 42, 0.12); border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
     }
     .cam-btn {
-      white-space: nowrap; background: rgba(30, 41, 59, 0.75); color: #cbd5e1;
-      border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 9px;
-      padding: 6px 10px; font-size: 0.73rem; font-weight: 700;
+      white-space: nowrap; background: #f1f5f9; color: #334155;
+      border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 6px 10px; font-size: 0.72rem; font-weight: 700;
       cursor: pointer; font-family: inherit; transition: all 0.15s;
     }
-    .cam-btn:hover, .cam-btn.active { background: #38bdf8; color: #06101f; border-color: #38bdf8; }
+    .cam-btn:hover, .cam-btn.active { background: #0ea5e9; color: #fff; border-color: #0ea5e9; }
 
     /* Live Activity Feed (Bottom Left) */
     .feed-box {
-      position: fixed; bottom: 72px; left: 14px; width: 310px; max-width: calc(100vw - 28px);
+      position: fixed; bottom: 68px; left: 12px; width: 325px; max-width: calc(100vw - 24px);
       z-index: 18; pointer-events: auto;
     }
-    .feed-title { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #94a3b8; margin-bottom: 6px; display:flex; justify-content:space-between; }
-    .feed-list { display: grid; gap: 5px; max-height: 126px; overflow-y: auto; }
-    .feed-item {
-      font-size: 0.74rem; color: #e2e8f0;
-      background: rgba(15, 23, 42, 0.7); border-left: 3px solid #38bdf8;
-      padding: 5px 8px; border-radius: 6px;
+    .feed-title {
+      font-size: 0.69rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #475569; margin-bottom: 6px; display: flex; justify-content: space-between;
     }
-    .feed-item span { color: #94a3b8; font-size: 0.68rem; margin-right: 5px; }
+    .feed-list { display: grid; gap: 5px; max-height: 124px; overflow-y: auto; }
+    .feed-item {
+      font-size: 0.73rem; color: #1e293b;
+      background: #f8fafc; border-left: 3px solid #0ea5e9;
+      padding: 5px 8px; border-radius: 7px;
+    }
+    .feed-item span { color: #64748b; font-size: 0.67rem; margin-right: 5px; font-weight: 700; }
 
     /* Inspector Drawer (Right) */
     .inspector {
-      position: fixed; top: 82px; right: 14px; width: 320px; max-width: calc(100vw - 28px);
-      max-height: calc(100vh - 160px); overflow-y: auto;
+      position: fixed; top: 76px; right: 12px; width: 315px; max-width: calc(100vw - 24px);
+      max-height: calc(100vh - 150px); overflow-y: auto;
       z-index: 22; display: none;
     }
     .inspector.open { display: block; }
     .insp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
-    .insp-head h3 { font-size: 0.96rem; font-weight: 800; }
-    .insp-head p { font-size: 0.74rem; color: #94a3b8; }
+    .insp-head h3 { font-size: 0.95rem; font-weight: 800; color: #0f172a; }
+    .insp-head p { font-size: 0.74rem; color: #475569; }
     .close-btn {
-      background: rgba(148,163,184,0.15); border: none; color: #e2e8f0;
+      background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155;
       width: 26px; height: 26px; border-radius: 8px; cursor: pointer; font-weight: 800;
     }
-    .insp-body { font-size: 0.8rem; color: #cbd5e1; display: grid; gap: 8px; }
+    .insp-body { font-size: 0.79rem; color: #334155; display: grid; gap: 8px; }
     .insp-stat {
-      background: rgba(7, 11, 20, 0.65); border: 1px solid rgba(148,163,184,0.16);
+      background: #f8fafc; border: 1px solid #e2e8f0;
       border-radius: 10px; padding: 8px 10px;
     }
-    .insp-stat small { display: block; font-size: 0.68rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
-    .insp-stat strong { font-size: 0.84rem; color: #f8fafc; }
+    .insp-stat small { display: block; font-size: 0.67rem; color: #64748b; text-transform: uppercase; font-weight: 800; }
+    .insp-stat strong { font-size: 0.83rem; color: #0f172a; }
 
     /* Floating 3D HTML Labels */
     #labels-layer { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 10; }
     .room-label-3d {
       position: absolute; transform: translate(-50%, -50%);
-      background: rgba(7, 11, 20, 0.78); backdrop-filter: blur(6px);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      padding: 3px 9px; border-radius: 999px;
-      font-size: 0.68rem; font-weight: 800; color: #f8fafc;
-      white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(15, 23, 42, 0.16);
+      padding: 2px 8px; border-radius: 999px;
+      font-size: 0.64rem; font-weight: 800; color: #0f172a;
+      white-space: nowrap; box-shadow: 0 3px 10px rgba(15, 23, 42, 0.14);
     }
-    .bubble-3d {
+    .emp-tag-3d {
       position: absolute; transform: translate(-50%, -100%);
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(56, 189, 248, 0.65);
-      padding: 4px 9px; border-radius: 10px;
-      font-size: 0.68rem; font-weight: 700; color: #e0f2fe;
-      white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-      transition: opacity 0.25s;
-    }
-    .hint-tip {
-      position: fixed; top: 82px; left: 14px; font-size: 0.72rem; color: #94a3b8;
-      background: rgba(10,16,30,0.68); padding: 6px 10px; border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.16); z-index: 15; pointer-events: none;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 2px 7px; border-radius: 999px;
+      font-size: 0.63rem; font-weight: 700; color: #f8fafc;
+      white-space: nowrap; box-shadow: 0 3px 10px rgba(15, 23, 42, 0.22);
     }
     @media (max-width: 720px) {
       .feed-box { display: none; }
-      .hint-tip { display: none; }
     }
   </style>
 </head>
@@ -167,16 +160,15 @@
       </div>
     </div>
     <div class="top-actions">
-      <span class="live-pill"><span class="dot"></span> <span id="kpiMini">Live 3D Sim</span></span>
-      <a class="btn btn-primary" href="office.html">📋 Dashboard 2D &amp; Daftar Tugas</a>
-      <button class="btn" id="btnResetCam">🎥 Reset Kamera</button>
+      <span class="prayer-pill" id="prayerClock">🕌 Gorontalo WITA: --:--</span>
+      <button class="btn btn-sholat" id="btnSholatSim">🕌 Simulasi Sholat</button>
+      <a class="btn btn-primary" href="office.html">📋 Dashboard 2D</a>
+      <button class="btn" id="btnResetCam">🎥 Reset</button>
     </div>
   </div>
 
-  <div class="hint-tip">🖱️ Geser untuk putar 360° • Scroll/Cubit untuk zoom • Klik ruangan/karyawan untuk detail</div>
-
   <div class="hud-card feed-box">
-    <div class="feed-title"><span>⚡ Aktivitas Antar-Ruangan Live</span><span style="color:#38bdf8;">Real-Time</span></div>
+    <div class="feed-title"><span>⚡ Aktivitas Karyawan Live</span><span style="color:#0284c7;">Kantor 3D</span></div>
     <div class="feed-list" id="feedList"></div>
   </div>
 
@@ -184,23 +176,28 @@
     <div class="insp-head">
       <div>
         <h3 id="inspTitle">Ruangan</h3>
-        <p id="inspSub">Karyawan AI</p>
+        <p id="inspSub">Detail Divisi</p>
       </div>
       <button class="close-btn" id="inspClose">✕</button>
     </div>
     <div class="insp-body" id="inspBody"></div>
   </div>
 
-  <div class="cam-bar" id="camBar">
+  <div class="cam-bar">
     <button class="cam-btn active" data-cam="overview">🏢 Overview</button>
-    <button class="cam-btn" data-cam="assistant">🧠 Asisten Nara</button>
-    <button class="cam-btn" data-cam="tts_studio">🎙️ Ruang TTS</button>
-    <button class="cam-btn" data-cam="copywriter">✍️ Copywriter Sora</button>
+    <button class="cam-btn" data-cam="assistant">🧠 Asisten</button>
+    <button class="cam-btn" data-cam="tts_studio">🎙️ TTS</button>
+    <button class="cam-btn" data-cam="copywriter">✍️ Caption</button>
     <button class="cam-btn" data-cam="deadframe">🎬 DeadFrame</button>
     <button class="cam-btn" data-cam="hollowframe">👻 Hollow Frame</button>
     <button class="cam-btn" data-cam="wildlogic">🌿 WildLogic</button>
     <button class="cam-btn" data-cam="racunbelanja">🛍️ Racun Belanja</button>
     <button class="cam-btn" data-cam="threads">🧵 Threads</button>
+    <button class="cam-btn" data-cam="musholla">🕌 Musholla</button>
+    <button class="cam-btn" data-cam="gym">🏋️ Gym</button>
+    <button class="cam-btn" data-cam="gameroom">🎮 Game</button>
+    <button class="cam-btn" data-cam="pantry">🍽️ Makan</button>
+    <button class="cam-btn" data-cam="library">📚 Perpustakaan</button>
   </div>
 
   <script type="importmap">
@@ -216,30 +213,64 @@
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-    // --- 1. ROOM DEFINITIONS (2 Rows flanking a central hallway at z = 0) ---
-    const ROOM_SPECS = [
-      // Top Row (z = -6.5)
-      { id: 'assistant',   label: '🧠 Ruang Asisten (Nara)',     emp: 'Nara AI',   role: 'Asisten Eksekutif & Laporan Bos', x: -12, z: -6.5, color: 0x38bdf8, shirt: 0x0284c7, hair: 0x1e293b, doorZ: -3.2 },
-      { id: 'tts_studio',  label: '🎙️ Studio Audio & TTS',      emp: 'Reno AI',   role: 'Spesialis Gemini 3.8 TTS',       x: -4,  z: -6.5, color: 0xa855f7, shirt: 0x7e22ce, hair: 0x111827, doorZ: -3.2, isTTS: true },
-      { id: 'copywriter',  label: '✍️ Ruang Caption & SEO',      emp: 'Sora AI',   role: 'Copywriter Hook, Caption & CTA', x: 4,   z: -6.5, color: 0x14b8a6, shirt: 0x0f766e, hair: 0x3f2e21, doorZ: -3.2 },
-      { id: 'threads',     label: '🧵 Ruang Threads',            emp: 'Lina AI',   role: 'Admin Threads @kaya.studio26',   x: 12,  z: -6.5, color: 0x06b6d4, shirt: 0x0891b2, hair: 0x271915, doorZ: -3.2 },
-      // Bottom Row (z = +6.5)
-      { id: 'deadframe',   label: '🎬 DeadFrame + IG',           emp: 'Kira AI',   role: 'Produser 2D Vector Comic',       x: -12, z: 6.5,  color: 0xef4444, shirt: 0xb91c1c, hair: 0x0f172a, doorZ: 3.2 },
-      { id: 'hollowframe', label: '👻 Hollow Frame + FB',        emp: 'Vex AI',    role: 'Produser Rules Horror & Misteri',x: -4,  z: 6.5,  color: 0xf97316, shirt: 0xc2410c, hair: 0x1c1917, doorZ: 3.2 },
-      { id: 'wildlogic',   label: '🌿 WildLogic + FB',           emp: 'Atlas AI',  role: 'Produser Sains & Survival',      x: 4,   z: 6.5,  color: 0x22c55e, shirt: 0x15803d, hair: 0x292524, doorZ: 3.2 },
-      { id: 'racunbelanja',label: '🛍️ Racun Belanja + Shopee',   emp: 'Raka AI',   role: 'Produser Gadget Affiliate ID',   x: 12,  z: 6.5,  color: 0xeab308, shirt: 0xa16207, hair: 0x18181b, doorZ: 3.2 },
+    // --- 1. GORONTALO PRAYER SCHEDULE (WITA / UTC+8) ---
+    const GORONTALO_PRAYERS = [
+      { name: 'Subuh',   start: 4 * 60 + 22,  end: 4 * 60 + 42,  str: '04:22' },
+      { name: 'Dzuhur',  start: 11 * 60 + 46, end: 12 * 60 + 12, str: '11:46' },
+      { name: 'Ashar',   start: 15 * 60 + 8,  end: 15 * 60 + 30, str: '15:08' },
+      { name: 'Maghrib', start: 17 * 60 + 48, end: 18 * 60 + 10, str: '17:48' },
+      { name: 'Isya',    start: 19 * 60 + 1,  end: 19 * 60 + 22, str: '19:01' },
+    ];
+    let forceSholatMode = false;
+
+    function getGorontaloTime() {
+      const now = new Date();
+      const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+      const wita = new Date(utcMs + 8 * 3600000);
+      const mins = wita.getHours() * 60 + wita.getMinutes();
+      const hhmm = String(wita.getHours()).padStart(2, '0') + ':' + String(wita.getMinutes()).padStart(2, '0');
+      let activePrayer = null;
+      let nextPrayer = GORONTALO_PRAYERS[0];
+      for (const p of GORONTALO_PRAYERS) {
+        if (mins >= p.start && mins <= p.end) { activePrayer = p; break; }
+        if (mins < p.start) { nextPrayer = p; break; }
+      }
+      return { hhmm, activePrayer, nextPrayer };
+    }
+
+    // --- 2. ROOM LAYOUT (3 Wings: Top Work Row, Middle Work Row, Bottom Lifestyle Wing!) ---
+    const WORK_ROOMS = [
+      // Row 1 (z = -9.5, doors face z = -5.5 corridor)
+      { id: 'assistant',   roomLabel: '🧠 Ruang Asisten',     tag: 'Nadia-Asisten AI',       gender: 'F', hijab: 0xbae6fd, shirt: 0x38bdf8, bottom: 0x334155, hair: 0x292524, x: -12, z: -9.5, doorZ: -5.5, accent: 0x0ea5e9, rug: 0xe0f2fe, tumbler: 0xec4899 },
+      { id: 'tts_studio',  roomLabel: '🎙️ Ruang Studio TTS',  tag: 'Reno-Studio TTS',        gender: 'M', hijab: null,     shirt: 0x8b5cf6, bottom: 0x1e293b, hair: 0x18181b, x: -4,  z: -9.5, doorZ: -5.5, accent: 0x9333ea, rug: 0xf3e8ff, tumbler: 0x22d3ee, isTTS: true },
+      { id: 'copywriter',  roomLabel: '✍️ Ruang Caption & SEO',tag: 'Sora-Caption & SEO',     gender: 'F', hijab: null,     shirt: 0x14b8a6, bottom: 0x475569, hair: 0x451a03, x: 4,   z: -9.5, doorZ: -5.5, accent: 0x0d9488, rug: 0xccfbf1, tumbler: 0xf59e0b },
+      { id: 'threads',     roomLabel: '🧵 Ruang Threads',     tag: 'Lina-Threads',           gender: 'F', hijab: null,     shirt: 0x06b6d4, bottom: 0xf1f5f9, hair: 0x1c1917, x: 12,  z: -9.5, doorZ: -5.5, accent: 0x0891b2, rug: 0xcffafe, tumbler: 0xa855f7 },
+      // Row 2 (z = -0.5, doors face z = -4.2 or z = +3.5)
+      { id: 'deadframe',   roomLabel: '🎬 Ruang DeadFrame',   tag: 'Raka-YT DeadFrame',      gender: 'M', hijab: null,     shirt: 0xef4444, bottom: 0x1e293b, hair: 0x0f172a, x: -12, z: -0.5, doorZ: 3.3,  accent: 0xdc2626, rug: 0xfee2e2, tumbler: 0x3b82f6 },
+      { id: 'hollowframe', roomLabel: '👻 Ruang Hollow Frame',tag: 'Dina-YT Hollow Frame',   gender: 'F', hijab: 0xfef3c7, shirt: 0xf97316, bottom: 0x44403c, hair: 0x1c1917, x: -4,  z: -0.5, doorZ: 3.3,  accent: 0xea580c, rug: 0xffedd5, tumbler: 0x10b981 },
+      { id: 'wildlogic',   roomLabel: '🌿 Ruang WildLogic',   tag: 'Bima-YT WildLogic',      gender: 'M', hijab: null,     shirt: 0x22c55e, bottom: 0x78716c, hair: 0x27272a, x: 4,   z: -0.5, doorZ: 3.3,  accent: 0x16a34a, rug: 0xdcfce7, tumbler: 0xf97316 },
+      { id: 'racunbelanja',roomLabel: '🛍️ Ruang Racun Belanja',tag: 'Fajar-Racun Belanja',   gender: 'M', hijab: null,     shirt: 0xeab308, bottom: 0x1e3a8a, hair: 0x171717, x: 12,  z: -0.5, doorZ: 3.3,  accent: 0xca8a04, rug: 0xfef9c3, tumbler: 0xef4444 },
     ];
 
-    const ROOM_MAP = Object.fromEntries(ROOM_SPECS.map(r => [r.id, r]));
+    const LIFESTYLE_ROOMS = [
+      // Row 3 (z = +9.0, Wellness & Break Wing — doors face z = +5.2 corridor)
+      { id: 'musholla', roomLabel: '🕌 Musholla (Gorontalo)', x: -13.2, z: 9.0, w: 6.2, accent: 0x10b981, rug: 0xd1fae5, doorZ: 5.2 },
+      { id: 'gym',      roomLabel: '🏋️ Ruang Gym',            x: -6.6,  z: 9.0, w: 6.2, accent: 0xf43f5e, rug: 0xffe4e6, doorZ: 5.2 },
+      { id: 'gameroom', roomLabel: '🎮 Ruang Game Console',   x: 0.0,   z: 9.0, w: 6.2, accent: 0x6366f1, rug: 0xe0e7ff, doorZ: 5.2 },
+      { id: 'pantry',   roomLabel: '🍽️ Ruang Makan & Kopi',   x: 6.6,   z: 9.0, w: 6.2, accent: 0xf59e0b, rug: 0xfef3c7, doorZ: 5.2 },
+      { id: 'library',  roomLabel: '📚 Perpustakaan',         x: 13.2,  z: 9.0, w: 6.2, accent: 0x0d9488, rug: 0xccfbf1, doorZ: 5.2 },
+    ];
 
-    // --- 2. SCENE, CAMERA, RENDERER ---
+    const ALL_ROOMS = Object.fromEntries([...WORK_ROOMS, ...LIFESTYLE_ROOMS].map(r => [r.id, r]));
+
+    // --- 3. BRIGHT DAYLIGHT SCENE, CAMERA, RENDERER ---
     const wrap = document.getElementById('canvas-wrap');
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x070c18);
-    scene.fog = new THREE.FogExp2(0x070c18, 0.015);
+    scene.background = new THREE.Color(0xdbeafe);
+    scene.fog = new THREE.FogExp2(0xdbeafe, 0.008);
 
-    const camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 140);
-    camera.position.set(0, 19, 22);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 160);
+    camera.position.set(0, 24, 28);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -253,285 +284,394 @@
     controls.dampingFactor = 0.06;
     controls.maxPolarAngle = Math.PI / 2.15;
     controls.minDistance = 6;
-    controls.maxDistance = 42;
-    controls.target.set(0, 0.5, 0);
+    controls.maxDistance = 52;
+    controls.target.set(0, 0.6, 0.5);
 
-    // Smooth camera lerp state
     let camLerp = null;
     function flyTo(pos, target) {
-      camLerp = {
-        pos: new THREE.Vector3(...pos),
-        target: new THREE.Vector3(...target),
-        t: 0
-      };
+      camLerp = { pos: new THREE.Vector3(...pos), target: new THREE.Vector3(...target), t: 0 };
     }
 
-    // --- 3. LIGHTING ---
-    scene.add(new THREE.AmbientLight(0xdbeafe, 0.75));
-    const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.25);
-    dirLight.position.set(14, 24, 16);
-    dirLight.castShadow = true;
-    dirLight.shadow.mapSize.set(2048, 2048);
-    dirLight.shadow.camera.left = -24; dirLight.shadow.camera.right = 24;
-    dirLight.shadow.camera.top = 18; dirLight.shadow.camera.bottom = -18;
-    scene.add(dirLight);
+    // Warm Daylight Lighting
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xe2e8f0, 1.15));
+    const sun = new THREE.DirectionalLight(0xfffbeb, 1.15);
+    sun.position.set(18, 30, 20);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.camera.left = -28; sun.shadow.camera.right = 28;
+    sun.shadow.camera.top = 24; sun.shadow.camera.bottom = -24;
+    scene.add(sun);
 
-    const rimLight = new THREE.PointLight(0x38bdf8, 1.4, 36);
-    rimLight.position.set(-14, 10, 0);
-    scene.add(rimLight);
-    const rimLight2 = new THREE.PointLight(0xa855f7, 1.2, 36);
-    rimLight2.position.set(14, 10, 0);
-    scene.add(rimLight2);
+    // --- 4. ARCHITECTURAL FLOOR & WHITE WALLS ---
+    const floorBase = new THREE.Mesh(
+      new THREE.BoxGeometry(36.5, 0.4, 27.5),
+      new THREE.MeshStandardMaterial({ color: 0xf5efe6, roughness: 0.72 }) // Warm Light Oak/Cream
+    );
+    floorBase.position.set(0, -0.2, 0.2);
+    floorBase.receiveShadow = true;
+    scene.add(floorBase);
 
-    // --- 4. ARCHITECTURAL FLOOR & CENTRAL CORRIDOR ---
-    const floorGeo = new THREE.BoxGeometry(36, 0.4, 21);
-    const floorMat = new THREE.MeshStandardMaterial({ color: 0x111a2e, roughness: 0.75, metalness: 0.1 });
-    const floor = new THREE.Mesh(floorGeo, floorMat);
-    floor.position.y = -0.2;
-    floor.receiveShadow = true;
-    scene.add(floor);
-
-    // Subtle floor grid
-    const grid = new THREE.GridHelper(36, 36, 0x1e293b, 0x162036);
-    grid.position.y = 0.01;
-    scene.add(grid);
-
-    // Central Corridor Carpet Strip
-    const hallMat = new THREE.MeshStandardMaterial({ color: 0x172540, roughness: 0.85 });
-    const hall = new THREE.Mesh(new THREE.BoxGeometry(34, 0.04, 4.4), hallMat);
-    hall.position.set(0, 0.02, 0);
-    hall.receiveShadow = true;
-    scene.add(hall);
-
-    // Glowing corridor guide lines
-    const lineMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.35 });
-    [-2.1, 2.1].forEach(z => {
-      const l = new THREE.Mesh(new THREE.BoxGeometry(33.5, 0.02, 0.06), lineMat);
-      l.position.set(0, 0.045, z);
-      scene.add(l);
+    // Two Bright Corridors (z = -5.0 and z = +4.4)
+    const hallMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.8 });
+    [-5.0, 4.4].forEach(cz => {
+      const h = new THREE.Mesh(new THREE.BoxGeometry(34.5, 0.04, 2.8), hallMat);
+      h.position.set(0, 0.02, cz);
+      h.receiveShadow = true;
+      scene.add(h);
     });
 
-    // --- 5. BUILD ROOMS & FURNITURE ---
+    // Shared Materials
+    const whiteWallMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 });
+    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xbae6fd, transparent: true, opacity: 0.22, roughness: 0.1 });
+    const trimMetal = new THREE.MeshStandardMaterial({ color: 0xcbd5e1, metalness: 0.35, roughness: 0.35 });
+    const oakDeskMat = new THREE.MeshStandardMaterial({ color: 0xd6a77a, roughness: 0.55 });
+    const whiteCabMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.5 });
+    const darkScreenMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4 });
+
     const clickableObjects = [];
     const labelsLayer = document.getElementById('labels-layer');
     const roomLabels = [];
 
-    const glassMat = new THREE.MeshPhysicalMaterial({
-      color: 0x93c5fd, transparent: true, opacity: 0.16, roughness: 0.15, metalness: 0.1
-    });
-    const frameMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.6, roughness: 0.35 });
-    const woodMat = new THREE.MeshStandardMaterial({ color: 0x3b2f2f, roughness: 0.65 });
-    const darkMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.5 });
-
-    function addPlant(x, z) {
+    function addPlant(parent, x, z) {
       const g = new THREE.Group();
-      const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.22, 0.45, 10), new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.7 }));
-      pot.position.y = 0.22; pot.castShadow = true;
-      const leaves = new THREE.Mesh(new THREE.DodecahedronGeometry(0.42, 0), new THREE.MeshStandardMaterial({ color: 0x16a34a, roughness: 0.8 }));
-      leaves.position.y = 0.72; leaves.castShadow = true;
+      const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.18, 0.4, 10), new THREE.MeshStandardMaterial({ color: 0xfef3c7, roughness: 0.6 }));
+      pot.position.y = 0.2; pot.castShadow = true;
+      const leaves = new THREE.Mesh(new THREE.DodecahedronGeometry(0.36, 0), new THREE.MeshStandardMaterial({ color: 0x22c55e, roughness: 0.75 }));
+      leaves.position.y = 0.64; leaves.castShadow = true;
       g.add(pot, leaves);
       g.position.set(x, 0, z);
-      scene.add(g);
+      parent.add(g);
     }
 
-    ROOM_SPECS.forEach(spec => {
-      const roomGroup = new THREE.Group();
-      roomGroup.position.set(spec.x, 0, spec.z);
-
-      // Colored floor carpet
-      const rug = new THREE.Mesh(
-        new THREE.BoxGeometry(7.2, 0.05, 6.2),
-        new THREE.MeshStandardMaterial({ color: 0x162238, roughness: 0.85 })
-      );
-      rug.position.y = 0.025; rug.receiveShadow = true;
-      rug.userData = { roomId: spec.id };
-      roomGroup.add(rug);
-      clickableObjects.push(rug);
-
-      // Accent neon floor trim
-      const trim = new THREE.Mesh(
-        new THREE.BoxGeometry(7.25, 0.06, 0.12),
-        new THREE.MeshBasicMaterial({ color: spec.color })
-      );
-      trim.position.set(0, 0.03, spec.z < 0 ? 3.1 : -3.1);
-      roomGroup.add(trim);
-
-      // Glass side walls & back wall
-      const backZ = spec.z < 0 ? -3.1 : 3.1;
-      const backWall = new THREE.Mesh(new THREE.BoxGeometry(7.2, 2.5, 0.12), new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.7 }));
-      backWall.position.set(0, 1.25, backZ); backWall.castShadow = true; backWall.receiveShadow = true;
-      roomGroup.add(backWall);
-
-      [-3.6, 3.6].forEach(wx => {
-        const sideGlass = new THREE.Mesh(new THREE.BoxGeometry(0.08, 2.4, 6.2), glassMat);
-        sideGlass.position.set(wx, 1.2, 0);
-        roomGroup.add(sideGlass);
-        const post = new THREE.Mesh(new THREE.BoxGeometry(0.14, 2.5, 0.14), frameMat);
-        post.position.set(wx, 1.25, -backZ);
-        roomGroup.add(post);
-      });
-
-      // Desk (facing the corridor)
-      const faceDir = spec.z < 0 ? 1 : -1;
-      const desk = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.12, 1.2), woodMat);
-      desk.position.set(0, 0.82, -0.4 * faceDir); desk.castShadow = true; desk.receiveShadow = true;
-      desk.userData = { roomId: spec.id };
-      roomGroup.add(desk);
-      clickableObjects.push(desk);
-
-      // Desk legs
-      [[-1.25, -0.45], [1.25, -0.45], [-1.25, 0.45], [1.25, 0.45]].forEach(([lx, lz]) => {
-        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.82, 0.09), frameMat);
-        leg.position.set(lx, 0.41, -0.4 * faceDir + lz);
-        roomGroup.add(leg);
-      });
-
-      // Dual Glowing Monitors
-      [-0.55, 0.55].forEach(mx => {
-        const mon = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.56, 0.06), darkMat);
-        mon.position.set(mx, 1.22, -0.2 * faceDir);
-        const scr = new THREE.Mesh(
-          new THREE.PlaneGeometry(0.84, 0.48),
-          new THREE.MeshBasicMaterial({ color: spec.color, side: THREE.DoubleSide })
-        );
-        scr.position.set(mx, 1.22, -0.2 * faceDir - 0.035 * faceDir);
-        roomGroup.add(mon, scr);
-      });
-
-      // Office Chair
-      const chairSeat = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.1, 0.7), darkMat);
-      chairSeat.position.set(0, 0.5, -1.45 * faceDir);
-      const chairBack = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.8, 0.1), darkMat);
-      chairBack.position.set(0, 0.9, -1.78 * faceDir);
-      roomGroup.add(chairSeat, chairBack);
-
-      // Special TTS Studio Mic & Acoustic Panels
-      if (spec.isTTS) {
-        const micStand = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.35, 8), frameMat);
-        micStand.position.set(1.75, 0.68, -0.5 * faceDir);
-        const micHead = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 12), new THREE.MeshStandardMaterial({ color: 0xe879f9, emissive: 0x7e22ce, emissiveIntensity: 0.7 }));
-        micHead.position.set(1.75, 1.38, -0.5 * faceDir);
-        roomGroup.add(micStand, micHead);
-      }
-
-      // Corner Plant
-      addPlant(spec.x - 2.9, spec.z + (spec.z < 0 ? -2.3 : 2.3));
-
-      scene.add(roomGroup);
-
-      // Floating HTML room label
+    function addRoomLabel(text, x, z, accentHex) {
       const el = document.createElement('div');
       el.className = 'room-label-3d';
-      el.textContent = spec.label;
-      el.style.borderColor = '#' + spec.color.toString(16).padStart(6, '0') + '88';
+      el.textContent = text;
+      el.style.borderColor = '#' + accentHex.toString(16).padStart(6, '0');
       labelsLayer.appendChild(el);
-      roomLabels.push({ el, pos: new THREE.Vector3(spec.x, 3.05, spec.z) });
+      roomLabels.push({ el, pos: new THREE.Vector3(x, 3.0, z) });
+    }
+
+    // --- 5. BUILD 8 WORK ROOMS (White Walls + Accessories: Tumbler, Berkas, Lemari!) ---
+    WORK_ROOMS.forEach(spec => {
+      const rg = new THREE.Group();
+      rg.position.set(spec.x, 0, spec.z);
+
+      // Pastel colorful carpet
+      const rug = new THREE.Mesh(new THREE.BoxGeometry(7.0, 0.05, 5.4), new THREE.MeshStandardMaterial({ color: spec.rug, roughness: 0.85 }));
+      rug.position.y = 0.025; rug.receiveShadow = true;
+      rug.userData = { roomId: spec.id };
+      rg.add(rug); clickableObjects.push(rug);
+
+      // Colorful accent strip near entrance
+      const faceDir = spec.z < -4 ? 1 : 1; // Both rows have desks nicely oriented
+      const trim = new THREE.Mesh(new THREE.BoxGeometry(7.0, 0.06, 0.16), new THREE.MeshBasicMaterial({ color: spec.accent }));
+      trim.position.set(0, 0.035, 2.65);
+      rg.add(trim);
+
+      // White Back Wall + Half-White / Glass Side Walls
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(7.1, 2.4, 0.14), whiteWallMat);
+      backWall.position.set(0, 1.2, -2.7); backWall.castShadow = true; backWall.receiveShadow = true;
+      rg.add(backWall);
+
+      [-3.55, 3.55].forEach(wx => {
+        const lowerW = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.9, 5.4), whiteWallMat);
+        lowerW.position.set(wx, 0.45, 0);
+        const upperG = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.45, 5.4), glassMat);
+        upperG.position.set(wx, 1.62, 0);
+        rg.add(lowerW, upperG);
+      });
+
+      // White Filing Cabinet / Lemari Arsip + Colorful Binders
+      const cabinet = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.65, 0.55), whiteCabMat);
+      cabinet.position.set(-2.65, 0.825, -2.25); cabinet.castShadow = true; cabinet.receiveShadow = true;
+      rg.add(cabinet);
+      [0.45, 0.95, 1.4].forEach((by, bi) => {
+        const binder = new THREE.Mesh(
+          new THREE.BoxGeometry(0.85, 0.22, 0.35),
+          new THREE.MeshStandardMaterial({ color: [spec.accent, 0x38bdf8, 0xf59e0b][bi % 3], roughness: 0.6 })
+        );
+        binder.position.set(-2.65, by, -2.1);
+        rg.add(binder);
+      });
+
+      // Oak Office Desk
+      const desk = new THREE.Mesh(new THREE.BoxGeometry(2.8, 0.11, 1.25), oakDeskMat);
+      desk.position.set(0.2, 0.8, 0.2); desk.castShadow = true; desk.receiveShadow = true;
+      desk.userData = { roomId: spec.id };
+      rg.add(desk); clickableObjects.push(desk);
+      [[-1.1, -0.48], [1.5, -0.48], [-1.1, 0.48], [1.5, 0.48]].forEach(([lx, lz]) => {
+        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.8, 0.08), trimMetal);
+        leg.position.set(lx, 0.4, 0.2 + lz);
+        rg.add(leg);
+      });
+
+      // Dual Monitors
+      [-0.3, 0.7].forEach(mx => {
+        const mon = new THREE.Mesh(new THREE.BoxGeometry(0.88, 0.52, 0.05), darkScreenMat);
+        mon.position.set(mx, 1.18, 0.45);
+        const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.44), new THREE.MeshBasicMaterial({ color: spec.accent, side: THREE.DoubleSide }));
+        scr.position.set(mx, 1.18, 0.42);
+        rg.add(mon, scr);
+      });
+
+      // Accessories on Desk: Tumbler!
+      const tumbler = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.065, 0.06, 0.24, 12),
+        new THREE.MeshStandardMaterial({ color: spec.tumbler, metalness: 0.4, roughness: 0.25 })
+      );
+      tumbler.position.set(1.32, 0.97, 0.15); tumbler.castShadow = true;
+      const lid = new THREE.Mesh(new THREE.CylinderGeometry(0.068, 0.068, 0.04, 12), darkScreenMat);
+      lid.position.set(1.32, 1.1, 0.15);
+      rg.add(tumbler, lid);
+
+      // Accessories on Desk: Stack of Berkas / Map Dokumen!
+      [0, 0.035, 0.07].forEach((dy, fi) => {
+        const folder = new THREE.Mesh(
+          new THREE.BoxGeometry(0.36, 0.028, 0.26),
+          new THREE.MeshStandardMaterial({ color: [0xfef08a, 0xbfdbfe, 0xfecdd3][fi], roughness: 0.7 })
+        );
+        folder.position.set(-0.92, 0.87 + dy, 0.12);
+        folder.rotation.y = (fi - 1) * 0.12;
+        rg.add(folder);
+      });
+
+      // Ergonomic Chair
+      const chSeat = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.09, 0.68), new THREE.MeshStandardMaterial({ color: 0x334155 }));
+      chSeat.position.set(0.2, 0.48, -0.78);
+      const chBack = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.78, 0.09), new THREE.MeshStandardMaterial({ color: spec.accent }));
+      chBack.position.set(0.2, 0.88, -1.1);
+      rg.add(chSeat, chBack);
+
+      // TTS Studio Mic
+      if (spec.isTTS) {
+        const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.35, 8), trimMetal);
+        stand.position.set(2.1, 0.68, -0.4);
+        const mic = new THREE.Mesh(new THREE.SphereGeometry(0.13, 12, 12), new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0x9333ea, emissiveIntensity: 0.45 }));
+        mic.position.set(2.1, 1.38, -0.4);
+        rg.add(stand, mic);
+      }
+
+      addPlant(rg, 2.75, -2.1);
+      scene.add(rg);
+      addRoomLabel(spec.roomLabel, spec.x, spec.z, spec.accent);
     });
 
-    // --- 6. ARTICULATED HUMAN-LIKE 3D CHARACTERS ---
+    // --- 6. BUILD 5 LIFESTYLE ROOMS (Musholla, Gym, Game Console, Ruang Makan, Perpustakaan) ---
+    let gameTvScreen = null;
+    LIFESTYLE_ROOMS.forEach(spec => {
+      const rg = new THREE.Group();
+      rg.position.set(spec.x, 0, spec.z);
+
+      const rug = new THREE.Mesh(new THREE.BoxGeometry(6.0, 0.05, 5.8), new THREE.MeshStandardMaterial({ color: spec.rug, roughness: 0.85 }));
+      rug.position.y = 0.025; rug.receiveShadow = true;
+      rug.userData = { roomId: spec.id };
+      rg.add(rug); clickableObjects.push(rug);
+
+      // White back wall + glass sides
+      const bw = new THREE.Mesh(new THREE.BoxGeometry(6.1, 2.4, 0.14), whiteWallMat);
+      bw.position.set(0, 1.2, 2.9); bw.castShadow = true; bw.receiveShadow = true;
+      rg.add(bw);
+      [-3.05, 3.05].forEach(wx => {
+        const lw = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.85, 5.8), whiteWallMat);
+        lw.position.set(wx, 0.425, 0);
+        const ug = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.5, 5.8), glassMat);
+        ug.position.set(wx, 1.6, 0);
+        rg.add(lw, ug);
+      });
+
+      if (spec.id === 'musholla') {
+        // Mihrab arch panel + 4 green sajadah facing Kiblat (+Z wall)
+        const mihrab = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.1, 0.18), new THREE.MeshStandardMaterial({ color: 0x059669, roughness: 0.5 }));
+        mihrab.position.set(0, 1.05, 2.76);
+        rg.add(mihrab);
+        [-1.8, -0.6, 0.6, 1.8].forEach(sx => {
+          const saj = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.03, 1.45), new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.9 }));
+          saj.position.set(sx, 0.06, 0.7);
+          const saj2 = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.03, 1.45), new THREE.MeshStandardMaterial({ color: 0x047857, roughness: 0.9 }));
+          saj2.position.set(sx, 0.06, -1.1);
+          rg.add(saj, saj2);
+        });
+      } else if (spec.id === 'gym') {
+        // Treadmill + Dumbbell rack + Yoga mat
+        const treadBase = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.16, 1.9), darkScreenMat);
+        treadBase.position.set(-1.3, 0.12, 0.5);
+        const treadDash = new THREE.Mesh(new THREE.BoxGeometry(0.95, 1.1, 0.16), new THREE.MeshStandardMaterial({ color: 0xf43f5e }));
+        treadDash.position.set(-1.3, 0.65, 1.35);
+        const mat = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.04, 1.9), new THREE.MeshStandardMaterial({ color: 0x38bdf8 }));
+        mat.position.set(1.2, 0.06, 0.4);
+        const rack = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.7, 0.45), darkScreenMat);
+        rack.position.set(0.5, 0.35, 2.4);
+        rg.add(treadBase, treadDash, mat, rack);
+      } else if (spec.id === 'gameroom') {
+        // Big TV + Console + Cozy Sofa for multiplayer gaming!
+        const tvFrame = new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.4, 0.1), darkScreenMat);
+        tvFrame.position.set(0, 1.45, 2.68);
+        gameTvScreen = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.24), new THREE.MeshBasicMaterial({ color: 0x818cf8, side: THREE.DoubleSide }));
+        gameTvScreen.position.set(0, 1.45, 2.61);
+        const consoleBox = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.42, 0.5), whiteCabMat);
+        consoleBox.position.set(0, 0.21, 2.45);
+        const sofa = new THREE.Mesh(new THREE.BoxGeometry(3.1, 0.52, 0.95), new THREE.MeshStandardMaterial({ color: 0x6366f1, roughness: 0.8 }));
+        sofa.position.set(0, 0.28, -0.45);
+        const sofaBack = new THREE.Mesh(new THREE.BoxGeometry(3.1, 0.72, 0.22), new THREE.MeshStandardMaterial({ color: 0x4f46e5, roughness: 0.8 }));
+        sofaBack.position.set(0, 0.62, -0.85);
+        rg.add(tvFrame, gameTvScreen, consoleBox, sofa, sofaBack);
+      } else if (spec.id === 'pantry') {
+        // Dining Table + 4 chairs + Pantry Counter + Coffee Machine
+        const dTable = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.1, 1.3), oakDeskMat);
+        dTable.position.set(0, 0.78, -0.2); dTable.castShadow = true;
+        const counter = new THREE.Mesh(new THREE.BoxGeometry(3.8, 0.9, 0.65), whiteCabMat);
+        counter.position.set(0, 0.45, 2.4);
+        const coffeeM = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.55, 0.4), new THREE.MeshStandardMaterial({ color: 0xef4444 }));
+        coffeeM.position.set(-1.0, 1.18, 2.4);
+        // Plates on table
+        [-0.5, 0.5].forEach(px => {
+          const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.14, 0.03, 12), whiteCabMat);
+          plate.position.set(px, 0.85, -0.2);
+          rg.add(plate);
+        });
+        rg.add(dTable, counter, coffeeM);
+      } else if (spec.id === 'library') {
+        // Tall Wooden Bookshelves with colorful books + Reading Chair
+        [-1.5, 0.2, 1.9].forEach(bx => {
+          const shelf = new THREE.Mesh(new THREE.BoxGeometry(1.3, 2.0, 0.42), oakDeskMat);
+          shelf.position.set(bx, 1.0, 2.55); shelf.castShadow = true;
+          rg.add(shelf);
+          [0.5, 1.05, 1.6].forEach((by, bi) => {
+            const books = new THREE.Mesh(
+              new THREE.BoxGeometry(1.1, 0.28, 0.3),
+              new THREE.MeshStandardMaterial({ color: [0x0ea5e9, 0xf59e0b, 0xec4899, 0x22c55e][(bi + Math.abs(Math.round(bx))) % 4] })
+            );
+            books.position.set(bx, by, 2.46);
+            rg.add(books);
+          });
+        });
+        const rChair = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.52, 0.95), new THREE.MeshStandardMaterial({ color: 0x14b8a6 }));
+        rChair.position.set(-0.6, 0.26, -0.4);
+        const rChair2 = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.52, 0.95), new THREE.MeshStandardMaterial({ color: 0xf59e0b }));
+        rChair2.position.set(1.1, 0.26, -0.4);
+        rg.add(rChair, rChair2);
+      }
+
+      addPlant(rg, -2.4, -2.2);
+      scene.add(rg);
+      addRoomLabel(spec.roomLabel, spec.x, spec.z, spec.accent);
+    });
+
+    // --- 7. ARTICULATED HUMAN CHARACTERS (GENDER-SPECIFIC OUTFITS + CLEAN NAME-DIVISI TAGS) ---
     const employees = {};
 
-    function createHumanCharacter(spec) {
+    function createCharacter(spec) {
       const root = new THREE.Group();
-      const skinMat = new THREE.MeshStandardMaterial({ color: 0xf1c29b, roughness: 0.6 });
+      const skinMat = new THREE.MeshStandardMaterial({ color: 0xf3c6a5, roughness: 0.55 });
       const shirtMat = new THREE.MeshStandardMaterial({ color: spec.shirt, roughness: 0.55 });
-      const pantsMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.7 });
-      const hairMat = new THREE.MeshStandardMaterial({ color: spec.hair, roughness: 0.8 });
+      const bottomMat = new THREE.MeshStandardMaterial({ color: spec.bottom, roughness: 0.65 });
+      const hairMat = new THREE.MeshStandardMaterial({ color: spec.hair, roughness: 0.75 });
 
-      // Legs (pivoted at hip y = 0.85)
-      const leftLeg = new THREE.Group(); leftLeg.position.set(-0.14, 0.85, 0);
-      const lLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.82, 0.2), pantsMat);
-      lLegMesh.position.y = -0.41; lLegMesh.castShadow = true;
-      leftLeg.add(lLegMesh);
+      const bodyPivot = new THREE.Group(); // Used for bowing/rukuk/sujud!
 
-      const rightLeg = new THREE.Group(); rightLeg.position.set(0.14, 0.85, 0);
-      const rLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.82, 0.2), pantsMat);
-      rLegMesh.position.y = -0.41; rLegMesh.castShadow = true;
-      rightLeg.add(rLegMesh);
+      // Legs
+      const leftLeg = new THREE.Group(); leftLeg.position.set(-0.13, 0.82, 0);
+      const lLeg = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.8, 0.18), bottomMat);
+      lLeg.position.y = -0.4; lLeg.castShadow = true; leftLeg.add(lLeg);
 
-      // Torso
-      const torso = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.68, 0.28), shirtMat);
-      torso.position.y = 1.2; torso.castShadow = true;
+      const rightLeg = new THREE.Group(); rightLeg.position.set(0.13, 0.82, 0);
+      const rLeg = new THREE.Mesh(new THREE.BoxGeometry(0.17, 0.8, 0.18), bottomMat);
+      rLeg.position.y = -0.4; rLeg.castShadow = true; rightLeg.add(rLeg);
+
+      // Upper body group (pivots at waist y = 0.84 for natural leaning/rukuk!)
+      const upper = new THREE.Group();
+      upper.position.y = 0.84;
+
+      const torso = new THREE.Mesh(new THREE.BoxGeometry(spec.gender === 'F' ? 0.44 : 0.5, 0.64, 0.25), shirtMat);
+      torso.position.y = 0.34; torso.castShadow = true;
       torso.userData = { roomId: spec.id };
       clickableObjects.push(torso);
+      upper.add(torso);
 
-      // Head & Hair
+      // Skirt for female outfits
+      if (spec.gender === 'F') {
+        const skirt = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.3, 0.42, 12), bottomMat);
+        skirt.position.y = -0.14; skirt.castShadow = true;
+        upper.add(skirt);
+      }
+
+      // Head + Hair or Hijab
       const headGroup = new THREE.Group();
-      headGroup.position.y = 1.72;
-      const head = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), skinMat);
+      headGroup.position.y = 0.84;
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.21, 16, 16), skinMat);
       head.castShadow = true;
-      const hair = new THREE.Mesh(new THREE.SphereGeometry(0.23, 14, 14, 0, Math.PI * 2, 0, Math.PI * 0.58), hairMat);
-      hair.position.y = 0.03;
-      headGroup.add(head, hair);
+      headGroup.add(head);
 
-      // Arms (pivoted at shoulder y = 1.48)
-      const leftArm = new THREE.Group(); leftArm.position.set(-0.34, 1.46, 0);
-      const lArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.56, 0.15), shirtMat);
-      lArmMesh.position.y = -0.26; lArmMesh.castShadow = true;
-      leftArm.add(lArmMesh);
+      if (spec.hijab) {
+        const hijabMat = new THREE.MeshStandardMaterial({ color: spec.hijab, roughness: 0.6 });
+        const hijabTop = new THREE.Mesh(new THREE.SphereGeometry(0.23, 16, 16), hijabMat);
+        hijabTop.position.set(0, 0.02, -0.03);
+        const hijabDrape = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.27, 0.34, 12), hijabMat);
+        hijabDrape.position.set(0, -0.16, -0.02);
+        headGroup.add(hijabTop, hijabDrape);
+      } else if (spec.gender === 'F') {
+        const hairTop = new THREE.Mesh(new THREE.SphereGeometry(0.225, 14, 14, 0, Math.PI * 2, 0, Math.PI * 0.62), hairMat);
+        hairTop.position.y = 0.02;
+        const hairBack = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.36, 0.16), hairMat);
+        hairBack.position.set(0, -0.08, -0.14);
+        headGroup.add(hairTop, hairBack);
+      } else {
+        const hairTop = new THREE.Mesh(new THREE.SphereGeometry(0.22, 14, 14, 0, Math.PI * 2, 0, Math.PI * 0.55), hairMat);
+        hairTop.position.y = 0.03;
+        headGroup.add(hairTop);
+      }
+      upper.add(headGroup);
 
-      const rightArm = new THREE.Group(); rightArm.position.set(0.34, 1.46, 0);
-      const rArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.56, 0.15), shirtMat);
-      rArmMesh.position.y = -0.26; rArmMesh.castShadow = true;
-      rightArm.add(rArmMesh);
+      // Arms
+      const armOffset = spec.gender === 'F' ? 0.29 : 0.33;
+      const leftArm = new THREE.Group(); leftArm.position.set(-armOffset, 0.58, 0);
+      const lArm = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.54, 0.14), shirtMat);
+      lArm.position.y = -0.25; lArm.castShadow = true; leftArm.add(lArm);
 
-      // Carried Task Prop (Glowing Folder / Audio Reel)
-      const propMesh = new THREE.Mesh(
-        new THREE.BoxGeometry(0.34, 0.24, 0.08),
-        new THREE.MeshStandardMaterial({ color: spec.color, emissive: spec.color, emissiveIntensity: 0.85 })
+      const rightArm = new THREE.Group(); rightArm.position.set(armOffset, 0.58, 0);
+      const rArm = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.54, 0.14), shirtMat);
+      rArm.position.y = -0.25; rArm.castShadow = true; rightArm.add(rArm);
+
+      // Hand Prop (Folder / Audio Reel / Book / Dumbbell)
+      const prop = new THREE.Mesh(
+        new THREE.BoxGeometry(0.32, 0.22, 0.07),
+        new THREE.MeshStandardMaterial({ color: spec.accent, emissive: spec.accent, emissiveIntensity: 0.35 })
       );
-      propMesh.position.set(0, 1.18, 0.36);
-      propMesh.visible = false;
+      prop.position.set(0, 0.32, 0.34);
+      prop.visible = false;
 
-      root.add(leftLeg, rightLeg, torso, headGroup, leftArm, rightArm, propMesh);
+      upper.add(leftArm, rightArm, prop);
+      bodyPivot.add(leftLeg, rightLeg, upper);
+      root.add(bodyPivot);
 
-      const faceDir = spec.z < 0 ? 1 : -1;
-      const seatPos = new THREE.Vector3(spec.x, 0, spec.z - 1.35 * faceDir);
+      const seatPos = new THREE.Vector3(spec.x + 0.2, 0, spec.z - 0.72);
       root.position.copy(seatPos);
-      root.rotation.y = faceDir > 0 ? 0 : Math.PI;
+      root.rotation.y = 0;
       scene.add(root);
 
-      // Floating status bubble
-      const bubble = document.createElement('div');
-      bubble.className = 'bubble-3d';
-      bubble.style.opacity = '0';
-      labelsLayer.appendChild(bubble);
+      // Clean Name-Divisi tag ONLY (no task text above head!)
+      const tagEl = document.createElement('div');
+      tagEl.className = 'emp-tag-3d';
+      tagEl.textContent = spec.tag;
+      labelsLayer.appendChild(tagEl);
 
       employees[spec.id] = {
-        id: spec.id,
-        spec,
-        root,
-        leftLeg, rightLeg, leftArm, rightArm, headGroup, propMesh, bubble,
+        id: spec.id, spec, root, bodyPivot, upper, leftLeg, rightLeg, leftArm, rightArm, headGroup, prop, tagEl,
         seatPos,
-        seatRotY: faceDir > 0 ? 0 : Math.PI,
-        state: 'working', // 'working' | 'walking' | 'delivering'
-        waypoints: [],
-        wpIdx: 0,
-        deliverTimer: 0,
-        onArriveMsg: '',
+        state: 'working', // 'working' | 'walking' | 'activity' | 'sholat'
+        activityType: 'work',
+        activityText: 'Sedang bekerja di meja',
+        waypoints: [], returnWaypoints: [], wpIdx: 0, goingBack: false, timer: 0,
       };
     }
 
-    ROOM_SPECS.forEach(createHumanCharacter);
+    WORK_ROOMS.forEach(createCharacter);
 
-    // --- 7. AUTONOMOUS TASK DELIVERY CHOREOGRAPHY ---
-    const WORKFLOW_MISSIONS = [
-      { from: 'tts_studio', to: 'hollowframe', color: 0xa855f7, msg: '🎙️ Antar Audio Gemini 3.8 TTS → Hollow Frame' },
-      { from: 'tts_studio', to: 'wildlogic',   color: 0xa855f7, msg: '🎙️ Antar Audio Gemini 3.8 TTS → WildLogic' },
-      { from: 'tts_studio', to: 'racunbelanja',color: 0xa855f7, msg: '🎙️ Antar Audio Bahasa ID → Racun Belanja' },
-      { from: 'tts_studio', to: 'deadframe',   color: 0xa855f7, msg: '🎙️ Antar Audio Dramatis → DeadFrame Comics' },
-      { from: 'copywriter', to: 'threads',     color: 0x14b8a6, msg: '✍️ Antar Caption & Hashtag → Threads' },
-      { from: 'copywriter', to: 'racunbelanja',color: 0x14b8a6, msg: '✍️ Antar Skrip Hook & CTA → Racun Belanja' },
-      { from: 'copywriter', to: 'deadframe',   color: 0x14b8a6, msg: '✍️ Antar Subtitle EN/ID → DeadFrame Comics' },
-      { from: 'hollowframe',to: 'assistant',   color: 0xf97316, msg: '📊 Lapor S02E03 Tayang → Asisten Nara' },
-      { from: 'wildlogic',  to: 'assistant',   color: 0x22c55e, msg: '📊 Lapor WL_E06 Tayang → Asisten Nara' },
-      { from: 'racunbelanja',to:'assistant',   color: 0xeab308, msg: '📊 Lapor Paket Shopee → Asisten Nara' },
-    ];
-
+    // --- 8. LIVE ACTIVITY LOG & AUTONOMOUS BEHAVIORS (WORK + BREAKS + SHOLAT) ---
     const feedList = document.getElementById('feedList');
     function pushFeed(text, colorHex) {
-      const now = new Date();
-      const hhmm = now.toTimeString().slice(0, 5);
+      const hhmm = getGorontaloTime().hhmm;
       const div = document.createElement('div');
       div.className = 'feed-item';
       div.style.borderLeftColor = '#' + colorHex.toString(16).padStart(6, '0');
@@ -540,51 +680,147 @@
       while (feedList.children.length > 6) feedList.lastChild.remove();
     }
 
-    let missionCursor = 0;
-    function dispatchNextMission() {
-      for (let tries = 0; tries < WORKFLOW_MISSIONS.length; tries++) {
-        const m = WORKFLOW_MISSIONS[(missionCursor++) % WORKFLOW_MISSIONS.length];
-        const emp = employees[m.from];
-        const targetRoom = ROOM_MAP[m.to];
-        if (!emp || emp.state !== 'working') continue;
+    function buildPath(fromRoom, toRoom, destPos) {
+      const midZ = (fromRoom.z < -4 && toRoom.z < -4) ? -5.0 : 4.4;
+      const fromDoor = new THREE.Vector3(fromRoom.x + 0.2, 0, fromRoom.doorZ);
+      const hallA = new THREE.Vector3(fromRoom.x + 0.2, 0, midZ + (Math.random() - 0.5) * 0.7);
+      const hallB = new THREE.Vector3(toRoom.x, 0, hallA.z);
+      const toDoor = new THREE.Vector3(toRoom.x, 0, toRoom.doorZ);
+      return [fromDoor, hallA, hallB, toDoor, destPos];
+    }
 
-        const fromDoor = new THREE.Vector3(emp.spec.x, 0, emp.spec.doorZ);
-        const hallStart = new THREE.Vector3(emp.spec.x, 0, (Math.random() - 0.5) * 1.6);
-        const hallEnd = new THREE.Vector3(targetRoom.x, 0, hallStart.z);
-        const targetDoor = new THREE.Vector3(targetRoom.x, 0, targetRoom.doorZ);
-        const targetDesk = new THREE.Vector3(targetRoom.x + 1.1, 0, targetRoom.z + (targetRoom.z < 0 ? 1.1 : -1.1));
+    function sendEmployee(empId, targetRoomId, destPos, activityType, logText, propColor = null, duration = 6.5) {
+      const emp = employees[empId];
+      const toRoom = ALL_ROOMS[targetRoomId];
+      if (!emp || !toRoom) return false;
+      const fromRoom = emp.spec;
+      emp.waypoints = buildPath(fromRoom, toRoom, destPos);
+      emp.returnWaypoints = [...emp.waypoints].reverse().slice(1).concat([emp.seatPos.clone()]);
+      emp.wpIdx = 0;
+      emp.goingBack = false;
+      emp.state = 'walking';
+      emp.activityType = activityType;
+      emp.activityText = logText;
+      emp.timer = duration;
+      if (propColor) {
+        emp.prop.material.color.setHex(propColor);
+        emp.prop.material.emissive.setHex(propColor);
+        emp.prop.visible = true;
+      } else {
+        emp.prop.visible = false;
+      }
+      pushFeed(logText, propColor || toRoom.accent);
+      return true;
+    }
 
-        emp.state = 'walking';
-        emp.waypoints = [fromDoor, hallStart, hallEnd, targetDoor, targetDesk];
-        emp.returnWaypoints = [targetDoor, hallEnd, hallStart, fromDoor, emp.seatPos.clone()];
-        emp.wpIdx = 0;
-        emp.goingBack = false;
-        emp.propMesh.material.color.setHex(m.color);
-        emp.propMesh.material.emissive.setHex(m.color);
-        emp.propMesh.visible = true;
-        emp.bubble.textContent = m.msg;
-        emp.bubble.style.opacity = '1';
-        pushFeed(m.msg, m.color);
-        break;
+    const WORK_HANDOFFS = [
+      { from: 'tts_studio', to: 'hollowframe', color: 0x9333ea, msg: 'Reno antar Audio Gemini 3.8 TTS ke Dina (Hollow Frame)' },
+      { from: 'tts_studio', to: 'wildlogic',   color: 0x9333ea, msg: 'Reno antar Audio Gemini 3.8 TTS ke Bima (WildLogic)' },
+      { from: 'tts_studio', to: 'racunbelanja',color: 0x9333ea, msg: 'Reno antar Audio Bahasa ID ke Fajar (Racun Belanja)' },
+      { from: 'copywriter', to: 'threads',     color: 0x0d9488, msg: 'Sora antar Caption & Hashtag ke Lina (Threads)' },
+      { from: 'copywriter', to: 'deadframe',   color: 0x0d9488, msg: 'Sora antar Subtitle EN/ID ke Raka (DeadFrame)' },
+      { from: 'hollowframe',to: 'assistant',   color: 0xea580c, msg: 'Dina lapor progres tayang ke Nadia (Asisten AI)' },
+    ];
+
+    let stepTick = 0;
+    function scheduleBehavior() {
+      const { activePrayer } = getGorontaloTime();
+      if (activePrayer || forceSholatMode) return; // Sholat takes priority!
+
+      stepTick++;
+      // Alternate between Work Handoffs & Realistic Lifestyle Breaks (Gym, Game Co-op, Makan, Perpustakaan)
+      if (stepTick % 2 === 1) {
+        const m = WORK_HANDOFFS[(Math.floor(stepTick / 2)) % WORK_HANDOFFS.length];
+        if (employees[m.from]?.state === 'working') {
+          const tr = ALL_ROOMS[m.to];
+          sendEmployee(m.from, m.to, new THREE.Vector3(tr.x + 1.15, 0, tr.z + 0.9), 'deliver', m.msg, m.color, 2.2);
+        }
+      } else {
+        const idleIds = Object.keys(employees).filter(id => employees[id].state === 'working');
+        if (!idleIds.length) return;
+        const pick = idleIds[Math.floor(Math.random() * idleIds.length)];
+        const choice = Math.floor(Math.random() * 4);
+        if (choice === 0) {
+          // Gym!
+          const r = ALL_ROOMS.gym;
+          sendEmployee(pick, 'gym', new THREE.Vector3(r.x - 1.3, 0, r.z + 0.5), 'gym', `${employees[pick].spec.tag} olahraga di Ruang Gym`, null, 8);
+        } else if (choice === 1) {
+          // Multiplayer Game Console (1 or 2 coworkers together!)
+          const r = ALL_ROOMS.gameroom;
+          sendEmployee(pick, 'gameroom', new THREE.Vector3(r.x - 0.65, 0, r.z - 0.35), 'game', `${employees[pick].spec.tag} main Game Console`, null, 9);
+          const friend = idleIds.find(id => id !== pick);
+          if (friend) {
+            sendEmployee(friend, 'gameroom', new THREE.Vector3(r.x + 0.65, 0, r.z - 0.35), 'game', `${employees[friend].spec.tag} mabar Game Console bareng!`, null, 9);
+          }
+        } else if (choice === 2) {
+          // Makan / Ngopi
+          const r = ALL_ROOMS.pantry;
+          sendEmployee(pick, 'pantry', new THREE.Vector3(r.x - 0.55, 0, r.z - 0.9), 'eat', `${employees[pick].spec.tag} istirahat makan & ngopi`, null, 8);
+        } else {
+          // Baca Buku di Perpustakaan
+          const r = ALL_ROOMS.library;
+          sendEmployee(pick, 'library', new THREE.Vector3(r.x - 0.6, 0, r.z - 0.35), 'read', `${employees[pick].spec.tag} baca buku di Perpustakaan`, 0x0ea5e9, 8.5);
+        }
       }
     }
 
-    // Launch initial missions right away & keep office bustling!
-    setTimeout(dispatchNextMission, 900);
-    setTimeout(dispatchNextMission, 2600);
-    setInterval(dispatchNextMission, 4200);
+    function triggerGroupSholat(prayerName) {
+      const m = ALL_ROOMS.musholla;
+      const slots = [
+        [-1.8, 0.7], [-0.6, 0.7], [0.6, 0.7], [1.8, 0.7],
+        [-1.8, -1.1], [-0.6, -1.1], [0.6, -1.1], [1.8, -1.1],
+      ];
+      Object.values(employees).forEach((emp, i) => {
+        if (emp.state === 'sholat' || emp.activityType === 'sholat') return;
+        const [sx, sz] = slots[i % slots.length];
+        sendEmployee(emp.id, 'musholla', new THREE.Vector3(m.x + sx, 0, m.z + sz), 'sholat', `🕌 ${emp.spec.tag} menuju Musholla (${prayerName})`, null, 18);
+      });
+    }
 
-    // --- 8. LIVE DATA & INSPECTOR ---
+    // Prayer clock updater
+    function updatePrayerHUD() {
+      const { hhmm, activePrayer, nextPrayer } = getGorontaloTime();
+      const el = document.getElementById('prayerClock');
+      if (activePrayer || forceSholatMode) {
+        const pName = activePrayer ? activePrayer.name : 'Simulasi Sholat';
+        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktunya ${pName}`;
+        triggerGroupSholat(pName);
+      } else {
+        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Berikutnya: ${nextPrayer.name} (${nextPrayer.str})`;
+      }
+    }
+    updatePrayerHUD();
+    setInterval(updatePrayerHUD, 10000);
+
+    document.getElementById('btnSholatSim').onclick = (e) => {
+      forceSholatMode = !forceSholatMode;
+      e.target.classList.toggle('active', forceSholatMode);
+      e.target.textContent = forceSholatMode ? '🕌 Akhiri Simulasi Sholat' : '🕌 Simulasi Sholat';
+      if (forceSholatMode) {
+        triggerGroupSholat('Jamaah Kantor');
+      } else {
+        Object.values(employees).forEach(emp => {
+          if (emp.activityType === 'sholat') emp.timer = 0.2;
+        });
+      }
+      updatePrayerHUD();
+    };
+
+    // Kick off lively office behaviors immediately
+    setTimeout(scheduleBehavior, 1000);
+    setTimeout(scheduleBehavior, 2800);
+    setInterval(scheduleBehavior, 4600);
+
+    // --- 9. LIVE DATA & INSPECTOR ---
     let LIVE_DATA = null;
     async function loadOfficeData() {
       try {
         const res = await fetch('office-data.json?t=' + Date.now());
         LIVE_DATA = await res.json();
-        document.getElementById('syncStatus').textContent = 'Sinkron Live: ' + (LIVE_DATA.updated_at || '-');
         const s = LIVE_DATA.summary || {};
-        document.getElementById('kpiMini').textContent = `${s.total_done || 0}/${s.total_slots || 0} Selesai • ${s.total_pending || 0} Antre`;
+        document.getElementById('syncStatus').textContent = `Sinkron: ${LIVE_DATA.updated_at} • ${s.total_done}/${s.total_slots} Selesai`;
       } catch (e) {
-        document.getElementById('syncStatus').textContent = 'Mode Simulasi 3D';
+        document.getElementById('syncStatus').textContent = 'Kantor 3D Live';
       }
     }
     loadOfficeData();
@@ -594,49 +830,39 @@
     document.getElementById('inspClose').onclick = () => inspector.classList.remove('open');
 
     function openInspector(roomId) {
-      const spec = ROOM_MAP[roomId];
+      const spec = ALL_ROOMS[roomId];
       if (!spec) return;
-      document.getElementById('inspTitle').textContent = spec.label;
-      document.getElementById('inspSub').textContent = `${spec.emp} — ${spec.role}`;
+      document.getElementById('inspTitle').textContent = spec.roomLabel;
+      const emp = employees[roomId];
+      document.getElementById('inspSub').textContent = emp ? `${emp.spec.tag} • ${emp.activityText}` : 'Ruang Fasilitas & Santai Karyawan AI';
       const body = document.getElementById('inspBody');
-
       let html = '';
+
       if (LIVE_DATA) {
-        const roomData = (LIVE_DATA.rooms || []).find(r => r.id === roomId);
-        if (roomData) {
+        const rd = (LIVE_DATA.rooms || []).find(r => r.id === roomId);
+        if (rd) {
           html += `
-            <div class="insp-stat"><small>Status Hari Ini</small><strong>${roomData.status_label} (${roomData.done_today}/${roomData.target_today})</strong></div>
-            <div class="insp-stat"><small>Tugas Saat Ini</small><strong>${roomData.current_task}</strong></div>
+            <div class="insp-stat"><small>Progres Hari Ini</small><strong>${rd.status_label} (${rd.done_today}/${rd.target_today})</strong></div>
+            <div class="insp-stat"><small>Fokus Tugas</small><strong>${rd.current_task}</strong></div>
           `;
         }
         if (roomId === 'assistant' && LIVE_DATA.assistant) {
           const reps = (LIVE_DATA.assistant.report || []).map(r => `• ${r}`).join('<br/>');
           const sugs = (LIVE_DATA.assistant.suggestions || []).slice(0, 3).map(s => `⚡ <b>${s.title}</b>: ${s.detail}`).join('<br/>');
-          html += `
-            <div class="insp-stat"><small>Laporan Asisten Nara</small><div style="margin-top:4px; line-height:1.45;">${reps}</div></div>
-            <div class="insp-stat"><small>Saran Prioritas</small><div style="margin-top:4px; line-height:1.45;">${sugs}</div></div>
-          `;
+          html += `<div class="insp-stat"><small>Laporan Nadia (Asisten)</small><div style="margin-top:4px;">${reps}</div></div>`;
+          html += `<div class="insp-stat"><small>Saran Prioritas</small><div style="margin-top:4px;">${sugs}</div></div>`;
         }
-        if (roomId === 'tts_studio' && LIVE_DATA.tts_room) {
-          const t = LIVE_DATA.tts_room;
-          html += `
-            <div class="insp-stat"><small>Engine TTS Aktif</small><strong>${t.primary_model} (${t.status})</strong></div>
-            <div class="insp-stat"><small>Cadangan &amp; Kecepatan</small><strong>${t.backup_model} • ${t.avg_latency}</strong></div>
-          `;
-        }
-        if (roomId === 'copywriter') {
-          html += `
-            <div class="insp-stat"><small>Tugas Utama Sora AI</small><strong>Menulis hook viral, deskripsi SEO YouTube/IG/FB, hashtag, &amp; CTA Affiliate Shopee secara otomatis sebelum upload.</strong></div>
-          `;
-        }
-      } else {
-        html = `<div class="insp-stat"><small>Status</small><strong>Aktif Bekerja di Kantor 3D</strong></div>`;
+      }
+      if (roomId === 'musholla') {
+        const sched = GORONTALO_PRAYERS.map(p => `${p.name}: <b>${p.str}</b>`).join(' • ');
+        html += `<div class="insp-stat"><small>Jadwal Sholat Gorontalo (WITA)</small><div style="margin-top:4px;">${sched}</div></div>`;
+      } else if (!emp) {
+        html += `<div class="insp-stat"><small>Fungsi Ruangan</small><strong>Tempat karyawan AI beristirahat, olahraga, mabar game, makan, atau membaca buku saat jeda upload.</strong></div>`;
       }
       body.innerHTML = html;
       inspector.classList.add('open');
     }
 
-    // Raycaster click handler
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
     let downPos = { x: 0, y: 0 };
@@ -647,47 +873,41 @@
       pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
       const hits = raycaster.intersectObjects(clickableObjects);
-      if (hits.length) {
-        const rid = hits[0].object.userData.roomId;
-        if (rid) openInspector(rid);
-      }
+      if (hits.length && hits[0].object.userData.roomId) openInspector(hits[0].object.userData.roomId);
     });
 
-    // Camera teleport buttons
     document.querySelectorAll('.cam-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.cam-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const camId = btn.dataset.cam;
-        if (camId === 'overview') {
-          flyTo([0, 19, 22], [0, 0.5, 0]);
+        const id = btn.dataset.cam;
+        if (id === 'overview') {
+          flyTo([0, 24, 28], [0, 0.6, 0.5]);
           inspector.classList.remove('open');
-        } else {
-          const sp = ROOM_MAP[camId];
-          if (sp) {
-            const zOff = sp.z < 0 ? 8.5 : 8.5;
-            flyTo([sp.x, 7.5, sp.z + zOff], [sp.x, 1.1, sp.z]);
-            openInspector(camId);
-          }
+        } else if (ALL_ROOMS[id]) {
+          const sp = ALL_ROOMS[id];
+          flyTo([sp.x, 7.2, sp.z + 8.2], [sp.x, 1.0, sp.z]);
+          openInspector(id);
         }
       });
     });
     document.getElementById('btnResetCam').onclick = () => {
-      flyTo([0, 19, 22], [0, 0.5, 0]);
+      flyTo([0, 24, 28], [0, 0.6, 0.5]);
       inspector.classList.remove('open');
     };
 
-    // --- 9. ANIMATION LOOP ---
+    // --- 10. SMOOTH NATURAL ANIMATION LOOP ---
     const clock = new THREE.Clock();
     const projVec = new THREE.Vector3();
+    function project(v) {
+      projVec.copy(v).project(camera);
+      return { x: (projVec.x * 0.5 + 0.5) * window.innerWidth, y: (-projVec.y * 0.5 + 0.5) * window.innerHeight, vis: projVec.z < 1 };
+    }
 
-    function projectToScreen(vec3) {
-      projVec.copy(vec3).project(camera);
-      return {
-        x: (projVec.x * 0.5 + 0.5) * window.innerWidth,
-        y: (-projVec.y * 0.5 + 0.5) * window.innerHeight,
-        visible: projVec.z < 1
-      };
+    function lerpAngle(a, b, t) {
+      let diff = ((b - a + Math.PI) % (Math.PI * 2)) - Math.PI;
+      if (diff < -Math.PI) diff += Math.PI * 2;
+      return a + diff * t;
     }
 
     function animate() {
@@ -695,7 +915,6 @@
       const dt = Math.min(clock.getDelta(), 0.05);
       const t = clock.elapsedTime;
 
-      // Camera smooth fly-to
       if (camLerp) {
         camLerp.t += dt * 2.2;
         camera.position.lerp(camLerp.pos, 0.08);
@@ -704,89 +923,130 @@
       }
       controls.update();
 
-      // Update every employee animation
+      // Animated Game Room TV glow
+      if (gameTvScreen) {
+        gameTvScreen.material.color.setHSL((t * 0.12) % 1, 0.72, 0.62);
+      }
+
       Object.values(employees).forEach((emp, idx) => {
+        // Default smooth reset of bodyPivot/upper tilt
+        let targetUpperX = 0;
+        let targetBodyY = 0;
+
         if (emp.state === 'working') {
-          // Typing & subtle head nodding animation at desk
-          const phase = t * 7 + idx * 1.7;
-          emp.leftArm.rotation.x = -1.05 + Math.sin(phase) * 0.12;
-          emp.rightArm.rotation.x = -1.05 + Math.cos(phase * 1.1) * 0.12;
-          emp.leftLeg.rotation.x = -1.25;
-          emp.rightLeg.rotation.x = -1.25;
-          emp.root.position.y = -0.22;
-          emp.headGroup.rotation.y = Math.sin(t * 0.9 + idx) * 0.18;
+          const p = t * 6.5 + idx * 1.5;
+          emp.leftArm.rotation.x = THREE.MathUtils.lerp(emp.leftArm.rotation.x, -1.0 + Math.sin(p) * 0.14, 0.2);
+          emp.rightArm.rotation.x = THREE.MathUtils.lerp(emp.rightArm.rotation.x, -1.0 + Math.cos(p * 1.15) * 0.14, 0.2);
+          emp.leftLeg.rotation.x = THREE.MathUtils.lerp(emp.leftLeg.rotation.x, -1.25, 0.15);
+          emp.rightLeg.rotation.x = THREE.MathUtils.lerp(emp.rightLeg.rotation.x, -1.25, 0.15);
+          targetBodyY = -0.22;
+          emp.headGroup.rotation.y = Math.sin(t * 0.8 + idx) * 0.22;
+          emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.12);
         } else if (emp.state === 'walking') {
-          emp.root.position.y = 0;
           const target = emp.waypoints[emp.wpIdx];
           const dir = new THREE.Vector3().subVectors(target, emp.root.position);
           dir.y = 0;
           const dist = dir.length();
-          const speed = 3.2;
-
-          if (dist < 0.18) {
+          if (dist < 0.2) {
             emp.wpIdx++;
             if (emp.wpIdx >= emp.waypoints.length) {
               if (!emp.goingBack) {
-                emp.state = 'delivering';
-                emp.deliverTimer = 1.6;
+                emp.state = 'activity';
               } else {
                 emp.state = 'working';
+                emp.activityType = 'work';
+                emp.activityText = 'Sedang bekerja di meja';
                 emp.root.position.copy(emp.seatPos);
-                emp.root.rotation.y = emp.seatRotY;
-                emp.propMesh.visible = false;
-                emp.bubble.style.opacity = '0';
+                emp.prop.visible = false;
               }
             }
           } else {
             dir.normalize();
-            emp.root.position.addScaledVector(dir, speed * dt);
-            const targetAngle = Math.atan2(dir.x, dir.z);
-            emp.root.rotation.y = targetAngle;
-
-            // Realistic walking cycle
-            const walkPhase = t * 9.5 + idx;
-            emp.leftLeg.rotation.x = Math.sin(walkPhase) * 0.55;
-            emp.rightLeg.rotation.x = -Math.sin(walkPhase) * 0.55;
-            if (emp.propMesh.visible) {
-              emp.leftArm.rotation.x = -0.85;
-              emp.rightArm.rotation.x = -0.85;
+            emp.root.position.addScaledVector(dir, 3.1 * dt);
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, Math.atan2(dir.x, dir.z), 0.14);
+            const wp = t * 9.0 + idx;
+            emp.leftLeg.rotation.x = Math.sin(wp) * 0.52;
+            emp.rightLeg.rotation.x = -Math.sin(wp) * 0.52;
+            targetBodyY = Math.abs(Math.sin(wp)) * 0.05; // Natural walking bounce!
+            if (emp.prop.visible) {
+              emp.leftArm.rotation.x = -0.82; emp.rightArm.rotation.x = -0.82;
             } else {
-              emp.leftArm.rotation.x = -Math.sin(walkPhase) * 0.45;
-              emp.rightArm.rotation.x = Math.sin(walkPhase) * 0.45;
+              emp.leftArm.rotation.x = -Math.sin(wp) * 0.42;
+              emp.rightArm.rotation.x = Math.sin(wp) * 0.42;
             }
-            emp.headGroup.rotation.y = 0;
           }
-        } else if (emp.state === 'delivering') {
-          emp.deliverTimer -= dt;
-          emp.leftLeg.rotation.x = 0;
-          emp.rightLeg.rotation.x = 0;
-          emp.leftArm.rotation.x = -0.95;
-          emp.rightArm.rotation.x = -0.95;
-          if (emp.deliverTimer <= 0) {
+        } else if (emp.state === 'activity') {
+          emp.timer -= dt;
+          if (emp.activityType === 'gym') {
+            // Energetic treadmill jog + arm pump!
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.12);
+            const jp = t * 12 + idx;
+            emp.leftLeg.rotation.x = Math.sin(jp) * 0.62;
+            emp.rightLeg.rotation.x = -Math.sin(jp) * 0.62;
+            emp.leftArm.rotation.x = -0.8 + Math.cos(jp) * 0.45;
+            emp.rightArm.rotation.x = -0.8 - Math.cos(jp) * 0.45;
+            targetBodyY = 0.12 + Math.abs(Math.sin(jp)) * 0.08;
+          } else if (emp.activityType === 'game') {
+            // Sitting on sofa playing console excitedly!
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.12);
+            emp.leftLeg.rotation.x = -1.25; emp.rightLeg.rotation.x = -1.25;
+            emp.leftArm.rotation.x = -0.9 + Math.sin(t * 9 + idx) * 0.12;
+            emp.rightArm.rotation.x = -0.9 + Math.cos(t * 10 + idx) * 0.12;
+            emp.headGroup.rotation.y = Math.sin(t * 2.4 + idx) * 0.25;
+            targetBodyY = -0.25;
+          } else if (emp.activityType === 'eat' || emp.activityType === 'read') {
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.12);
+            emp.leftLeg.rotation.x = -1.2; emp.rightLeg.rotation.x = -1.2;
+            emp.leftArm.rotation.x = -0.85;
+            emp.rightArm.rotation.x = emp.activityType === 'eat' ? (-0.95 + Math.sin(t * 3.5) * 0.28) : -0.85;
+            targetBodyY = -0.22;
+          } else if (emp.activityType === 'sholat') {
+            // Respectful Sholat cycle facing Kiblat (+Z): Standing -> Rukuk -> Sujud
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.15);
+            const cycle = (t * 0.45) % 4;
+            if (cycle < 1.3) { // Berdiri / Sedekap
+              emp.leftLeg.rotation.x = 0; emp.rightLeg.rotation.x = 0;
+              emp.leftArm.rotation.x = -0.75; emp.rightArm.rotation.x = -0.75;
+              targetUpperX = 0; targetBodyY = 0;
+            } else if (cycle < 2.2) { // Rukuk
+              emp.leftLeg.rotation.x = 0; emp.rightLeg.rotation.x = 0;
+              emp.leftArm.rotation.x = -0.35; emp.rightArm.rotation.x = -0.35;
+              targetUpperX = 1.15; targetBodyY = 0;
+            } else { // Sujud / Duduk
+              emp.leftLeg.rotation.x = -1.45; emp.rightLeg.rotation.x = -1.45;
+              emp.leftArm.rotation.x = -1.1; emp.rightArm.rotation.x = -1.1;
+              targetUpperX = 0.95; targetBodyY = -0.42;
+            }
+          } else {
+            // Handing off work deliverable
+            emp.leftLeg.rotation.x = 0; emp.rightLeg.rotation.x = 0;
+            emp.leftArm.rotation.x = -0.9; emp.rightArm.rotation.x = -0.9;
+          }
+
+          if (emp.timer <= 0) {
             emp.goingBack = true;
-            emp.propMesh.visible = false;
-            emp.bubble.textContent = '✅ Tugas Diterima — Kembali ke Meja';
+            emp.prop.visible = false;
             emp.waypoints = emp.returnWaypoints;
             emp.wpIdx = 0;
             emp.state = 'walking';
           }
         }
 
-        // Update floating status bubble screen position
-        if (emp.bubble.style.opacity !== '0') {
-          const bPos = projectToScreen(new THREE.Vector3(emp.root.position.x, 2.35, emp.root.position.z));
-          emp.bubble.style.left = bPos.x + 'px';
-          emp.bubble.style.top = bPos.y + 'px';
-          emp.bubble.style.display = bPos.visible ? 'block' : 'none';
-        }
+        emp.upper.rotation.x = THREE.MathUtils.lerp(emp.upper.rotation.x, targetUpperX, 0.12);
+        emp.bodyPivot.position.y = THREE.MathUtils.lerp(emp.bodyPivot.position.y, targetBodyY, 0.14);
+
+        // Position clean Name-Divisi tag smoothly above head
+        const tp = project(new THREE.Vector3(emp.root.position.x, 2.25 + emp.bodyPivot.position.y, emp.root.position.z));
+        emp.tagEl.style.left = tp.x + 'px';
+        emp.tagEl.style.top = tp.y + 'px';
+        emp.tagEl.style.display = tp.vis ? 'block' : 'none';
       });
 
-      // Update floating room labels
       roomLabels.forEach(rl => {
-        const p = projectToScreen(rl.pos);
+        const p = project(rl.pos);
         rl.el.style.left = p.x + 'px';
         rl.el.style.top = p.y + 'px';
-        rl.el.style.display = p.visible ? 'block' : 'none';
+        rl.el.style.display = p.vis ? 'block' : 'none';
       });
 
       renderer.render(scene, camera);
