@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "23:36 WITA",
+  "updated_at": "2026-11-21 23:39 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -281,13 +281,20 @@
       "sender": "bos",
       "time": "23:36 WITA",
       "text": "Sama tambahkan tombol refresh halaman, agar ketika ada update tampilan visual atau apapun tidk perlu keluar masuk web browser lagi, langsung di refresh",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795275549",
+      "sender": "nadia",
+      "time": "23:39 WITA",
+      "text": "Sudah terpasang di kedua halaman (Kantor 3D dan Dashboard 2D), Bos! 🔄✨\n\nSekarang di bar atas ada tombol **🔄 Refresh** khusus yang langsung memuat ulang versi terbaru tanpa cache browser (otomatis menyegarkan tampilan visual 3D maupun data terbaru dalam 1 klik, tidak perlu keluar masuk browser lagi).\n\nBuka sekali ini untuk memunculkan tombolnya: https://taufiqhippy.github.io/hollowframe-autoposter/office-3d.html?v=12",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795275380",
-    "text": "Guys, sistem broadcast Nadia sudah aktif! 📢",
+    "id": "bc_1795275549",
+    "text": "Guys, tombol Refresh 1-klik sudah aktif! 🔄",
     "action": "announce",
-    "time": "23:36 WITA"
+    "time": "23:39 WITA"
   }
 }
