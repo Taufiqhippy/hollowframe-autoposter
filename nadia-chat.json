@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 23:39 WITA",
+  "updated_at": "2026-11-22 06:00 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -289,12 +289,19 @@
       "time": "23:39 WITA",
       "text": "Sudah terpasang di kedua halaman (Kantor 3D dan Dashboard 2D), Bos! 🔄✨\n\nSekarang di bar atas ada tombol **🔄 Refresh** khusus yang langsung memuat ulang versi terbaru tanpa cache browser (otomatis menyegarkan tampilan visual 3D maupun data terbaru dalam 1 klik, tidak perlu keluar masuk browser lagi).\n\nBuka sekali ini untuk memunculkan tombolnya: https://taufiqhippy.github.io/hollowframe-autoposter/office-3d.html?v=12",
       "status": "done"
+    },
+    {
+      "id": "nadia_1795298441",
+      "sender": "nadia",
+      "time": "06:00 WITA",
+      "text": "Selamat pagi, Bos! ☀️ Jam 06:00 WITA — Rutinitas Autopilot Harian Minggu 22 Nov 2026 resmi dimulai! Jadwal acak harian (06:00–22:00 WITA) sudah dibuat dan seluruh tim AI langsung memulai produksi Siklus 1 pagi ini (DeadFrame P5, Hollow Frame S02E04, WildLogic E07, Racun Belanja #3 + Paket Shopee Video Telegram, & Batch Pagi Threads). Nanti jam 08:00 WITA Laporan PDF Mingguan juga otomatis dikirim ke Telegram Bos!",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795275549",
-    "text": "Guys, tombol Refresh 1-klik sudah aktif! 🔄",
-    "action": "announce",
-    "time": "23:39 WITA"
+    "id": "bc_1795298441",
+    "text": "Guys, selamat pagi! Ayo mulai produksi Siklus 1! ☀️",
+    "action": "work",
+    "time": "06:00 WITA"
   }
 }
