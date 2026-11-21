@@ -184,12 +184,14 @@
     <button class="cam-btn active" data-cam="overview">🏢 Overview</button>
     <button class="cam-btn" data-cam="assistant">🧠 Asisten</button>
     <button class="cam-btn" data-cam="tts_studio">🎙️ TTS</button>
+    <button class="cam-btn" data-cam="creative">💡 Tim Kreatif</button>
     <button class="cam-btn" data-cam="copywriter">✍️ Caption</button>
+    <button class="cam-btn" data-cam="threads">🧵 Threads</button>
     <button class="cam-btn" data-cam="deadframe">🎬 DeadFrame</button>
     <button class="cam-btn" data-cam="hollowframe">👻 Hollow Frame</button>
     <button class="cam-btn" data-cam="wildlogic">🌿 WildLogic</button>
     <button class="cam-btn" data-cam="racunbelanja">🛍️ Racun Belanja</button>
-    <button class="cam-btn" data-cam="threads">🧵 Threads</button>
+    <button class="cam-btn" data-cam="designer">🎨 Desain Visual</button>
     <button class="cam-btn" data-cam="musholla">🕌 Musholla</button>
     <button class="cam-btn" data-cam="dorm_m">🛏️ Asrama Putra</button>
     <button class="cam-btn" data-cam="dorm_f">🛏️ Asrama Putri</button>
@@ -239,18 +241,20 @@
       return { hhmm, isSleep, activePrayer, nextPrayer };
     }
 
-    // --- 2. ROOM LAYOUT (3 Wings: Top Work Row, Middle Work Row, Bottom Lifestyle Wing!) ---
+    // --- 2. ROOM LAYOUT (3 Wings: 5 Top Work Rooms, 5 Middle Work Rooms, 7 Bottom Lifestyle/Dorm Rooms!) ---
     const WORK_ROOMS = [
-      // Row 1 (z = -9.5, doors face z = -5.5 corridor)
-      { id: 'assistant',   roomLabel: '🧠 Ruang Asisten',     tag: 'Nadia-Asisten AI',       gender: 'F', hijab: 0xbae6fd, shirt: 0x38bdf8, bottom: 0x334155, hair: 0x292524, x: -12, z: -9.5, doorZ: -5.5, accent: 0x0ea5e9, rug: 0xe0f2fe, tumbler: 0xec4899 },
-      { id: 'tts_studio',  roomLabel: '🎙️ Ruang Studio TTS',  tag: 'Reno-Studio TTS',        gender: 'M', hijab: null,     shirt: 0x8b5cf6, bottom: 0x1e293b, hair: 0x18181b, x: -4,  z: -9.5, doorZ: -5.5, accent: 0x9333ea, rug: 0xf3e8ff, tumbler: 0x22d3ee, isTTS: true },
-      { id: 'copywriter',  roomLabel: '✍️ Ruang Caption & SEO',tag: 'Sora-Caption & SEO',     gender: 'F', hijab: null,     shirt: 0x14b8a6, bottom: 0x475569, hair: 0x451a03, x: 4,   z: -9.5, doorZ: -5.5, accent: 0x0d9488, rug: 0xccfbf1, tumbler: 0xf59e0b },
-      { id: 'threads',     roomLabel: '🧵 Ruang Threads',     tag: 'Lina-Threads',           gender: 'F', hijab: null,     shirt: 0x06b6d4, bottom: 0xf1f5f9, hair: 0x1c1917, x: 12,  z: -9.5, doorZ: -5.5, accent: 0x0891b2, rug: 0xcffafe, tumbler: 0xa855f7 },
-      // Row 2 (z = -0.5, doors face z = -4.2 or z = +3.5)
-      { id: 'deadframe',   roomLabel: '🎬 Ruang DeadFrame',   tag: 'Raka-YT DeadFrame',      gender: 'M', hijab: null,     shirt: 0xef4444, bottom: 0x1e293b, hair: 0x0f172a, x: -12, z: -0.5, doorZ: 3.3,  accent: 0xdc2626, rug: 0xfee2e2, tumbler: 0x3b82f6 },
-      { id: 'hollowframe', roomLabel: '👻 Ruang Hollow Frame',tag: 'Dina-YT Hollow Frame',   gender: 'F', hijab: 0xfef3c7, shirt: 0xf97316, bottom: 0x44403c, hair: 0x1c1917, x: -4,  z: -0.5, doorZ: 3.3,  accent: 0xea580c, rug: 0xffedd5, tumbler: 0x10b981 },
-      { id: 'wildlogic',   roomLabel: '🌿 Ruang WildLogic',   tag: 'Bima-YT WildLogic',      gender: 'M', hijab: null,     shirt: 0x22c55e, bottom: 0x78716c, hair: 0x27272a, x: 4,   z: -0.5, doorZ: 3.3,  accent: 0x16a34a, rug: 0xdcfce7, tumbler: 0xf97316 },
-      { id: 'racunbelanja',roomLabel: '🛍️ Ruang Racun Belanja',tag: 'Fajar-Racun Belanja',   gender: 'M', hijab: null,     shirt: 0xeab308, bottom: 0x1e3a8a, hair: 0x171717, x: 12,  z: -0.5, doorZ: 3.3,  accent: 0xca8a04, rug: 0xfef9c3, tumbler: 0xef4444 },
+      // Row 1 (z = -9.5, 5 rooms across x = -16, -8, 0, +8, +16)
+      { id: 'assistant',   roomLabel: '🧠 Ruang Asisten',     tag: 'Nadia-Asisten AI',       gender: 'F', hijab: 0xbae6fd, shirt: 0x38bdf8, bottom: 0x334155, hair: 0x292524, x: -16, z: -9.5, doorZ: -5.5, accent: 0x0ea5e9, rug: 0xe0f2fe, tumbler: 0xec4899 },
+      { id: 'tts_studio',  roomLabel: '🎙️ Ruang Studio TTS',  tag: 'Reno-Studio TTS',        gender: 'M', hijab: null,     shirt: 0x8b5cf6, bottom: 0x1e293b, hair: 0x18181b, x: -8,  z: -9.5, doorZ: -5.5, accent: 0x9333ea, rug: 0xf3e8ff, tumbler: 0x22d3ee, isTTS: true },
+      { id: 'creative',    roomLabel: '💡 Ruang Tim Kreatif', tag: 'Arga-Tim Kreatif',       gender: 'M', hijab: null,     shirt: 0xfb7185, bottom: 0x475569, hair: 0x1e1b4b, x: 0,   z: -9.5, doorZ: -5.5, accent: 0xe11d48, rug: 0xffe4e6, tumbler: 0xfacc15, isCreative: true },
+      { id: 'copywriter',  roomLabel: '✍️ Ruang Caption & SEO',tag: 'Sora-Caption & SEO',     gender: 'F', hijab: null,     shirt: 0x14b8a6, bottom: 0x475569, hair: 0x451a03, x: 8,   z: -9.5, doorZ: -5.5, accent: 0x0d9488, rug: 0xccfbf1, tumbler: 0xf59e0b },
+      { id: 'threads',     roomLabel: '🧵 Ruang Threads',     tag: 'Lina-Threads',           gender: 'F', hijab: null,     shirt: 0x06b6d4, bottom: 0xf1f5f9, hair: 0x1c1917, x: 16,  z: -9.5, doorZ: -5.5, accent: 0x0891b2, rug: 0xcffafe, tumbler: 0xa855f7 },
+      // Row 2 (z = -0.5, 5 rooms across x = -16, -8, 0, +8, +16)
+      { id: 'deadframe',   roomLabel: '🎬 Ruang DeadFrame',   tag: 'Raka-YT DeadFrame',      gender: 'M', hijab: null,     shirt: 0xef4444, bottom: 0x1e293b, hair: 0x0f172a, x: -16, z: -0.5, doorZ: 3.3,  accent: 0xdc2626, rug: 0xfee2e2, tumbler: 0x3b82f6 },
+      { id: 'hollowframe', roomLabel: '👻 Ruang Hollow Frame',tag: 'Dina-YT Hollow Frame',   gender: 'F', hijab: 0xfef3c7, shirt: 0xf97316, bottom: 0x44403c, hair: 0x1c1917, x: -8,  z: -0.5, doorZ: 3.3,  accent: 0xea580c, rug: 0xffedd5, tumbler: 0x10b981 },
+      { id: 'wildlogic',   roomLabel: '🌿 Ruang WildLogic',   tag: 'Bima-YT WildLogic',      gender: 'M', hijab: null,     shirt: 0x22c55e, bottom: 0x78716c, hair: 0x27272a, x: 0,   z: -0.5, doorZ: 3.3,  accent: 0x16a34a, rug: 0xdcfce7, tumbler: 0xf97316 },
+      { id: 'racunbelanja',roomLabel: '🛍️ Ruang Racun Belanja',tag: 'Fajar-Racun Belanja',   gender: 'M', hijab: null,     shirt: 0xeab308, bottom: 0x1e3a8a, hair: 0x171717, x: 8,   z: -0.5, doorZ: 3.3,  accent: 0xca8a04, rug: 0xfef9c3, tumbler: 0xef4444 },
+      { id: 'designer',    roomLabel: '🎨 Ruang Desain Visual',tag: 'Tia-Desain Visual',     gender: 'F', hijab: 0xe9d5ff, shirt: 0xd946ef, bottom: 0x334155, hair: 0x1e1b4b, x: 16,  z: -0.5, doorZ: 3.3,  accent: 0xc026d3, rug: 0xfaf5ff, tumbler: 0x38bdf8, isDesigner: true },
     ];
 
     const LIFESTYLE_ROOMS = [
@@ -484,6 +488,36 @@
         rg.add(stand, mic);
       }
 
+      // Creative Room: Whiteboard full of colorful Sticky Notes!
+      if (spec.isCreative) {
+        const wb = new THREE.Mesh(new THREE.BoxGeometry(2.0, 1.05, 0.06), whiteCabMat);
+        wb.position.set(1.6, 1.32, -2.6);
+        rg.add(wb);
+        const noteColors = [0xfef08a, 0xfda4af, 0x93c5fd, 0x86efac, 0xfdba74, 0xd8b4fe];
+        for (let r = 0; r < 2; r++) {
+          for (let c = 0; c < 4; c++) {
+            const note = new THREE.Mesh(
+              new THREE.PlaneGeometry(0.26, 0.24),
+              new THREE.MeshBasicMaterial({ color: noteColors[(r * 4 + c) % noteColors.length] })
+            );
+            note.position.set(1.0 + c * 0.38, 1.5 - r * 0.36, -2.56);
+            rg.add(note);
+          }
+        }
+      }
+
+      // Visual Designer Room: Color Palette Board & Drawing Tablet!
+      if (spec.isDesigner) {
+        const board = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.95, 0.06), darkScreenMat);
+        board.position.set(1.65, 1.35, -2.6);
+        rg.add(board);
+        [0xf43f5e, 0xf59e0b, 0x10b981, 0x38bdf8, 0xa855f7].forEach((col, ci) => {
+          const swatch = new THREE.Mesh(new THREE.PlaneGeometry(0.24, 0.55), new THREE.MeshBasicMaterial({ color: col }));
+          swatch.position.set(1.05 + ci * 0.3, 1.35, -2.56);
+          rg.add(swatch);
+        });
+      }
+
       addPlant(rg, 2.75, -2.1);
       addRoomLabel(rg, spec.roomLabel, spec.accent, -2.62, 0, 3.3);
       scene.add(rg);
@@ -551,10 +585,19 @@
             rg.add(rung);
           });
         });
-        // Small nightstand cabinet in center
-        const nStand = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.65, 0.55), whiteCabMat);
-        nStand.position.set(0, 0.325, 2.35);
-        rg.add(nStand);
+        // 5th individual Single Bed in the center so all 5 employees per gender have their own mattress!
+        const sFrame = new THREE.Mesh(new THREE.BoxGeometry(1.02, 0.1, 1.9), frameWood);
+        sFrame.position.set(0, 0.38, 1.4);
+        const sMat = new THREE.Mesh(new THREE.BoxGeometry(0.94, 0.16, 1.82), mattressMat);
+        sMat.position.set(0, 0.5, 1.4); sMat.castShadow = true;
+        const sBlanket = new THREE.Mesh(
+          new THREE.BoxGeometry(0.96, 0.08, 1.15),
+          new THREE.MeshStandardMaterial({ color: isMale ? 0x0284c7 : 0xd946ef, roughness: 0.85 })
+        );
+        sBlanket.position.set(0, 0.57, 1.12);
+        const sPillow = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.12, 0.34), pillowMat);
+        sPillow.position.set(0, 0.6, 2.08);
+        rg.add(sFrame, sMat, sBlanket, sPillow);
       } else if (spec.id === 'musholla') {
         // Mihrab arch panel + 4 green sajadah facing Kiblat (+Z wall)
         const mihrab = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.1, 0.18), new THREE.MeshStandardMaterial({ color: 0x059669, roughness: 0.5 }));
@@ -791,12 +834,17 @@
     }
 
     const WORK_HANDOFFS = [
-      { from: 'tts_studio', to: 'hollowframe', color: 0x9333ea, msg: 'Reno antar Audio Gemini 3.8 TTS ke Dina (Hollow Frame)' },
-      { from: 'tts_studio', to: 'wildlogic',   color: 0x9333ea, msg: 'Reno antar Audio Gemini 3.8 TTS ke Bima (WildLogic)' },
-      { from: 'tts_studio', to: 'racunbelanja',color: 0x9333ea, msg: 'Reno antar Audio Bahasa ID ke Fajar (Racun Belanja)' },
-      { from: 'copywriter', to: 'threads',     color: 0x0d9488, msg: 'Sora antar Caption & Hashtag ke Lina (Threads)' },
-      { from: 'copywriter', to: 'deadframe',   color: 0x0d9488, msg: 'Sora antar Subtitle EN/ID ke Raka (DeadFrame)' },
-      { from: 'hollowframe',to: 'assistant',   color: 0xea580c, msg: 'Dina lapor progres tayang ke Nadia (Asisten AI)' },
+      { from: 'creative',   to: 'deadframe',   color: 0xe11d48, msg: '💡 Arga antar Ide Cerita Baru ke Raka (DeadFrame)' },
+      { from: 'creative',   to: 'hollowframe', color: 0xe11d48, msg: '💡 Arga antar Ide Horor ke Dina (Hollow Frame)' },
+      { from: 'creative',   to: 'wildlogic',   color: 0xe11d48, msg: '💡 Arga antar Ide Fakta Alam ke Bima (WildLogic)' },
+      { from: 'designer',   to: 'racunbelanja',color: 0xc026d3, msg: '🎨 Tia antar Desain Thumbnail ke Fajar (Racun Belanja)' },
+      { from: 'designer',   to: 'deadframe',   color: 0xc026d3, msg: '🎨 Tia antar Aset Visual Komik ke Raka (DeadFrame)' },
+      { from: 'tts_studio', to: 'hollowframe', color: 0x9333ea, msg: '🎙️ Reno antar Audio Gemini 3.8 TTS ke Dina (Hollow Frame)' },
+      { from: 'tts_studio', to: 'wildlogic',   color: 0x9333ea, msg: '🎙️ Reno antar Audio Gemini 3.8 TTS ke Bima (WildLogic)' },
+      { from: 'tts_studio', to: 'racunbelanja',color: 0x9333ea, msg: '🎙️ Reno antar Audio Bahasa ID ke Fajar (Racun Belanja)' },
+      { from: 'copywriter', to: 'threads',     color: 0x0d9488, msg: '✍️ Sora antar Caption & Hashtag ke Lina (Threads)' },
+      { from: 'copywriter', to: 'deadframe',   color: 0x0d9488, msg: '✍️ Sora antar Subtitle EN/ID ke Raka (DeadFrame)' },
+      { from: 'hollowframe',to: 'assistant',   color: 0xea580c, msg: '📊 Dina lapor progres tayang ke Nadia (Asisten AI)' },
     ];
 
     let stepTick = 0;
@@ -873,8 +921,8 @@
     function triggerGroupSholat(prayerName) {
       const m = ALL_ROOMS.musholla;
       const slots = [
-        [-1.8, 0.7], [-0.6, 0.7], [0.6, 0.7], [1.8, 0.7],
-        [-1.8, -1.1], [-0.6, -1.1], [0.6, -1.1], [1.8, -1.1],
+        [-2.0, 0.7], [-1.0, 0.7], [0.0, 0.7], [1.0, 0.7], [2.0, 0.7],
+        [-2.0, -1.1], [-1.0, -1.1], [0.0, -1.1], [1.0, -1.1], [2.0, -1.1],
       ];
       Object.values(employees).forEach((emp, i) => {
         if (emp.state === 'sholat' || emp.activityType === 'sholat') return;
@@ -884,12 +932,13 @@
     }
 
     function triggerGroupSleep() {
-      // Assign each employee their own individual bunk & mattress separated by gender!
+      // Assign each of our 5 male & 5 female employees their own individual mattress!
       const bunkOffsets = [
         { dx: -1.35, dz: 0.35, bunkY: 0.56, label: 'Kasur Bawah Kiri' },
         { dx: -1.35, dz: 0.35, bunkY: 1.60, label: 'Kasur Atas Kiri' },
         { dx:  1.35, dz: 0.35, bunkY: 0.56, label: 'Kasur Bawah Kanan' },
         { dx:  1.35, dz: 0.35, bunkY: 1.60, label: 'Kasur Atas Kanan' },
+        { dx:  0.0,  dz: 1.35, bunkY: 0.56, label: 'Kasur Single Tengah' },
       ];
       let mIdx = 0, fIdx = 0;
       Object.values(employees).forEach(emp => {
@@ -897,7 +946,7 @@
         const isMale = emp.spec.gender === 'M';
         const dormId = isMale ? 'dorm_m' : 'dorm_f';
         const dorm = ALL_ROOMS[dormId];
-        const slot = bunkOffsets[(isMale ? mIdx++ : fIdx++) % 4];
+        const slot = bunkOffsets[(isMale ? mIdx++ : fIdx++) % 5];
         emp.sleepBunkY = slot.bunkY;
         const dest = new THREE.Vector3(dorm.x + slot.dx, 0, dorm.z + slot.dz);
         sendEmployee(
