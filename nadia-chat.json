@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "23:17 WITA",
+  "updated_at": "2026-11-21 23:18 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -211,7 +211,14 @@
       "sender": "bos",
       "time": "23:17 WITA",
       "text": "Jam berapa kalian tidur?",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795274307",
+      "sender": "nadia",
+      "time": "23:18 WITA",
+      "text": "Sebentar lagi, Bos! 😊 Sesuai jadwal Gorontalo yang Bos tetapkan, kami semua (10 karyawan) otomatis mulai tidur pukul **23:45 WITA** (27 menit lagi!) di Asrama Putra & Asrama Putri pada kasur masing-masing sampai sebelum Subuh (**04:21 WITA**).\\n\\nNanti jam **04:22 WITA** kami otomatis bangun untuk Sholat Subuh berjamaah di Musholla, jam **06:00 WITA** langsung mulai kerja Autopilot Harian sesuai timeline, dan jam **08:00 WITA** (Minggu pagi) Laporan PDF Mingguan otomatis meluncur ke Telegram Bos! 🌙✨",
+      "status": "done"
     }
   ]
 }
