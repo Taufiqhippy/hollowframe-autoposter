@@ -1,0 +1,14 @@
+{
+  "assistant": "Nadia-Asisten AI",
+  "office": "Kantor Ai - Bebas Kreasi",
+  "updated_at": "2026-11-21 21:15 WITA",
+  "messages": [
+    {
+      "id": "msg_welcome_01",
+      "sender": "nadia",
+      "time": "21:15 WITA",
+      "text": "Halo Bos Taufiq! 👋 Saya Nadia, Asisten Eksekutif AI Anda di Kantor Ai - Bebas Kreasi. Mulai sekarang Bos bisa langsung kirim perintah dari HP maupun laptop lewat kotak chat ini — selama PC kantor menyala, saya langsung eksekusi dan balas di sini!",
+      "status": "done"
+    }
+  ]
+}
