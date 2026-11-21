@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 21:50 WITA",
+  "updated_at": "22:01 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -107,6 +107,13 @@
       "time": "21:50 WITA",
       "text": "Sudah jadi & langsung LIVE, Bos! 🛏️🌙\\n\\n1) 2 Ruangan Asrama Terpisah Gender sudah dibangun di Kantor 3D:\\n- 🛏️ Asrama Putra (untuk Reno, Raka, Bima, Fajar)\\n- 🛏️ Asrama Putri (untuk Nadia, Sora, Dina, Lina)\\nMasing-masing dilengkapi 2 tempat tidur susun (total 4 kasur sendiri-sendiri + bantal + selimut + tangga kayu) sehingga tiap karyawan tidur di kasur masing-masing!\\n\\n2) Jadwal Tidur Otomatis (Gorontalo WITA): Setiap pukul 23:45 sampai sebelum Subuh (04:21 WITA), seluruh karyawan otomatis berjalan ke asrama sesuai gender dan berbaring tidur di kasurnya, lalu otomatis bangun saat Subuh untuk Sholat di Musholla!\\n\\n3) Ada juga tombol 🌙 Simulasi Tidur di bar atas kalau Bos mau langsung mengetesnya sekarang: https://taufiqhippy.github.io/hollowframe-autoposter/office-3d.html?v=6",
       "status": "done"
+    },
+    {
+      "id": "bos_1795269695642",
+      "sender": "bos",
+      "time": "22:01 WITA",
+      "text": "Kok hasil TTS di postingan terbaru Racun Belanja terdengar berbeda setiap scene? Gunakan 1 karakter suara aja dalam 1 video, jadi terdengar aneh jika di campur campur, kedepan di perbaiki",
+      "status": "pending"
     }
   ]
 }
