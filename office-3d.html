@@ -171,6 +171,7 @@
     </div>
     <div class="top-actions">
       <span class="prayer-pill" id="prayerClock">🕌 Gorontalo WITA: --:--</span>
+      <button class="btn" id="btnHardRefresh" title="Muat ulang versi terbaru tanpa cache">🔄 Refresh</button>
       <button class="btn" id="btnToggleTags">🏷️ Sembunyikan Nama</button>
       <a class="btn btn-primary" href="office.html">📋 Dashboard 2D</a>
       <button class="btn" id="btnResetCam">🎥 Reset</button>
@@ -1171,6 +1172,9 @@
     document.getElementById('btnResetCam').onclick = () => {
       flyTo([0, 24, 28], [0, 0.6, 0.5]);
       inspector.classList.remove('open');
+    };
+    document.getElementById('btnHardRefresh').onclick = () => {
+      window.location.href = window.location.pathname + '?v=' + Date.now();
     };
     document.getElementById('btnToggleTags').onclick = (e) => {
       const hidden = labelsLayer.classList.toggle('hide-tags');
