@@ -5,9 +5,9 @@
   "updated_at": "21 Nov 2026, 21:35 WITA",
   "summary": {
     "total_slots": 36,
-    "total_done": 7,
-    "total_pending": 29,
-    "completion_pct": 19,
+    "total_done": 10,
+    "total_pending": 26,
+    "completion_pct": 28,
     "active_employees": 8,
     "open_slots": 1
   },
@@ -16,14 +16,14 @@
     "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
       "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
-      "Hari ini (2026-11-21) tercatat 7 dari 36 slot jadwal sudah selesai tayang, dan 29 slot masih antre / belum dikerjakan.",
+      "Hari ini (2026-11-21) tercatat 10 dari 36 slot jadwal sudah selesai tayang, dan 26 slot masih antre / belum dikerjakan.",
       "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
       "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
     ],
     "suggestions": [
       {
         "priority": "TINGGI",
-        "title": "Kejar 11 Slot Threads @kaya.studio26",
+        "title": "Kejar 8 Slot Threads @kaya.studio26",
         "detail": "Sora AI & Lina AI siap memposting variasi soft-selling menggunakan stok foto produk lokal agar tidak memicu CAPTCHA Shopee."
       },
       {
@@ -95,8 +95,8 @@
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 7,
-      "target_today": 7,
+      "done_today": 10,
+      "target_today": 10,
       "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
     },
@@ -108,7 +108,7 @@
       "avatar": "✍️",
       "status": "online",
       "status_label": "Karyawan Baru Aktif",
-      "done_today": 7,
+      "done_today": 10,
       "target_today": 36,
       "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
       "accent": "#14b8a6"
@@ -172,8 +172,8 @@
       "role": "Admin Threads @kaya.studio26 (12x/Hari)",
       "avatar": "🧵",
       "status": "working",
-      "status_label": "1/12 Hari Ini",
-      "done_today": 1,
+      "status_label": "4/12 Hari Ini",
+      "done_today": 4,
       "target_today": 12,
       "current_task": "Menerima caption dari Sora AI: 8x Soft-Selling (3–5 foto + link) & 4x Engagement tanpa link.",
       "accent": "#06b6d4"
@@ -250,8 +250,8 @@
         "threads_kayastudio"
       ],
       "status": "done",
-      "ref_id": "THREADS_01",
-      "link": "https://www.threads.com/@kaya.studio26/post/Df_OaSTk-w0"
+      "ref_id": "THREADS_02",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgAV5s4E8co"
     },
     {
       "no": 3,
@@ -289,9 +289,9 @@
       "platforms": [
         "threads_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "THREADS_03",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgAWJ5mE7Vv"
     },
     {
       "no": 6,
@@ -302,9 +302,9 @@
       "platforms": [
         "threads_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "THREADS_04",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgAWS3nE3-D"
     },
     {
       "no": 7,
@@ -382,9 +382,9 @@
       "platforms": [
         "threads_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "THREADS_01",
+      "link": "https://www.threads.com/@kaya.studio26/post/Df_OaSTk-w0"
     },
     {
       "no": 13,
