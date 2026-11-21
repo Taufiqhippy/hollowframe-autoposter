@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "21:36 WITA",
+  "updated_at": "2026-11-21 21:38 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -57,7 +57,14 @@
       "sender": "bos",
       "time": "21:36 WITA",
       "text": "Kenapa progres Reno sudah 7/7? Apa ada pembatasan tiap harinya dari Google untuk TTS Ai Studio?",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795268324",
+      "sender": "nadia",
+      "time": "21:38 WITA",
+      "text": "Pertanyaan bagus, Bos! Ini penjelasannya:\\n\\n1) Kenapa Reno tadi tertulis 7/7? Itu tadi masih rumus sementara di dashboard (ikut total selesai). Baru saja saya perbaiki target harian Reno menjadi 24 video/hari (sesuai total 4 channel x 6 video) & langsung saya sinkronkan ulang ke Kantor Ai!\\n\\n2) Soal batas kuota Google AI Studio (Free API Key): Ya, ada batas request per menit (RPM) & per hari (RPD) pada tier gratis. Tapi tenang, Reno sudah saya pasangi 2 lapis pengaman:\\n- Utama: gemini-3.8-flash-tts\\n- Cadangan otomatis: gemini-3.8-flash-lite-tts (punya kuota terpisah!)\\n- Cadangan darurat: edge-tts hanya jika keduanya habis, lalu balik lagi ke Gemini saat kuota reset harian.\\n\\nKalau nanti kuota harian terasa sempit saat produksi penuh 24 video/hari, kita bisa pasang rotasi 2-3 Free API Key Google AI Studio biar makin lega!",
+      "status": "done"
     }
   ]
 }
