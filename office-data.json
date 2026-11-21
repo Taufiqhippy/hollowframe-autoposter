@@ -2,7 +2,7 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-21",
-  "updated_at": "21 Nov 2026, 21:36 WITA",
+  "updated_at": "21 Nov 2026, 21:38 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 10,
@@ -95,8 +95,8 @@
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 10,
-      "target_today": 10,
+      "done_today": 6,
+      "target_today": 24,
       "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
     },
