@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 22:03 WITA",
+  "updated_at": "22:04 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -121,6 +121,13 @@
       "time": "22:03 WITA",
       "text": "Terima kasih koreksinya, Bos! 🙏 Betul sekali, itu terjadi karena di Racun Belanja #2 tadi scene 1–3 pakai suara Gemini (Puck), lalu saat kena limit 3 request/menit, scene 4–5 otomatis jatuh ke suara cadangan edge-tts sehingga suaranya berubah di tengah video.\\n\\nSudah langsung saya perbaiki permanen sekarang juga:\\n1) Di scripts/gemini_tts.py: jika kena limit per-menit (429 RPM), sistem kini otomatis menunggu 22 detik agar tetap pakai karakter suara Gemini yang sama (tidak langsung lompat ke edge-tts).\\n2) Aturan permanen dikunci di autopilot-timeline.md: DILARANG mencampur 2 engine/karakter suara di dalam 1 video narator tunggal — mulai episode besok pagi, 1 video = 1 karakter suara yang 100% konsisten dari awal sampai akhir!",
       "status": "done"
+    },
+    {
+      "id": "bos_1795269890399",
+      "sender": "bos",
+      "time": "22:04 WITA",
+      "text": "Itu berlaku untuk semua channel yah, dalam 1 video atau part yang sama gunakan suara yang konsisten",
+      "status": "pending"
     }
   ]
 }
