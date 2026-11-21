@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-21 21:38 WITA",
+  "updated_at": "2026-11-21 21:40 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -64,6 +64,13 @@
       "sender": "nadia",
       "time": "21:38 WITA",
       "text": "Pertanyaan bagus, Bos! Ini penjelasannya:\\n\\n1) Kenapa Reno tadi tertulis 7/7? Itu tadi masih rumus sementara di dashboard (ikut total selesai). Baru saja saya perbaiki target harian Reno menjadi 24 video/hari (sesuai total 4 channel x 6 video) & langsung saya sinkronkan ulang ke Kantor Ai!\\n\\n2) Soal batas kuota Google AI Studio (Free API Key): Ya, ada batas request per menit (RPM) & per hari (RPD) pada tier gratis. Tapi tenang, Reno sudah saya pasangi 2 lapis pengaman:\\n- Utama: gemini-3.8-flash-tts\\n- Cadangan otomatis: gemini-3.8-flash-lite-tts (punya kuota terpisah!)\\n- Cadangan darurat: edge-tts hanya jika keduanya habis, lalu balik lagi ke Gemini saat kuota reset harian.\\n\\nKalau nanti kuota harian terasa sempit saat produksi penuh 24 video/hari, kita bisa pasang rotasi 2-3 Free API Key Google AI Studio biar makin lega!",
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795268439",
+      "sender": "nadia",
+      "time": "21:40 WITA",
+      "text": "Laporan selesai produksi & tayang, Bos! 🎉\\n\\n1) 🎬 Raka (DeadFrame Comics — DF_ZOMBIE_P4): ✅ Tayang YouTube -> https://youtube.com/shorts/tBIDTZeNnNI (Catatan: upload ke IG @kaya.studio26 tadi sempat kena error server Meta rupload ProcessingFailedError, nanti kita coba ulang).\\n2) 🛍️ Fajar (Racun Belanja — Shorts #2 Tech News ID): ✅ Tayang YouTube -> https://youtube.com/shorts/cAXXHAN5Xts\\n\\n📊 Kantor Ai 2D & 3D sudah otomatis tersinkron (commit 4966fdec). Catatan penting soal pertanyaan Bos tadi: ternyata Free Tier Google AI Studio punya limit 10 request/hari (3/menit) per model TTS — kalau Bos mau, saya bisa pasang fitur rotasi beberapa Free API Key di scripts/gemini_tts.py biar 24 video/hari 100% pakai Gemini TTS tanpa kena limit!",
       "status": "done"
     }
   ]
