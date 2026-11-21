@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "22:04 WITA",
+  "updated_at": "2026-11-21 22:06 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -127,7 +127,14 @@
       "sender": "bos",
       "time": "22:04 WITA",
       "text": "Itu berlaku untuk semua channel yah, dalam 1 video atau part yang sama gunakan suara yang konsisten",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795270016",
+      "sender": "nadia",
+      "time": "22:06 WITA",
+      "text": "Siap laksanakan, Bos! 🫡 Sudah saya kunci permanen di aturan studio untuk SEMUA 4 channel (dalam 1 video maupun seluruh part dari seri yang sama wajib 100% suara konsisten):\\n- 🎬 DeadFrame Comics: Fenrir\\n- 👻 Hollow Frame: Charon\\n- 🌿 WildLogic: Puck\\n- 🛍️ Racun Belanja: Puck\\n\\nTidak akan ada lagi pencampuran suara di tengah video atau antar-part!",
+      "status": "done"
     }
   ]
 }
