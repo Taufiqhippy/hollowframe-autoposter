@@ -932,13 +932,14 @@
     }
 
     function triggerGroupSleep() {
-      // Assign each of our 5 male & 5 female employees their own individual mattress!
+      // Exact math: root.rotation.y = Math.PI + bodyPivot.rotation.x = -Math.PI/2
+      // -> character lies FACE UP with feet at dz and head at dz + 1.68 (dead center on the pillow!).
       const bunkOffsets = [
-        { dx: -1.35, dz: 0.35, bunkY: 0.56, label: 'Kasur Bawah Kiri' },
-        { dx: -1.35, dz: 0.35, bunkY: 1.60, label: 'Kasur Atas Kiri' },
-        { dx:  1.35, dz: 0.35, bunkY: 0.56, label: 'Kasur Bawah Kanan' },
-        { dx:  1.35, dz: 0.35, bunkY: 1.60, label: 'Kasur Atas Kanan' },
-        { dx:  0.0,  dz: 1.35, bunkY: 0.56, label: 'Kasur Single Tengah' },
+        { dx: -1.35, dz: -0.56, bunkY: 0.72, label: 'Kasur Bawah Kiri' },
+        { dx: -1.35, dz: -0.56, bunkY: 1.76, label: 'Kasur Atas Kiri' },
+        { dx:  1.35, dz: -0.56, bunkY: 0.72, label: 'Kasur Bawah Kanan' },
+        { dx:  1.35, dz: -0.56, bunkY: 1.76, label: 'Kasur Atas Kanan' },
+        { dx:  0.0,  dz:  0.40, bunkY: 0.72, label: 'Kasur Single Tengah' },
       ];
       let mIdx = 0, fIdx = 0;
       Object.values(employees).forEach(emp => {
@@ -1216,12 +1217,13 @@
             emp.rightArm.rotation.x = emp.activityType === 'eat' ? (-0.95 + Math.sin(t * 3.5) * 0.28) : -0.85;
             targetBodyY = -0.22;
           } else if (emp.activityType === 'sleep') {
-            // Lying down horizontally on their assigned individual bunk mattress!
-            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.15);
+            // Lying FACE UP squarely inside their assigned mattress with head resting right ON the pillow!
+            emp.root.rotation.y = lerpAngle(emp.root.rotation.y, Math.PI, 0.18);
             emp.leftLeg.rotation.x = 0; emp.rightLeg.rotation.x = 0;
-            emp.leftArm.rotation.x = -0.15; emp.rightArm.rotation.x = -0.15;
+            emp.leftArm.rotation.x = -0.12; emp.rightArm.rotation.x = -0.12;
+            emp.headGroup.rotation.y = Math.sin(t * 0.4 + idx) * 0.12;
             targetPivotX = -Math.PI / 2;
-            targetBodyY = (emp.sleepBunkY || 0.56) + Math.sin(t * 1.4 + idx) * 0.015;
+            targetBodyY = (emp.sleepBunkY || 0.72) + Math.sin(t * 1.3 + idx) * 0.012;
           } else if (emp.activityType === 'sholat') {
             // Respectful Sholat cycle facing Kiblat (+Z): Standing -> Rukuk -> Sujud
             emp.root.rotation.y = lerpAngle(emp.root.rotation.y, 0, 0.15);
