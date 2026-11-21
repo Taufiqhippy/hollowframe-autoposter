@@ -2,7 +2,7 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-21",
-  "updated_at": "21 Nov 2026, 20:04 WITA",
+  "updated_at": "21 Nov 2026, 20:22 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 7,
@@ -38,8 +38,8 @@
       },
       {
         "priority": "OPSIONAL",
-        "title": "Aktifkan GitHub Token untuk Auto-Push Real-Time 1 Detik",
-        "detail": "Tambahkan 1 GitHub Fine-Grained Token khusus repo hollowframe-autoposter di social_config.json agar setiap upload otomatis memperbarui website 2D & 3D tanpa browser."
+        "title": "Auto-Sync GitHub Real-Time Sudah AKTIF!",
+        "detail": "Setiap upload baru & setiap 1 jam, Kantor Ai 2D & 3D otomatis tersinkron ke GitHub Pages tanpa perlu buka browser (token berlaku s/d 19 Feb 2027)."
       }
     ]
   },
