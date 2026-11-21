@@ -2,7 +2,7 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-22",
-  "updated_at": "22 Nov 2026, 06:20 WITA",
+  "updated_at": "22 Nov 2026, 06:55 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 7,
@@ -753,8 +753,8 @@
     {
       "key": "UC8uuxFNIGS3FOY8CNXJNvGQ",
       "name": "YT: WildLogic",
-      "subs": 1,
-      "delta_subs": 0,
+      "subs": 2,
+      "delta_subs": 1,
       "views": 839,
       "videos": 7
     },
