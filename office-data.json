@@ -1,0 +1,803 @@
+{
+  "office_name": "Kantor Ai - Bebas Kreasi",
+  "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
+  "date": "2026-11-22",
+  "updated_at": "22 Nov 2026, 18:48 WITA",
+  "summary": {
+    "total_slots": 36,
+    "total_done": 16,
+    "total_pending": 20,
+    "completion_pct": 44,
+    "active_employees": 10,
+    "open_slots": 1
+  },
+  "assistant": {
+    "name": "Nara — Asisten Eksekutif AI",
+    "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
+    "report": [
+      "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
+      "Hari ini (2026-11-22) tercatat 16 dari 36 slot jadwal sudah selesai tayang, dan 20 slot masih antre / belum dikerjakan.",
+      "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
+      "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
+    ],
+    "suggestions": [
+      {
+        "priority": "TINGGI",
+        "title": "Kejar 9 Slot Threads @kaya.studio26",
+        "detail": "Sora AI & Lina AI siap memposting variasi soft-selling menggunakan stok foto produk lokal agar tidak memicu CAPTCHA Shopee."
+      },
+      {
+        "priority": "TINGGI",
+        "title": "Produksi 9 Video Long-Form 16:9",
+        "detail": "Video Long-Form 16:9 akan mempercepat pencapaian 4.000 jam tayang monetisasi YouTube (terutama DeadFrame yang sudah 1.390+ subs!)."
+      },
+      {
+        "priority": "SEDANG",
+        "title": "Upload 1-Tap Paket Shopee Video dari Telegram",
+        "detail": "Video RacunBelanja_ShopeeVideo_01_Real.mp4 + caption + link Keranjang Oranye sudah siap di Telegram (msg #53)."
+      },
+      {
+        "priority": "OPSIONAL",
+        "title": "Auto-Sync GitHub Real-Time Sudah AKTIF!",
+        "detail": "Setiap upload baru & setiap 1 jam, Kantor Ai 2D & 3D otomatis tersinkron ke GitHub Pages tanpa perlu buka browser (token berlaku s/d 21 Nov 2027)."
+      }
+    ]
+  },
+  "tts_room": {
+    "primary_model": "gemini-3.8-flash-tts",
+    "backup_model": "gemini-3.8-flash-lite-tts",
+    "endpoint": "Gemini Interactions API (v1beta/interactions)",
+    "status": "ONLINE — 0 Error 504",
+    "avg_latency": "7–12 detik / klip",
+    "timeout_policy": "60 detik + 3x Auto-Retry",
+    "voices": [
+      {
+        "voice": "Charon",
+        "character": "Berat, Misterius, Tegang",
+        "used_by": "Hollow Frame (Horor)"
+      },
+      {
+        "voice": "Puck",
+        "character": "Santai, Enerjik, Natural",
+        "used_by": "WildLogic & Racun Belanja"
+      },
+      {
+        "voice": "Fenrir",
+        "character": "Tegas, Sinematik, Dramatis",
+        "used_by": "DeadFrame Comics"
+      },
+      {
+        "voice": "Kore",
+        "character": "Jernih, Ramah, Informatif",
+        "used_by": "Tech News & Narasi Edukasi"
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "assistant",
+      "room_name": "Ruang Asisten Eksekutif",
+      "employee_name": "Nara AI",
+      "role": "Asisten Pribadi & Analis Strategi",
+      "avatar": "🧠",
+      "status": "online",
+      "status_label": "Siap Melapor",
+      "done_today": 1,
+      "target_today": 1,
+      "current_task": "Menerima laporan tayang dari semua ruangan & menyiapkan saran prioritas untuk Bos.",
+      "accent": "#38bdf8"
+    },
+    {
+      "id": "tts_studio",
+      "room_name": "Ruang Studio Audio & TTS",
+      "employee_name": "Reno AI (VoxLab 3.8)",
+      "role": "Spesialis Voice Over Natural (Gemini 3.8 TTS)",
+      "avatar": "🎙️",
+      "status": "online",
+      "status_label": "Gemini 3.8 TTS Aktif",
+      "done_today": 13,
+      "target_today": 24,
+      "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
+      "accent": "#a855f7"
+    },
+    {
+      "id": "creative",
+      "room_name": "Ruang Tim Kreatif",
+      "employee_name": "Arga-Tim Kreatif",
+      "role": "Creative Director & Pengembang Ide Konten Viral",
+      "avatar": "💡",
+      "status": "online",
+      "status_label": "Karyawan Baru Aktif",
+      "done_today": 3,
+      "target_today": 3,
+      "current_task": "Riset inspirasi di Perpustakaan, menyusun ide di whiteboard sticky notes, & mengantar konsep cerita ke semua divisi.",
+      "accent": "#e11d48"
+    },
+    {
+      "id": "designer",
+      "room_name": "Ruang Desain Visual",
+      "employee_name": "Tia-Desain Visual",
+      "role": "Desainer Thumbnail, Komik & Aset Visual",
+      "avatar": "🎨",
+      "status": "online",
+      "status_label": "Karyawan Baru Aktif",
+      "done_today": 4,
+      "target_today": 4,
+      "current_task": "Merancang palet warna, thumbnail klik-tinggi, & aset grafis lalu mengantarkannya ke ruangan channel.",
+      "accent": "#c026d3"
+    },
+    {
+      "id": "copywriter",
+      "room_name": "Ruang Copywriter & Caption",
+      "employee_name": "Sora AI",
+      "role": "Spesialis Hook Viral, Caption, Hashtag & SEO",
+      "avatar": "✍️",
+      "status": "online",
+      "status_label": "Karyawan Baru Aktif",
+      "done_today": 16,
+      "target_today": 36,
+      "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
+      "accent": "#14b8a6"
+    },
+    {
+      "id": "deadframe",
+      "room_name": "Ruang Komik & Thriller",
+      "employee_name": "Kira AI",
+      "role": "Produser DeadFrame Comics (YT) + IG @kaya.studio26",
+      "avatar": "🎬",
+      "status": "working",
+      "status_label": "3/6 Hari Ini",
+      "done_today": 3,
+      "target_today": 6,
+      "current_task": "Live 1,390 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
+      "accent": "#ef4444"
+    },
+    {
+      "id": "hollowframe",
+      "room_name": "Ruang Horor & Misteri",
+      "employee_name": "Vex AI",
+      "role": "Produser Hollow Frame (YT) + FB Kaya Studio",
+      "avatar": "👻",
+      "status": "working",
+      "status_label": "4/6 Hari Ini",
+      "done_today": 4,
+      "target_today": 6,
+      "current_task": "Baru tayang: S02E03 (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Charon).",
+      "accent": "#f97316"
+    },
+    {
+      "id": "wildlogic",
+      "room_name": "Ruang Sains & Survival",
+      "employee_name": "Atlas AI",
+      "role": "Produser WildLogic (YT) + FB Kaya Studio",
+      "avatar": "🌿",
+      "status": "working",
+      "status_label": "3/6 Hari Ini",
+      "done_today": 3,
+      "target_today": 6,
+      "current_task": "Baru tayang: WL_E06 Petir (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Puck).",
+      "accent": "#22c55e"
+    },
+    {
+      "id": "racunbelanja",
+      "room_name": "Ruang Affiliate & Gadget",
+      "employee_name": "Raka AI",
+      "role": "Produser Racun Belanja (YT) + Paket Shopee Video",
+      "avatar": "🛍️",
+      "status": "working",
+      "status_label": "3/6 Hari Ini",
+      "done_today": 3,
+      "target_today": 6,
+      "current_task": "Tayang: Video Real Demo + Review Pembeli (YT + Telegram). Siap tambah produk katalog baru.",
+      "accent": "#eab308"
+    },
+    {
+      "id": "threads",
+      "room_name": "Ruang Media Sosial",
+      "employee_name": "Lina AI",
+      "role": "Admin Threads @kaya.studio26 (12x/Hari)",
+      "avatar": "🧵",
+      "status": "working",
+      "status_label": "3/12 Hari Ini",
+      "done_today": 3,
+      "target_today": 12,
+      "current_task": "Menerima caption dari Sora AI: 8x Soft-Selling (3–5 foto + link) & 4x Engagement tanpa link.",
+      "accent": "#06b6d4"
+    },
+    {
+      "id": "tiktok_wait",
+      "room_name": "Ruang Ekspansi TikTok",
+      "employee_name": "Tiko AI (Standby)",
+      "role": "Admin TikTok @hollowframeanimated",
+      "avatar": "🎵",
+      "status": "paused",
+      "status_label": "Menunggu App Review",
+      "done_today": 0,
+      "target_today": 4,
+      "current_task": "App Review ID 7708597553683580946 masih berstatus In Review di TikTok Developers.",
+      "accent": "#64748b"
+    },
+    {
+      "id": "open_slot",
+      "room_name": "Meja Kosong — Ekspansi Tim",
+      "employee_name": "+ Rekrut Karyawan AI Baru",
+      "role": "Slot Modular (Riset Tren / Thumbnail / CS / Channel Baru)",
+      "avatar": "➕",
+      "status": "open",
+      "status_label": "Siap Ditambahkan",
+      "done_today": 0,
+      "target_today": 0,
+      "current_task": "Kantor siap diperluas kapan saja! Sebutkan peran karyawan AI baru yang ingin direkrut.",
+      "accent": "#94a3b8"
+    }
+  ],
+  "manual_tasks": [
+    {
+      "title": "Upload 1-Tap Shopee Video (Racun Belanja)",
+      "status": "Menunggu Aksi Bos",
+      "detail": "File RacunBelanja_ShopeeVideo_01_Real.mp4 + caption + link Keranjang Oranye sudah siap di Telegram (msg #53).",
+      "urgency": "high"
+    },
+    {
+      "title": "Pantau Status App Review TikTok",
+      "status": "In Review",
+      "detail": "Begitu App Review 7708597553683580946 disetujui TikTok, divisi Tiko AI langsung aktif otomatis.",
+      "urgency": "medium"
+    },
+    {
+      "title": "Notifikasi CAPTCHA Shopee -> Telegram",
+      "status": "Siaga Aktif",
+      "detail": "Jika Shopee memunculkan verifikasi/CAPTCHA, sistem otomatis mengirim peringatan ke Telegram Anda.",
+      "urgency": "low"
+    }
+  ],
+  "task_board": [
+    {
+      "no": 1,
+      "division": "deadframe",
+      "time": "06:11",
+      "type": "shorts_part",
+      "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
+      "platforms": [
+        "youtube_deadframe",
+        "instagram_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "DF_ZOMBIE_P5",
+      "link": "https://youtube.com/shorts/5KaC5eiSEtQ"
+    },
+    {
+      "no": 2,
+      "division": "threads",
+      "time": "06:58",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#01 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "THREADS_22_01",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgBRvxXE-ho"
+    },
+    {
+      "no": 3,
+      "division": "racunbelanja",
+      "time": "07:04",
+      "type": "shorts_gadget",
+      "channel": "Racun Belanja [SHORTS #1: Gadget Of The Day - Affiliate]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "done",
+      "ref_id": "RB_SHORTS_03",
+      "link": "https://youtube.com/shorts/D2ft6E6ZFbE"
+    },
+    {
+      "no": 4,
+      "division": "hollowframe",
+      "time": "07:55",
+      "type": "shorts_part",
+      "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_hollowframe",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "S02E04",
+      "link": "https://youtube.com/shorts/56FPvkKhwlI"
+    },
+    {
+      "no": 5,
+      "division": "threads",
+      "time": "08:11",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#02 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "THREADS_22_02",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgBR9mhk13M"
+    },
+    {
+      "no": 6,
+      "division": "wildlogic",
+      "time": "09:10",
+      "type": "shorts_part",
+      "channel": "WildLogic (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_wildlogic",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "WL_E07",
+      "link": "https://youtube.com/shorts/igtl-wfwdAY"
+    },
+    {
+      "no": 7,
+      "division": "threads",
+      "time": "09:15",
+      "type": "threads_engagement_no_link",
+      "channel": "Threads @kaya.studio26 [#03 Engagement/Tanya Jawab Tanpa Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "THREADS_22_03",
+      "link": "https://www.threads.com/@kaya.studio26/post/DgBSIslE5i7"
+    },
+    {
+      "no": 8,
+      "division": "deadframe",
+      "time": "09:20",
+      "type": "longform_standalone",
+      "channel": "DeadFrame Comics (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
+      "platforms": [
+        "youtube_deadframe"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 9,
+      "division": "hollowframe",
+      "time": "09:49",
+      "type": "longform_standalone",
+      "channel": "Hollow Frame (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
+      "platforms": [
+        "youtube_hollowframe"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 10,
+      "division": "racunbelanja",
+      "time": "10:11",
+      "type": "longform_gadget",
+      "channel": "Racun Belanja [LONG-FORM #1: 5 Gadget Of The Day/Week/Month - Affiliate]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 11,
+      "division": "threads",
+      "time": "10:29",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#04 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 12,
+      "division": "deadframe",
+      "time": "10:43",
+      "type": "shorts_part",
+      "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
+      "platforms": [
+        "youtube_deadframe",
+        "instagram_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "DF_ZOMBIE_P6",
+      "link": "https://youtube.com/shorts/38sDXLeiIWw"
+    },
+    {
+      "no": 13,
+      "division": "threads",
+      "time": "11:45",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#05 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 14,
+      "division": "hollowframe",
+      "time": "11:52",
+      "type": "shorts_part",
+      "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_hollowframe",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "S02E05",
+      "link": "https://youtube.com/shorts/bbHMTdFnWA0"
+    },
+    {
+      "no": 15,
+      "division": "racunbelanja",
+      "time": "12:10",
+      "type": "shorts_technews",
+      "channel": "Racun Belanja [SHORTS #2: Berita/Sejarah Gadget & Teknologi]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "done",
+      "ref_id": "RB_TECHNEWS_03",
+      "link": "https://youtube.com/shorts/RXftypOLUtI"
+    },
+    {
+      "no": 16,
+      "division": "wildlogic",
+      "time": "12:35",
+      "type": "shorts_part",
+      "channel": "WildLogic (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_wildlogic",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "WL_E08",
+      "link": "https://youtube.com/shorts/szL4Djk4qbw"
+    },
+    {
+      "no": 17,
+      "division": "threads",
+      "time": "13:12",
+      "type": "threads_engagement_no_link",
+      "channel": "Threads @kaya.studio26 [#06 Engagement/Tanya Jawab Tanpa Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 18,
+      "division": "wildlogic",
+      "time": "13:25",
+      "type": "longform_standalone",
+      "channel": "WildLogic (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
+      "platforms": [
+        "youtube_wildlogic"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 19,
+      "division": "threads",
+      "time": "14:29",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#07 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 20,
+      "division": "deadframe",
+      "time": "14:53",
+      "type": "shorts_part",
+      "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
+      "platforms": [
+        "youtube_deadframe",
+        "instagram_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "DF_ZOMBIE_P7",
+      "link": "https://youtube.com/shorts/0nEoYFCNJpE"
+    },
+    {
+      "no": 21,
+      "division": "racunbelanja",
+      "time": "15:02",
+      "type": "longform_vs",
+      "channel": "Racun Belanja [LONG-FORM #2: Battle / VS Gadget - Affiliate]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 22,
+      "division": "hollowframe",
+      "time": "15:39",
+      "type": "shorts_part",
+      "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_hollowframe",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "HF_LF_01",
+      "link": "https://www.youtube.com/watch?v=KmHY1ZgtRbI"
+    },
+    {
+      "no": 23,
+      "division": "threads",
+      "time": "16:15",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#08 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 24,
+      "division": "threads",
+      "time": "17:02",
+      "type": "threads_engagement_no_link",
+      "channel": "Threads @kaya.studio26 [#09 Engagement/Tanya Jawab Tanpa Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 25,
+      "division": "wildlogic",
+      "time": "17:08",
+      "type": "shorts_part",
+      "channel": "WildLogic (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_wildlogic",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "WL_E09",
+      "link": "https://youtube.com/shorts/KReodQZQ1Ao"
+    },
+    {
+      "no": 26,
+      "division": "deadframe",
+      "time": "17:34",
+      "type": "longform_standalone",
+      "channel": "DeadFrame Comics (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
+      "platforms": [
+        "youtube_deadframe"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 27,
+      "division": "hollowframe",
+      "time": "17:53",
+      "type": "longform_standalone",
+      "channel": "Hollow Frame (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
+      "platforms": [
+        "youtube_hollowframe"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 28,
+      "division": "threads",
+      "time": "18:33",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#10 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 29,
+      "division": "deadframe",
+      "time": "18:54",
+      "type": "shorts_part",
+      "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
+      "platforms": [
+        "youtube_deadframe",
+        "instagram_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 30,
+      "division": "racunbelanja",
+      "time": "19:04",
+      "type": "shorts_review",
+      "channel": "Racun Belanja [SHORTS #3: Review Gadget Kecil Harian - Affiliate]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "done",
+      "ref_id": "RB_LF_02",
+      "link": "https://www.youtube.com/watch?v=u8s2sm7n6C0"
+    },
+    {
+      "no": 31,
+      "division": "threads",
+      "time": "19:48",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#11 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 32,
+      "division": "hollowframe",
+      "time": "19:55",
+      "type": "shorts_part",
+      "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_hollowframe",
+        "facebook_kayastudio"
+      ],
+      "status": "done",
+      "ref_id": "S02E06",
+      "link": "https://youtube.com/shorts/XTDduQyFIuc"
+    },
+    {
+      "no": 33,
+      "division": "racunbelanja",
+      "time": "20:14",
+      "type": "longform_technews",
+      "channel": "Racun Belanja [LONG-FORM #3: 5 Berita/Sejarah Teknologi Dunia]",
+      "platforms": [
+        "youtube_racunbelanja"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 34,
+      "division": "wildlogic",
+      "time": "20:33",
+      "type": "shorts_part",
+      "channel": "WildLogic (YT) + Kaya Studio (FB)",
+      "platforms": [
+        "youtube_wildlogic",
+        "facebook_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 35,
+      "division": "threads",
+      "time": "21:11",
+      "type": "threads_engagement_no_link",
+      "channel": "Threads @kaya.studio26 [#12 Engagement/Tanya Jawab Tanpa Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 36,
+      "division": "wildlogic",
+      "time": "21:23",
+      "type": "longform_standalone",
+      "channel": "WildLogic (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
+      "platforms": [
+        "youtube_wildlogic"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    }
+  ],
+  "platform_stats": [
+    {
+      "key": "UCzpMORG4axDbjYuyJ27SO5A",
+      "name": "YT: DeadFrame Comics",
+      "subs": 1390,
+      "delta_subs": 0,
+      "views": 40220,
+      "videos": 141
+    },
+    {
+      "key": "UCNq0apoZrRa7NAzImmNA7mw",
+      "name": "YT: Hollow Frame",
+      "subs": 3,
+      "delta_subs": 0,
+      "views": 647,
+      "videos": 16
+    },
+    {
+      "key": "UC8uuxFNIGS3FOY8CNXJNvGQ",
+      "name": "YT: WildLogic",
+      "subs": 2,
+      "delta_subs": 1,
+      "views": 840,
+      "videos": 9
+    },
+    {
+      "key": "UCNWJYI4-oRGUGf2WzEmV-gg",
+      "name": "YT: Racun Belanja",
+      "subs": 2,
+      "delta_subs": 0,
+      "views": 8,
+      "videos": 7
+    },
+    {
+      "key": "ig_kayastudio",
+      "name": "IG: @kaya.studio26",
+      "subs": 1,
+      "delta_subs": 0,
+      "views": 3,
+      "videos": 4
+    },
+    {
+      "key": "fb_kayastudio",
+      "name": "FB: Kaya Studio",
+      "subs": 0,
+      "delta_subs": 0,
+      "views": 0,
+      "videos": 0
+    }
+  ],
+  "cron_jobs": [
+    {
+      "name": "Autopilot Harian Penuh",
+      "schedule": "Setiap Hari 06:00 WITA",
+      "status": "AKTIF"
+    },
+    {
+      "name": "Laporan PDF Mingguan (Telegram)",
+      "schedule": "Setiap Minggu 08:00 WITA",
+      "status": "AKTIF"
+    },
+    {
+      "name": "Auto-Sync Kantor Ai (Setelah Upload)",
+      "schedule": "Otomatis Real-Time",
+      "status": "AKTIF"
+    }
+  ]
+}
