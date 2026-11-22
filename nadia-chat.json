@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "23:03 WITA",
+  "updated_at": "2026-11-22 23:06 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -393,7 +393,14 @@
       "sender": "bos",
       "time": "23:03 WITA",
       "text": "Okey",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795359989",
+      "sender": "nadia",
+      "time": "23:06 WITA",
+      "text": "Siap Bos! Dina AI & Lina AI sedang mengambil produk-produk baru di Shopee Affiliate, sebentar lagi katalog racun-belanja.html langsung ter-update otomatis!",
+      "status": "done"
     }
   ],
   "broadcast": {
