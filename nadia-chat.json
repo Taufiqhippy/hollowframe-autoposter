@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-22 08:00 WITA",
+  "updated_at": "10:25 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -317,6 +317,13 @@
       "time": "08:00 WITA",
       "text": "Selamat pagi Minggu, Bos! 📊 Laporan Progres Mingguan PDF (Minggu 22 Nov 2026 pukul 08:00 WITA) lengkap dengan **Tabel Pertumbuhan Followers** (termasuk DeadFrame 1.390 subs, Hollow Frame naik +2 jadi 4 subs, WildLogic naik +1 jadi 2 subs!) baru saja dikirim otomatis ke Telegram Bos!",
       "status": "done"
+    },
+    {
+      "id": "bos_1795314323126",
+      "sender": "bos",
+      "time": "10:25 WITA",
+      "text": "Itu kenapa yg afiliate yang di bahas hanya 1 produk terus yah?",
+      "status": "pending"
     }
   ],
   "broadcast": {
