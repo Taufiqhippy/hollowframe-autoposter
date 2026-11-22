@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-22 10:28 WITA",
+  "updated_at": "12:05 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -331,6 +331,13 @@
       "time": "10:28 WITA",
       "text": "Siap Bos! Setelah Nadia cek, penyebabnya ada 2: (1) Di folder aset lokal baru ada klip demo asli untuk produk #01 (Kipas Goojodoq), sedangkan di katalog baru tersimpan 5 link Shopee Affiliate resmi (#01 Kipas Goojodoq, #02 Kursi Lipat, #03 Powerbank Mini, #04 Proyektor YG300, #05 Rak Wastafel). Tadi pagi Shorts #03 sudah mulai ganti ke Powerbank Mini, dan batch Threads siang ini juga lagi posting produk berbeda (#01, #02, #04). Mulai siklus berikutnya, Nadia langsung rotasikan ke produk #02, #04, #05 + konten Tech News/Battle biar variatif, dan Nadia bisa langsung tarik produk & klip review baru dari Shopee Affiliate Bos supaya katalognya makin banyak!",
       "status": "done"
+    },
+    {
+      "id": "bos_1795320358288",
+      "sender": "bos",
+      "time": "12:05 WITA",
+      "text": "Itu Setiap waktu sholat cukup 1x saja melakukan sholat tiap waktu, tidak usah berulang sepanjang waktu sholat😭",
+      "status": "pending"
     }
   ],
   "broadcast": {
