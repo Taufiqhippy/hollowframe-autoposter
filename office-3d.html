@@ -1055,26 +1055,38 @@
 
     // Prayer & Sleep clock updater (Gorontalo WITA)
     let lastAutoPhase = '';
+    const completedPrayers = new Set();
     function updatePrayerHUD() {
       const { hhmm, isSleep, activePrayer, nextPrayer } = getGorontaloTime();
       const el = document.getElementById('prayerClock');
-      if (activePrayer || forceSholatMode) {
-        const pName = activePrayer ? activePrayer.name : 'Jamaah';
-        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktunya Sholat ${pName}`;
+      const todayKey = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+      if (forceSholatMode) {
+        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktunya Sholat Jamaah`;
         scene.background.setHex(0xdbeafe);
-        if (lastAutoPhase !== 'sholat_' + pName) {
+        if (lastAutoPhase !== 'sholat_force') {
+          lastAutoPhase = 'sholat_force';
+          nadiaSay('Guys, waktunya sholat Jamaah! 🕌', 6500);
+          triggerGroupSholat('Jamaah');
+        }
+      } else if (activePrayer) {
+        const pName = activePrayer.name;
+        const pKey = `${todayKey}_${pName}`;
+        if (!completedPrayers.has(pKey)) {
+          completedPrayers.add(pKey);
           lastAutoPhase = 'sholat_' + pName;
           nadiaSay(`Guys, waktunya sholat ${pName}! 🕌`, 6500);
+          triggerGroupSholat(pName);
         }
-        triggerGroupSholat(pName);
+        el.textContent = `🕌 Gorontalo ${hhmm} WITA • Waktu ${pName} (Sudah 1x Sholat)`;
+        scene.background.setHex(0xdbeafe);
       } else if (isSleep || forceSleepMode) {
         el.textContent = `🌙 Gorontalo ${hhmm} WITA • Jam Tidur (23:45–Subuh)`;
         scene.background.setHex(0x94a3b8);
         if (lastAutoPhase !== 'sleep') {
           lastAutoPhase = 'sleep';
           nadiaSay('Guys, waktunya tidur! 🌙', 6500);
+          triggerGroupSleep();
         }
-        triggerGroupSleep();
       } else {
         el.textContent = `🕌 Gorontalo ${hhmm} WITA • Berikutnya: ${nextPrayer.name} (${nextPrayer.str})`;
         scene.background.setHex(0xdbeafe);
