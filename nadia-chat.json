@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-22 23:14 WITA",
+  "updated_at": "08:47 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -408,6 +408,13 @@
       "time": "23:14 WITA",
       "text": "Lapor Bos! Katalog Racun Belanja (https://taufiqhippy.github.io/hollowframe-autoposter/racun-belanja.html) sudah berhasil ditambah 11 PRODUK BARU Shopee Affiliate terlaris (6RB+ s/d 10RB+ terjual, total sekarang 17 produk aktif #01 s/d #17)! 🎉🛒\n\nDaftar 11 Produk Baru yang Masuk Katalog & Stok Konten:\n• #07 Monster XKT08 TWS Gaming Bluetooth V5.4 (Rp159.000 • 10RB+ terjual): https://s.shopee.co.id/6q2TxdNVrV\n• #08 JAMTREND Smartwatch Serie S11 AMOLED GPS NFC (Rp147.370 • 10RB+ terjual): https://s.shopee.co.id/8fU894K8tQ\n• #09 Lampu Meja LED Belajar 3 Warna USB Eye-Care (Rp50.000 • 10RB+ terjual): https://s.shopee.co.id/7VIAl94ptT\n• #10 ROBOT Mouse Wireless M206 1600DPI (Rp57.999 • 10RB+ terjual): https://s.shopee.co.id/70LuA84twb\n• #11 Cantiklife Stand Laptop Aluminium 7 Tingkat (Rp38.900 • 8RB+ terjual): https://s.shopee.co.id/BVa1cphXn\n• #12 OLIKE Bluetooth Speaker SF8 LED Ambient IPX4 (Rp105.501 • 10RB+ terjual): https://s.shopee.co.id/1qdo0isF34\n• #13 BELLSTAR Charger GaN PD 30W Layar Digital (Rp76.049 • 6RB+ terjual): https://s.shopee.co.id/1gKNoQizAW\n• #14 Kipas Angin Meja Desktop USB + Lampu Malam (Rp49.900 • 8RB+ terjual): https://s.shopee.co.id/gRqcDms4m\n• #15 ADVAN Smartwatch SE1 IPS 1.83 AI Voice IP68 (Rp249.000 • 10RB+ terjual): https://s.shopee.co.id/3qOsOBlcJS\n• #16 MOFii Mouse Wireless Gaming Rechargeable RGB (Rp109.900 • 10RB+ terjual): https://s.shopee.co.id/20xECwWb6G\n• #17 Laptop Stand 360 Rotatable Aluminium GT (Rp60.000 • 10RB+ terjual): https://s.shopee.co.id/2BGePImUGp\n\nSemua foto produk juga sudah disimpan ke public/images/ (rb_p07.jpg s/d rb_p17.jpg) siap dipakai otomatis untuk video YouTube Racun Belanja, Paket Shopee Video Telegram, dan 12 utas harian Threads @kaya.studio26!",
       "status": "done"
+    },
+    {
+      "id": "bos_1795394834087",
+      "sender": "bos",
+      "time": "08:47 WITA",
+      "text": "Token kita habis yah?",
+      "status": "pending"
     }
   ],
   "broadcast": {
