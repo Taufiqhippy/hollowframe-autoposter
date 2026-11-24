@@ -2,12 +2,12 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-24",
-  "updated_at": "24 Nov 2026, 18:51 WITA",
+  "updated_at": "24 Nov 2026, 18:52 WITA",
   "summary": {
     "total_slots": 36,
-    "total_done": 10,
-    "total_pending": 26,
-    "completion_pct": 28,
+    "total_done": 12,
+    "total_pending": 24,
+    "completion_pct": 33,
     "active_employees": 10,
     "open_slots": 1
   },
@@ -16,7 +16,7 @@
     "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
       "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
-      "Hari ini (2026-11-24) tercatat 10 dari 36 slot jadwal sudah selesai tayang, dan 26 slot masih antre / belum dikerjakan.",
+      "Hari ini (2026-11-24) tercatat 12 dari 36 slot jadwal sudah selesai tayang, dan 24 slot masih antre / belum dikerjakan.",
       "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
       "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
     ],
@@ -95,7 +95,7 @@
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 10,
+      "done_today": 13,
       "target_today": 24,
       "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
@@ -134,7 +134,7 @@
       "avatar": "✍️",
       "status": "online",
       "status_label": "Karyawan Baru Aktif",
-      "done_today": 10,
+      "done_today": 12,
       "target_today": 36,
       "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
       "accent": "#14b8a6"
@@ -172,8 +172,8 @@
       "role": "Produser WildLogic (YT) + FB Kaya Studio",
       "avatar": "🌿",
       "status": "working",
-      "status_label": "2/6 Hari Ini",
-      "done_today": 2,
+      "status_label": "3/6 Hari Ini",
+      "done_today": 3,
       "target_today": 6,
       "current_task": "Baru tayang: WL_E06 Petir (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Puck).",
       "accent": "#22c55e"
@@ -185,8 +185,8 @@
       "role": "Produser Racun Belanja (YT) + Paket Shopee Video",
       "avatar": "🛍️",
       "status": "working",
-      "status_label": "2/6 Hari Ini",
-      "done_today": 2,
+      "status_label": "4/6 Hari Ini",
+      "done_today": 4,
       "target_today": 6,
       "current_task": "Tayang: Video Real Demo + Review Pembeli (YT + Telegram). Siap tambah produk katalog baru.",
       "accent": "#eab308"
@@ -569,9 +569,9 @@
         "youtube_wildlogic",
         "facebook_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "WL_E13",
+      "link": "https://youtube.com/shorts/zqxt0nTwuns"
     },
     {
       "no": 25,
@@ -648,9 +648,9 @@
       "platforms": [
         "youtube_racunbelanja"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "RB_SHORTS_05",
+      "link": "https://youtube.com/shorts/aEbCxR1ijOg"
     },
     {
       "no": 31,
@@ -764,7 +764,7 @@
       "subs": 6,
       "delta_subs": 0,
       "views": 1962,
-      "videos": 12
+      "videos": 13
     },
     {
       "key": "ig_kayastudio",
