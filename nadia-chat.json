@@ -1,7 +1,7 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "08:47 WITA",
+  "updated_at": "2026-11-24 12:06 WITA",
   "messages": [
     {
       "id": "msg_welcome_01",
@@ -414,13 +414,20 @@
       "sender": "bos",
       "time": "08:47 WITA",
       "text": "Token kita habis yah?",
-      "status": "pending"
+      "status": "done"
+    },
+    {
+      "id": "nadia_1795493174",
+      "sender": "nadia",
+      "time": "12:06 WITA",
+      "text": "Betul Bos, kemarin sempat kena limit kuota model AI sebelumnya & server sempat restart, tapi sekarang SUDAH NORMAL & AKTIF KEMBALI! 🎉\n\nSemua 7 cron autopilot (Siklus 1-4, Sync per jam, Live Chat 2 menit, & PDF Mingguan) sudah Nadia nyalakan lagi, dan jadwal hari ini (24 Nov) sudah digenerate.\n\n🔥 KABAR BAIK — VIEWS CHANNEL NAIK TAJAM:\n• DeadFrame Comics: 42.227 views (+2.000 views!) | 1.390 subs\n• WildLogic: 2.913 views (melejit dari 840 views!)\n• Racun Belanja: 1.962 views (melejit dari 8 views!) | 6 subs\n• Hollow Frame: 960 views (naik dari 647 views!)\n\nSekarang Nadia langsung kebut Batch Pagi+Siang Threads @kaya.studio26 (#01-#06 pakai produk baru #07-#10 dari katalog) + produksi video harian DeadFrame, Hollow Frame, WildLogic, & Racun Belanja (#07 Monster XKT08 TWS + Paket Shopee Video Telegram)!",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795359672",
-    "text": "Dina AI & Lina AI: Segera tambah produk Shopee Affiliate baru ke katalog Racun Belanja!",
+    "id": "bc_1795493174",
+    "text": "Sistem kembali aktif! Semua tim kebut produksi 24 Nov dengan rotasi produk baru #07-#17!",
     "action": "announce",
-    "time": "23:01 WITA"
+    "time": "12:06 WITA"
   }
 }
