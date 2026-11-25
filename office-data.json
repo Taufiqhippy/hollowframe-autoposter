@@ -1,13 +1,13 @@
 {
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
-  "date": "2026-11-25",
-  "updated_at": "25 Nov 2026, 22:48 WITA",
+  "date": "2026-11-26",
+  "updated_at": "26 Nov 2026, 00:49 WITA",
   "summary": {
     "total_slots": 36,
-    "total_done": 15,
-    "total_pending": 21,
-    "completion_pct": 42,
+    "total_done": 0,
+    "total_pending": 36,
+    "completion_pct": 0,
     "active_employees": 10,
     "open_slots": 1
   },
@@ -16,7 +16,7 @@
     "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
       "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
-      "Hari ini (2026-11-25) tercatat 15 dari 36 slot jadwal sudah selesai tayang, dan 21 slot masih antre / belum dikerjakan.",
+      "Hari ini (2026-11-26) tercatat 0 dari 36 slot jadwal sudah selesai tayang, dan 36 slot masih antre / belum dikerjakan.",
       "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
       "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
     ],
@@ -95,7 +95,7 @@
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 18,
+      "done_today": 0,
       "target_today": 24,
       "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
@@ -134,7 +134,7 @@
       "avatar": "✍️",
       "status": "online",
       "status_label": "Karyawan Baru Aktif",
-      "done_today": 15,
+      "done_today": 0,
       "target_today": 36,
       "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
       "accent": "#14b8a6"
@@ -146,8 +146,8 @@
       "role": "Produser DeadFrame Comics (YT) + IG @kaya.studio26",
       "avatar": "🎬",
       "status": "working",
-      "status_label": "4/6 Hari Ini",
-      "done_today": 4,
+      "status_label": "0/6 Hari Ini",
+      "done_today": 0,
       "target_today": 6,
       "current_task": "Live 1,390 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
       "accent": "#ef4444"
@@ -159,8 +159,8 @@
       "role": "Produser Hollow Frame (YT) + FB Kaya Studio",
       "avatar": "👻",
       "status": "working",
-      "status_label": "4/6 Hari Ini",
-      "done_today": 4,
+      "status_label": "0/6 Hari Ini",
+      "done_today": 0,
       "target_today": 6,
       "current_task": "Baru tayang: S02E03 (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Charon).",
       "accent": "#f97316"
@@ -172,8 +172,8 @@
       "role": "Produser WildLogic (YT) + FB Kaya Studio",
       "avatar": "🌿",
       "status": "working",
-      "status_label": "4/6 Hari Ini",
-      "done_today": 4,
+      "status_label": "0/6 Hari Ini",
+      "done_today": 0,
       "target_today": 6,
       "current_task": "Baru tayang: WL_E06 Petir (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Puck).",
       "accent": "#22c55e"
@@ -184,9 +184,9 @@
       "employee_name": "Raka AI",
       "role": "Produser Racun Belanja (YT) + Paket Shopee Video",
       "avatar": "🛍️",
-      "status": "done",
-      "status_label": "6/6 Hari Ini",
-      "done_today": 6,
+      "status": "working",
+      "status_label": "0/6 Hari Ini",
+      "done_today": 0,
       "target_today": 6,
       "current_task": "Tayang: Video Real Demo + Review Pembeli (YT + Telegram). Siap tambah produk katalog baru.",
       "accent": "#eab308"
@@ -262,9 +262,9 @@
         "youtube_deadframe",
         "instagram_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "DF_ZOMBIE_P12",
-      "link": "https://youtube.com/shorts/uukEJFrRH6Q"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 2,
@@ -288,9 +288,9 @@
       "platforms": [
         "youtube_racunbelanja"
       ],
-      "status": "done",
-      "ref_id": "RB_SHORTS_06",
-      "link": "https://youtube.com/shorts/ohuR3Fn84mY"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 4,
@@ -302,8 +302,8 @@
         "youtube_hollowframe",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "S02E11",
+      "status": "pending",
+      "ref_id": "",
       "link": ""
     },
     {
@@ -329,9 +329,9 @@
         "youtube_wildlogic",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "WL_E14",
-      "link": "https://youtube.com/shorts/l3F33rRcDB0"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 7,
@@ -395,9 +395,9 @@
         "youtube_deadframe",
         "instagram_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "DF_ZOMBIE_P13",
-      "link": "https://youtube.com/shorts/ajXq1hrk-jc"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 12,
@@ -435,8 +435,8 @@
         "youtube_hollowframe",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "S02E12",
+      "status": "pending",
+      "ref_id": "",
       "link": ""
     },
     {
@@ -448,9 +448,9 @@
       "platforms": [
         "youtube_racunbelanja"
       ],
-      "status": "done",
-      "ref_id": "RB_SHORTS_07",
-      "link": "https://youtube.com/shorts/8lhmZDtZ9vY"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 16,
@@ -462,9 +462,9 @@
         "youtube_wildlogic",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "WL_E15",
-      "link": "https://youtube.com/shorts/4H_W5tu5CLM"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 17,
@@ -515,9 +515,9 @@
         "youtube_deadframe",
         "instagram_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "DF_ZOMBIE_P14",
-      "link": "https://youtube.com/shorts/bNWJ9vYZQ5Q"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 21,
@@ -542,8 +542,8 @@
         "youtube_hollowframe",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "S02E13",
+      "status": "pending",
+      "ref_id": "",
       "link": ""
     },
     {
@@ -569,9 +569,9 @@
         "youtube_wildlogic",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "WL_E16",
-      "link": "https://youtube.com/shorts/Xf9lYtkrClw"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 25,
@@ -622,9 +622,9 @@
         "youtube_deadframe",
         "instagram_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "DF_ZOMBIE_P15",
-      "link": "https://youtube.com/shorts/IQJR5yulUJs"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 29,
@@ -648,9 +648,9 @@
       "platforms": [
         "youtube_racunbelanja"
       ],
-      "status": "done",
-      "ref_id": "RB_LF_06",
-      "link": "https://www.youtube.com/watch?v=AvE4PFgWc-E"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 31,
@@ -675,8 +675,8 @@
         "youtube_hollowframe",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "S02E14",
+      "status": "pending",
+      "ref_id": "",
       "link": ""
     },
     {
@@ -702,9 +702,9 @@
         "youtube_wildlogic",
         "facebook_kayastudio"
       ],
-      "status": "done",
-      "ref_id": "WL_E17",
-      "link": "https://youtube.com/shorts/y7DV2zsymjY"
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
     },
     {
       "no": 35,
