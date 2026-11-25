@@ -2,7 +2,7 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-25",
-  "updated_at": "25 Nov 2026, 10:22 WITA",
+  "updated_at": "25 Nov 2026, 10:26 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 6,
@@ -15,7 +15,7 @@
     "name": "Nara — Asisten Eksekutif AI",
     "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
-      "Data live tersinkron: DeadFrame Comics saat ini memiliki 0 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
+      "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
       "Hari ini (2026-11-25) tercatat 6 dari 36 slot jadwal sudah selesai tayang, dan 30 slot masih antre / belum dikerjakan.",
       "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
       "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
@@ -149,7 +149,7 @@
       "status_label": "2/6 Hari Ini",
       "done_today": 2,
       "target_today": 6,
-      "current_task": "Live 0 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
+      "current_task": "Live 1,390 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
       "accent": "#ef4444"
     },
     {
@@ -733,7 +733,56 @@
       "link": ""
     }
   ],
-  "platform_stats": [],
+  "platform_stats": [
+    {
+      "key": "UCzpMORG4axDbjYuyJ27SO5A",
+      "name": "YT: DeadFrame Comics",
+      "subs": 1390,
+      "delta_subs": 0,
+      "views": 42362,
+      "videos": 146
+    },
+    {
+      "key": "UCNq0apoZrRa7NAzImmNA7mw",
+      "name": "YT: Hollow Frame",
+      "subs": 3,
+      "delta_subs": 0,
+      "views": 1196,
+      "videos": 16
+    },
+    {
+      "key": "UC8uuxFNIGS3FOY8CNXJNvGQ",
+      "name": "YT: WildLogic",
+      "subs": 2,
+      "delta_subs": 0,
+      "views": 3875,
+      "videos": 14
+    },
+    {
+      "key": "UCNWJYI4-oRGUGf2WzEmV-gg",
+      "name": "YT: Racun Belanja",
+      "subs": 6,
+      "delta_subs": 0,
+      "views": 2076,
+      "videos": 14
+    },
+    {
+      "key": "ig_kayastudio",
+      "name": "IG: @kaya.studio26",
+      "subs": 1,
+      "delta_subs": 0,
+      "views": 3,
+      "videos": 4
+    },
+    {
+      "key": "fb_kayastudio",
+      "name": "FB: Kaya Studio",
+      "subs": 0,
+      "delta_subs": 0,
+      "views": 0,
+      "videos": 0
+    }
+  ],
   "cron_jobs": [
     {
       "name": "Autopilot Harian Penuh",
