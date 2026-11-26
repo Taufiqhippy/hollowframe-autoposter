@@ -2,12 +2,12 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-26",
-  "updated_at": "26 Nov 2026, 10:23 WITA",
+  "updated_at": "26 Nov 2026, 10:25 WITA",
   "summary": {
     "total_slots": 36,
-    "total_done": 4,
-    "total_pending": 32,
-    "completion_pct": 11,
+    "total_done": 6,
+    "total_pending": 30,
+    "completion_pct": 17,
     "active_employees": 10,
     "open_slots": 1
   },
@@ -16,7 +16,7 @@
     "greeting": "Selamat bekerja, Bos Taufiq! Berikut laporan live kondisi Kantor Ai - Bebas Kreasi hari ini.",
     "report": [
       "Data live tersinkron: DeadFrame Comics saat ini memiliki 1,390 subscribers, seluruh 4 channel YouTube + IG + FB terpantau real-time.",
-      "Hari ini (2026-11-26) tercatat 4 dari 36 slot jadwal sudah selesai tayang, dan 32 slot masih antre / belum dikerjakan.",
+      "Hari ini (2026-11-26) tercatat 6 dari 36 slot jadwal sudah selesai tayang, dan 30 slot masih antre / belum dikerjakan.",
       "Karyawan baru Sora AI (Ruang Copywriter & Caption) resmi aktif menulis hook, deskripsi SEO, hashtag, & CTA Affiliate untuk semua channel.",
       "Ruang Studio Audio TTS (VoxLab 3.8 / Reno AI) berjalan 100% stabil di gemini-3.8-flash-tts tanpa error 504."
     ],
@@ -95,7 +95,7 @@
       "avatar": "🎙️",
       "status": "online",
       "status_label": "Gemini 3.8 TTS Aktif",
-      "done_today": 4,
+      "done_today": 6,
       "target_today": 24,
       "current_task": "Memproduksi audio WAV natural lalu mengantarkannya langsung ke ruangan DeadFrame, Hollow Frame, WildLogic, & Racun Belanja.",
       "accent": "#a855f7"
@@ -134,7 +134,7 @@
       "avatar": "✍️",
       "status": "online",
       "status_label": "Karyawan Baru Aktif",
-      "done_today": 4,
+      "done_today": 6,
       "target_today": 36,
       "current_task": "Menulis judul, deskripsi SEO, CTA link katalog/SociaBuzz, & hashtag lalu mengantarkannya ke tiap divisi.",
       "accent": "#14b8a6"
@@ -146,8 +146,8 @@
       "role": "Produser DeadFrame Comics (YT) + IG @kaya.studio26",
       "avatar": "🎬",
       "status": "working",
-      "status_label": "1/6 Hari Ini",
-      "done_today": 1,
+      "status_label": "2/6 Hari Ini",
+      "done_today": 2,
       "target_today": 6,
       "current_task": "Live 1,390 subs! Terakhir tayang: DF_ZOMBIE_P3 (YT + IG). Antre: Shorts P4 & 2x Long-Form 16:9.",
       "accent": "#ef4444"
@@ -159,8 +159,8 @@
       "role": "Produser Hollow Frame (YT) + FB Kaya Studio",
       "avatar": "👻",
       "status": "working",
-      "status_label": "1/6 Hari Ini",
-      "done_today": 1,
+      "status_label": "2/6 Hari Ini",
+      "done_today": 2,
       "target_today": 6,
       "current_task": "Baru tayang: S02E03 (EN YT + ID FB Kaya Studio) pakai Gemini 3.8 TTS (Charon).",
       "accent": "#f97316"
@@ -395,9 +395,9 @@
         "youtube_deadframe",
         "instagram_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
+      "status": "done",
+      "ref_id": "DF_ZOMBIE_P17",
+      "link": "https://youtube.com/shorts/CXgRu6-O5Vw"
     },
     {
       "no": 12,
@@ -422,8 +422,8 @@
         "youtube_hollowframe",
         "facebook_kayastudio"
       ],
-      "status": "pending",
-      "ref_id": "",
+      "status": "done",
+      "ref_id": "S02E16",
       "link": ""
     },
     {
