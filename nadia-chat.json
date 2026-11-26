@@ -1,15 +1,8 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-26 06:24 WITA",
+  "updated_at": "2026-11-26 10:33 WITA",
   "messages": [
-    {
-      "id": "bos_1795268178837",
-      "sender": "bos",
-      "time": "21:36 WITA",
-      "text": "Kenapa progres Reno sudah 7/7? Apa ada pembatasan tiap harinya dari Google untuk TTS Ai Studio?",
-      "status": "done"
-    },
     {
       "id": "nadia_1795268324",
       "sender": "nadia",
@@ -422,12 +415,19 @@
       "time": "06:24 WITA",
       "text": "Laporan Progres Siklus 1 Pagi (Kamis, 26 Nov 2026 Tuntas 100%):\n• DeadFrame: P16 Golden Cure vs Subject Zero (qhG0JOfrs08)\n• Hollow Frame: S02E15 Bus Malam 404 Finale live di FB Kaya Studio (122102038821558852)\n• WildLogic: E18 Tsunami Drawback (GI8Ggd7HN4I) + FB (122102035773558852)\n• Racun Belanja: Short #09 Video Unboxing Asli Kipas Turbo Goojodoq GFS001 #01 (OWx-bv4gpZY + Paket Shopee Video Telegram #67)\n• Threads @kaya.studio26: Batch Pagi #01-#03 terbit otomatis.\nStandby nol-kredit menuju Siklus 2 pukul 10:00 WITA!",
       "status": "done"
+    },
+    {
+      "id": "nadia_1795660385",
+      "sender": "nadia",
+      "time": "10:33 WITA",
+      "text": "Laporan Progres Siklus 2 Siang (Kamis, 26 Nov 2026 Tuntas 100%):\n• DeadFrame: P17 Helicopter Skid vs Subject Zero (CXgRu6-O5Vw — Video ke-150!)\n• Hollow Frame: S02E16 Arc Baru Laundry Koin 24 Jam live di FB Kaya Studio (122102156625558852)\n• WildLogic: E19 Fisika Lift Jatuh Bebas (78vfrLvOBQk) + FB (122102156607558852)\n• Racun Belanja: Short #10 Tech News Slot MicroSD (ZIPgaYljqco) & Long-Form 16:9 #09 5 Gadget Upgrade Kamar 10RB+ Terjual (a6C61VOJ42Q)\n• Threads @kaya.studio26: Batch Siang #04-#06 terbit otomatis (Total 6/12 hari ini).\nStandby nol-kredit menuju Siklus 3 pukul 14:30 WITA!",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795645444",
-    "text": "Siklus 1 Pagi Kamis 26 Nov beres 100%! Lanjut persiapan Siklus 2 jam 10:00 WITA ya tim!",
+    "id": "bc_1795660385",
+    "text": "Siklus 2 Siang Kamis 26 Nov beres 100%! Istirahat makan siang & siap-siap Siklus 3 jam 14:30 WITA ya tim!",
     "action": "announce",
-    "time": "06:24 WITA"
+    "time": "10:33 WITA"
   }
 }
