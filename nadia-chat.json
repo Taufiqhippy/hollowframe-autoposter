@@ -1,15 +1,8 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-27 22:37 WITA",
+  "updated_at": "2026-11-28 06:26 WITA",
   "messages": [
-    {
-      "id": "nadia_1795268439",
-      "sender": "nadia",
-      "time": "21:40 WITA",
-      "text": "Laporan selesai produksi & tayang, Bos! 🎉\\n\\n1) 🎬 Raka (DeadFrame Comics — DF_ZOMBIE_P4): ✅ Tayang YouTube -> https://youtube.com/shorts/tBIDTZeNnNI (Catatan: upload ke IG @kaya.studio26 tadi sempat kena error server Meta rupload ProcessingFailedError, nanti kita coba ulang).\\n2) 🛍️ Fajar (Racun Belanja — Shorts #2 Tech News ID): ✅ Tayang YouTube -> https://youtube.com/shorts/cAXXHAN5Xts\\n\\n📊 Kantor Ai 2D & 3D sudah otomatis tersinkron (commit 4966fdec). Catatan penting soal pertanyaan Bos tadi: ternyata Free Tier Google AI Studio punya limit 10 request/hari (3/menit) per model TTS — kalau Bos mau, saya bisa pasang fitur rotasi beberapa Free API Key di scripts/gemini_tts.py biar 24 video/hari 100% pakai Gemini TTS tanpa kena limit!",
-      "status": "done"
-    },
     {
       "id": "bos_1795268465666",
       "sender": "bos",
@@ -422,12 +415,19 @@
       "time": "22:37 WITA",
       "text": "Rekap Malam Jumat, 27 Nov 2026 Tuntas 100% (Eksekusi Langsung Hemat Kredit!):\n• DeadFrame: P18 Fuel Pod Blast (https://youtube.com/shorts/DDO7lcoSrYg)\n• Hollow Frame: S02E17 Laundry Koin Bag. 2 live di FB Kaya Studio (122103419175558852)\n• WildLogic: E20 Angry Bees CO2 Radar (https://youtube.com/shorts/-3dVAxy7oFE) + FB\n• Racun Belanja: Short #11 Video Asli Monster XKT08 TWS #07 (https://youtube.com/shorts/RnrWLRTqX5o + Paket Shopee Video Telegram terkirim) & Long-Form #10 Battle Meja Kos 50rb #09 vs #14 (https://www.youtube.com/watch?v=oOsabpjvg7s)\n• Threads @kaya.studio26: Batch Jumat Malam terbit otomatis.\nSeluruh kru standby nol-kredit menuju Sabtu, 28 Nov pukul 06:00 WITA!",
       "status": "done"
+    },
+    {
+      "id": "nadia_1795818396",
+      "sender": "nadia",
+      "time": "06:26 WITA",
+      "text": "Laporan Siklus 1 Pagi (Sabtu, 28 Nov 2026):\n• DeadFrame P19: Live di IG Reels @kaya.studio26 (18123852913750194) + MP4 EN siap antre YT\n• Hollow Frame S02E18: Live di FB Kaya Studio (122103754587558852)\n• WildLogic E21: Live di FB Kaya Studio (122103755199558852) + MP4 EN siap antre YT\n• Racun Belanja Short #12 (#10 ROBOT M206 Video Asli): Paket Shopee Video terkirim ke Telegram (#69) + MP4 siap antre YT\n• Threads @kaya.studio26: Batch Pagi #01-#03 terbit otomatis.\n⚠️ Info Penting Bos: Masa berlaku 7 hari token Google OAuth YouTube (mode Testing) baru saja habis pagi ini. Kapan pun Bos senggang, kabari Nadia untuk kita klik Publish App (In Production) + login ulang 1x supaya token YouTube permanen & semua video antrean langsung terunggah otomatis!",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795790231",
-    "text": "Batch Jumat Malam 27 Nov beres 100% dengan super hemat kredit! Selamat istirahat sampai jam 06:00 pagi tim!",
+    "id": "bc_1795818396",
+    "text": "Siklus 1 Sabtu Pagi beres! IG, FB, Threads & Telegram Shopee Video jalan mulus!",
     "action": "announce",
-    "time": "22:37 WITA"
+    "time": "06:26 WITA"
   }
 }
