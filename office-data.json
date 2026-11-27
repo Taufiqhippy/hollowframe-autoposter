@@ -2,7 +2,7 @@
   "office_name": "Kantor Ai - Bebas Kreasi",
   "tagline": "Pusat Kendali Otomatisasi Multi-Channel & Tim Karyawan AI",
   "date": "2026-11-28",
-  "updated_at": "28 Nov 2026, 05:06 WITA",
+  "updated_at": "28 Nov 2026, 06:06 WITA",
   "summary": {
     "total_slots": 36,
     "total_done": 0,
@@ -255,7 +255,7 @@
     {
       "no": 1,
       "division": "deadframe",
-      "time": "06:24",
+      "time": "06:27",
       "type": "shorts_part",
       "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
       "platforms": [
@@ -269,7 +269,7 @@
     {
       "no": 2,
       "division": "threads",
-      "time": "06:52",
+      "time": "06:56",
       "type": "threads_softsell_affiliate",
       "channel": "Threads @kaya.studio26 [#01 Soft-Selling 3-5 Foto + Link]",
       "platforms": [
@@ -282,7 +282,7 @@
     {
       "no": 3,
       "division": "racunbelanja",
-      "time": "07:04",
+      "time": "07:06",
       "type": "shorts_gadget",
       "channel": "Racun Belanja [SHORTS #1: Gadget Of The Day - Affiliate]",
       "platforms": [
@@ -295,7 +295,7 @@
     {
       "no": 4,
       "division": "hollowframe",
-      "time": "07:53",
+      "time": "07:38",
       "type": "shorts_part",
       "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -309,7 +309,7 @@
     {
       "no": 5,
       "division": "threads",
-      "time": "08:02",
+      "time": "07:46",
       "type": "threads_softsell_affiliate",
       "channel": "Threads @kaya.studio26 [#02 Soft-Selling 3-5 Foto + Link]",
       "platforms": [
@@ -322,7 +322,7 @@
     {
       "no": 6,
       "division": "wildlogic",
-      "time": "08:47",
+      "time": "08:49",
       "type": "shorts_part",
       "channel": "WildLogic (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -336,7 +336,7 @@
     {
       "no": 7,
       "division": "threads",
-      "time": "09:01",
+      "time": "09:12",
       "type": "threads_engagement_no_link",
       "channel": "Threads @kaya.studio26 [#03 Engagement/Tanya Jawab Tanpa Link]",
       "platforms": [
@@ -349,7 +349,7 @@
     {
       "no": 8,
       "division": "deadframe",
-      "time": "09:24",
+      "time": "09:36",
       "type": "longform_standalone",
       "channel": "DeadFrame Comics (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
       "platforms": [
@@ -362,7 +362,7 @@
     {
       "no": 9,
       "division": "hollowframe",
-      "time": "09:48",
+      "time": "09:55",
       "type": "longform_standalone",
       "channel": "Hollow Frame (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
       "platforms": [
@@ -375,7 +375,7 @@
     {
       "no": 10,
       "division": "racunbelanja",
-      "time": "10:01",
+      "time": "10:03",
       "type": "longform_gadget",
       "channel": "Racun Belanja [LONG-FORM #1: 5 Gadget Of The Day/Week/Month - Affiliate]",
       "platforms": [
@@ -388,7 +388,7 @@
     {
       "no": 11,
       "division": "threads",
-      "time": "10:33",
+      "time": "10:31",
       "type": "threads_softsell_affiliate",
       "channel": "Threads @kaya.studio26 [#04 Soft-Selling 3-5 Foto + Link]",
       "platforms": [
@@ -401,7 +401,7 @@
     {
       "no": 12,
       "division": "deadframe",
-      "time": "10:54",
+      "time": "10:38",
       "type": "shorts_part",
       "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
       "platforms": [
@@ -415,7 +415,7 @@
     {
       "no": 13,
       "division": "hollowframe",
-      "time": "11:28",
+      "time": "11:25",
       "type": "shorts_part",
       "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -429,7 +429,7 @@
     {
       "no": 14,
       "division": "threads",
-      "time": "11:57",
+      "time": "11:47",
       "type": "threads_softsell_affiliate",
       "channel": "Threads @kaya.studio26 [#05 Soft-Selling 3-5 Foto + Link]",
       "platforms": [
@@ -442,7 +442,7 @@
     {
       "no": 15,
       "division": "racunbelanja",
-      "time": "12:20",
+      "time": "12:19",
       "type": "shorts_technews",
       "channel": "Racun Belanja [SHORTS #2: Berita/Sejarah Gadget & Teknologi]",
       "platforms": [
@@ -455,7 +455,7 @@
     {
       "no": 16,
       "division": "wildlogic",
-      "time": "13:10",
+      "time": "12:39",
       "type": "shorts_part",
       "channel": "WildLogic (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -469,7 +469,7 @@
     {
       "no": 17,
       "division": "threads",
-      "time": "13:15",
+      "time": "13:06",
       "type": "threads_engagement_no_link",
       "channel": "Threads @kaya.studio26 [#06 Engagement/Tanya Jawab Tanpa Link]",
       "platforms": [
@@ -482,7 +482,7 @@
     {
       "no": 18,
       "division": "wildlogic",
-      "time": "13:45",
+      "time": "13:38",
       "type": "longform_standalone",
       "channel": "WildLogic (YT Long-Form 16:9) [MANDIRI / STANDALONE #1]",
       "platforms": [
@@ -494,8 +494,21 @@
     },
     {
       "no": 19,
+      "division": "threads",
+      "time": "14:36",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#07 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 20,
       "division": "deadframe",
-      "time": "14:29",
+      "time": "14:46",
       "type": "shorts_part",
       "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
       "platforms": [
@@ -507,22 +520,9 @@
       "link": ""
     },
     {
-      "no": 20,
-      "division": "threads",
-      "time": "14:44",
-      "type": "threads_softsell_affiliate",
-      "channel": "Threads @kaya.studio26 [#07 Soft-Selling 3-5 Foto + Link]",
-      "platforms": [
-        "threads_kayastudio"
-      ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
-    },
-    {
       "no": 21,
       "division": "racunbelanja",
-      "time": "15:00",
+      "time": "15:05",
       "type": "longform_vs",
       "channel": "Racun Belanja [LONG-FORM #2: Battle / VS Gadget - Affiliate]",
       "platforms": [
@@ -535,7 +535,7 @@
     {
       "no": 22,
       "division": "hollowframe",
-      "time": "15:52",
+      "time": "15:32",
       "type": "shorts_part",
       "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -549,7 +549,7 @@
     {
       "no": 23,
       "division": "threads",
-      "time": "16:05",
+      "time": "16:12",
       "type": "threads_softsell_affiliate",
       "channel": "Threads @kaya.studio26 [#08 Soft-Selling 3-5 Foto + Link]",
       "platforms": [
@@ -561,8 +561,21 @@
     },
     {
       "no": 24,
+      "division": "threads",
+      "time": "16:55",
+      "type": "threads_engagement_no_link",
+      "channel": "Threads @kaya.studio26 [#09 Engagement/Tanya Jawab Tanpa Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 25,
       "division": "wildlogic",
-      "time": "16:38",
+      "time": "17:03",
       "type": "shorts_part",
       "channel": "WildLogic (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -574,22 +587,9 @@
       "link": ""
     },
     {
-      "no": 25,
-      "division": "threads",
-      "time": "17:01",
-      "type": "threads_engagement_no_link",
-      "channel": "Threads @kaya.studio26 [#09 Engagement/Tanya Jawab Tanpa Link]",
-      "platforms": [
-        "threads_kayastudio"
-      ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
-    },
-    {
       "no": 26,
       "division": "deadframe",
-      "time": "17:37",
+      "time": "17:24",
       "type": "longform_standalone",
       "channel": "DeadFrame Comics (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
       "platforms": [
@@ -602,7 +602,7 @@
     {
       "no": 27,
       "division": "hollowframe",
-      "time": "17:59",
+      "time": "18:00",
       "type": "longform_standalone",
       "channel": "Hollow Frame (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
       "platforms": [
@@ -614,21 +614,8 @@
     },
     {
       "no": 28,
-      "division": "threads",
-      "time": "18:39",
-      "type": "threads_softsell_affiliate",
-      "channel": "Threads @kaya.studio26 [#10 Soft-Selling 3-5 Foto + Link]",
-      "platforms": [
-        "threads_kayastudio"
-      ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
-    },
-    {
-      "no": 29,
       "division": "deadframe",
-      "time": "18:50",
+      "time": "18:29",
       "type": "shorts_part",
       "channel": "DeadFrame Comics (YT) + @kaya.studio26 (IG)",
       "platforms": [
@@ -640,9 +627,22 @@
       "link": ""
     },
     {
+      "no": 29,
+      "division": "threads",
+      "time": "18:31",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#10 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
       "no": 30,
       "division": "racunbelanja",
-      "time": "19:00",
+      "time": "19:02",
       "type": "shorts_review",
       "channel": "Racun Belanja [SHORTS #3: Review Gadget Kecil Harian - Affiliate]",
       "platforms": [
@@ -654,8 +654,21 @@
     },
     {
       "no": 31,
+      "division": "threads",
+      "time": "19:36",
+      "type": "threads_softsell_affiliate",
+      "channel": "Threads @kaya.studio26 [#11 Soft-Selling 3-5 Foto + Link]",
+      "platforms": [
+        "threads_kayastudio"
+      ],
+      "status": "pending",
+      "ref_id": "",
+      "link": ""
+    },
+    {
+      "no": 32,
       "division": "hollowframe",
-      "time": "19:39",
+      "time": "20:00",
       "type": "shorts_part",
       "channel": "Hollow Frame (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -667,22 +680,9 @@
       "link": ""
     },
     {
-      "no": 32,
-      "division": "threads",
-      "time": "19:58",
-      "type": "threads_softsell_affiliate",
-      "channel": "Threads @kaya.studio26 [#11 Soft-Selling 3-5 Foto + Link]",
-      "platforms": [
-        "threads_kayastudio"
-      ],
-      "status": "pending",
-      "ref_id": "",
-      "link": ""
-    },
-    {
       "no": 33,
       "division": "racunbelanja",
-      "time": "20:20",
+      "time": "20:13",
       "type": "longform_technews",
       "channel": "Racun Belanja [LONG-FORM #3: 5 Berita/Sejarah Teknologi Dunia]",
       "platforms": [
@@ -695,7 +695,7 @@
     {
       "no": 34,
       "division": "wildlogic",
-      "time": "20:51",
+      "time": "21:09",
       "type": "shorts_part",
       "channel": "WildLogic (YT) + Kaya Studio (FB)",
       "platforms": [
@@ -722,7 +722,7 @@
     {
       "no": 36,
       "division": "wildlogic",
-      "time": "21:36",
+      "time": "21:40",
       "type": "longform_standalone",
       "channel": "WildLogic (YT Long-Form 16:9) [MANDIRI / STANDALONE #2]",
       "platforms": [
@@ -755,7 +755,7 @@
       "name": "YT: WildLogic",
       "subs": 2,
       "delta_subs": 0,
-      "views": 5915,
+      "views": 6084,
       "videos": 20
     },
     {
