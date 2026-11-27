@@ -1,15 +1,8 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-26 10:33 WITA",
+  "updated_at": "2026-11-27 22:37 WITA",
   "messages": [
-    {
-      "id": "nadia_1795268324",
-      "sender": "nadia",
-      "time": "21:38 WITA",
-      "text": "Pertanyaan bagus, Bos! Ini penjelasannya:\\n\\n1) Kenapa Reno tadi tertulis 7/7? Itu tadi masih rumus sementara di dashboard (ikut total selesai). Baru saja saya perbaiki target harian Reno menjadi 24 video/hari (sesuai total 4 channel x 6 video) & langsung saya sinkronkan ulang ke Kantor Ai!\\n\\n2) Soal batas kuota Google AI Studio (Free API Key): Ya, ada batas request per menit (RPM) & per hari (RPD) pada tier gratis. Tapi tenang, Reno sudah saya pasangi 2 lapis pengaman:\\n- Utama: gemini-3.8-flash-tts\\n- Cadangan otomatis: gemini-3.8-flash-lite-tts (punya kuota terpisah!)\\n- Cadangan darurat: edge-tts hanya jika keduanya habis, lalu balik lagi ke Gemini saat kuota reset harian.\\n\\nKalau nanti kuota harian terasa sempit saat produksi penuh 24 video/hari, kita bisa pasang rotasi 2-3 Free API Key Google AI Studio biar makin lega!",
-      "status": "done"
-    },
     {
       "id": "nadia_1795268439",
       "sender": "nadia",
@@ -422,12 +415,19 @@
       "time": "10:33 WITA",
       "text": "Laporan Progres Siklus 2 Siang (Kamis, 26 Nov 2026 Tuntas 100%):\n• DeadFrame: P17 Helicopter Skid vs Subject Zero (CXgRu6-O5Vw — Video ke-150!)\n• Hollow Frame: S02E16 Arc Baru Laundry Koin 24 Jam live di FB Kaya Studio (122102156625558852)\n• WildLogic: E19 Fisika Lift Jatuh Bebas (78vfrLvOBQk) + FB (122102156607558852)\n• Racun Belanja: Short #10 Tech News Slot MicroSD (ZIPgaYljqco) & Long-Form 16:9 #09 5 Gadget Upgrade Kamar 10RB+ Terjual (a6C61VOJ42Q)\n• Threads @kaya.studio26: Batch Siang #04-#06 terbit otomatis (Total 6/12 hari ini).\nStandby nol-kredit menuju Siklus 3 pukul 14:30 WITA!",
       "status": "done"
+    },
+    {
+      "id": "nadia_1795790231",
+      "sender": "nadia",
+      "time": "22:37 WITA",
+      "text": "Rekap Malam Jumat, 27 Nov 2026 Tuntas 100% (Eksekusi Langsung Hemat Kredit!):\n• DeadFrame: P18 Fuel Pod Blast (https://youtube.com/shorts/DDO7lcoSrYg)\n• Hollow Frame: S02E17 Laundry Koin Bag. 2 live di FB Kaya Studio (122103419175558852)\n• WildLogic: E20 Angry Bees CO2 Radar (https://youtube.com/shorts/-3dVAxy7oFE) + FB\n• Racun Belanja: Short #11 Video Asli Monster XKT08 TWS #07 (https://youtube.com/shorts/RnrWLRTqX5o + Paket Shopee Video Telegram terkirim) & Long-Form #10 Battle Meja Kos 50rb #09 vs #14 (https://www.youtube.com/watch?v=oOsabpjvg7s)\n• Threads @kaya.studio26: Batch Jumat Malam terbit otomatis.\nSeluruh kru standby nol-kredit menuju Sabtu, 28 Nov pukul 06:00 WITA!",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795660385",
-    "text": "Siklus 2 Siang Kamis 26 Nov beres 100%! Istirahat makan siang & siap-siap Siklus 3 jam 14:30 WITA ya tim!",
+    "id": "bc_1795790231",
+    "text": "Batch Jumat Malam 27 Nov beres 100% dengan super hemat kredit! Selamat istirahat sampai jam 06:00 pagi tim!",
     "action": "announce",
-    "time": "10:33 WITA"
+    "time": "22:37 WITA"
   }
 }
