@@ -1,15 +1,8 @@
 {
   "assistant": "Nadia-Asisten AI",
   "office": "Kantor Ai - Bebas Kreasi",
-  "updated_at": "2026-11-28 06:26 WITA",
+  "updated_at": "2026-11-28 11:04 WITA",
   "messages": [
-    {
-      "id": "bos_1795268465666",
-      "sender": "bos",
-      "time": "21:41 WITA",
-      "text": "Oke kabari saya jika ingin rotasi 2-3 Free API Key yah nadia",
-      "status": "done"
-    },
     {
       "id": "bos_1795268497555",
       "sender": "bos",
@@ -422,12 +415,19 @@
       "time": "06:26 WITA",
       "text": "Laporan Siklus 1 Pagi (Sabtu, 28 Nov 2026):\n• DeadFrame P19: Live di IG Reels @kaya.studio26 (18123852913750194) + MP4 EN siap antre YT\n• Hollow Frame S02E18: Live di FB Kaya Studio (122103754587558852)\n• WildLogic E21: Live di FB Kaya Studio (122103755199558852) + MP4 EN siap antre YT\n• Racun Belanja Short #12 (#10 ROBOT M206 Video Asli): Paket Shopee Video terkirim ke Telegram (#69) + MP4 siap antre YT\n• Threads @kaya.studio26: Batch Pagi #01-#03 terbit otomatis.\n⚠️ Info Penting Bos: Masa berlaku 7 hari token Google OAuth YouTube (mode Testing) baru saja habis pagi ini. Kapan pun Bos senggang, kabari Nadia untuk kita klik Publish App (In Production) + login ulang 1x supaya token YouTube permanen & semua video antrean langsung terunggah otomatis!",
       "status": "done"
+    },
+    {
+      "id": "nadia_1795835078",
+      "sender": "nadia",
+      "time": "11:04 WITA",
+      "text": "Update Siklus 2 (Sabtu, 28 Nov 2026):\n• DeadFrame P20 (Arc Finale): Live di IG Reels @kaya.studio26 (18082429553398440)\n• Hollow Frame S02E19 (Coin Laundry Finale): Live di FB Kaya Studio (122103887841558852)\n• WildLogic E22 (Jellyfish 40.000G): Live di FB Kaya Studio (122103889995558852)\n• Threads #04-#06: Terbit otomatis.\nAturan baru Hemat Token 3 Siklus (07:00, 12:00, 17:00 WITA) sudah aktif! Standby menuju Paket Shopee Video #2 pukul 12:00 WITA.",
+      "status": "done"
     }
   ],
   "broadcast": {
-    "id": "bc_1795818396",
-    "text": "Siklus 1 Sabtu Pagi beres! IG, FB, Threads & Telegram Shopee Video jalan mulus!",
+    "id": "bc_1795835078",
+    "text": "Mode Hemat Token 3 Siklus aktif! Shorts #2 selesai, lanjut Paket Shopee Video Siang jam 12:00 WITA ya tim!",
     "action": "announce",
-    "time": "06:26 WITA"
+    "time": "11:04 WITA"
   }
 }
